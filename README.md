@@ -56,6 +56,12 @@ Scores are based on the final `README.md` produced for the run.
 | GLM 4.7 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GLM 5.3 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-OSS 120B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| GPT-5 Mini                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| GPT-5 Nano                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GPT-5.4 Mini                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-5.4 Nano                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| GPT-5.6 Luna                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-6 Luna                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Granite 4.2 3B              | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 8B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Granite 4.2 30B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -517,12 +523,21 @@ I had to interrupt the agent because it became confused about tool use, repeated
 - **google/gemma-4-31b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **inclusionai/ling-3.0-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **nex-agi/nex-n2.5-pro** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **openai/gpt-5.4-mini** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **openai/gpt-5.6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **poolside/laguna-xs-2.1** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-pro** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **z-ai/glm-5.3-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **openai/gpt-5-mini** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+  - It mostly corrected `README.md`, but did not remove every reference to web search.
+- **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+  - It mostly corrected `README.md`, but did not remove every reference to web search.
+- **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It only tried to format `README.md`.
 - **qwen/qwen3-30b-a3b-instruct-2507** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
