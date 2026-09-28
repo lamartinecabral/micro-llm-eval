@@ -43,7 +43,53 @@ Scores are based on the final `README.md` produced for the run.
 
 ---
 
-## ollama: batiai/gemma4-26b:iq4 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+## Summary
+
+| Model name                  | Verdict                                                    |
+| --------------------------- | ---------------------------------------------------------- |
+| Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Gemma 4 E2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemma 4 E4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemma 4 12B                 | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Gemma 4 26B A4B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Gemma 4 31B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GLM 4.7 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GLM 5.3 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-OSS 120B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Granite 4.2 3B              | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Granite 4.2 8B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Granite 4.2 30B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| HY3                         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| K2 Horizon 0.9B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| K2 Horizon 3.7B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| K2 Horizon 7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Laguna XS 2.1               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| LFM 2.5 2.6B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Ling 3.0 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Mellum 2 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| MiMo V2.6 Flash             | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| MiMo V2.6 Pro               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Muse Glimmer 30B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Nemotron 3 Nano 4B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nemotron 3 Nano 30B         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nemotron 3 Super            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Nemotron 3.5 Lightning      | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nex N2.5 Pro                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Qwen 3.5 2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 9B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.6 35B A3B            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.7 Flash              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.8 27B                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Qwen 3.8 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| SmolLM 3 3B                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Spark X2.5 4B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Ternary Bonsai 27B          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Ternary Bonsai 2 27B        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+
+---
+
+## Ollama: batiai/gemma4-26b:iq4 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path": "."})
@@ -127,7 +173,7 @@ The only drawback was efficiency: it did too much work for such a simple task.
 
 ---
 
-## ollama: gemma4:12b-it-qat ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+## Ollama: gemma4:12b-it-qat ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -147,7 +193,7 @@ It mostly corrected `README.md`, but did not remove every reference to web searc
 
 ---
 
-## ollama: hf.co/InternScience/Agents-A1-4B-Q8_0-GGUF:Q8_0 ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+## Ollama: hf.co/InternScience/Agents-A1-4B-Q8_0-GGUF:Q8_0 ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -190,7 +236,7 @@ It mostly corrected `README.md`, but did not remove every reference to web searc
 
 ---
 
-## ollama: gemma4:e4b-it-qat ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+## Ollama: gemma4:e4b-it-qat ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"./"})
@@ -209,7 +255,7 @@ It made minor adjustments to `README.md` but missed the goal.
 
 ---
 
-## ollama: gemma4:e2b-it-qat ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+## Ollama: gemma4:e2b-it-qat ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -223,7 +269,7 @@ It read `README.md`, then completely rewrote it and missed the goal entirely.
 
 ---
 
-## ollama: qwen3.5:4b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+## Ollama: qwen3.5:4b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -255,7 +301,7 @@ It completely rewrote `README.md` and missed the goal.
 
 ---
 
-## ollama: qwen3.5:2b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+## Ollama: qwen3.5:2b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":""})
@@ -334,7 +380,7 @@ However, it did not scan the project correctly and missed the goal.
 
 ---
 
-## ollama: nemotron-3-nano:4b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+## Ollama: nemotron-3-nano:4b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -352,7 +398,7 @@ It read only part of `package.json` and `src/cli.ts`, then completely rewrote `R
 
 ---
 
-## ollama: hf.co/JetBrains/Mellum2-12B-A2.5B-Thinking-GGUF-Q4_K_M:Q4_K_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+## Ollama: hf.co/JetBrains/Mellum2-12B-A2.5B-Thinking-GGUF-Q4_K_M:Q4_K_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -366,7 +412,7 @@ The model read only `package.json` and `README.md`, then decided that everything
 
 ---
 
-## ollama: hf.co/XHToken/Spark-X2.5-4B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+## Ollama: hf.co/XHToken/Spark-X2.5-4B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -410,7 +456,7 @@ It completely rewrote `README.md`, added duplicate sections, and missed the goal
 
 ---
 
-## ollama: granite4.2:3b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+## Ollama: granite4.2:3b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
 
@@ -418,7 +464,7 @@ I had to interrupt the agent because it began hallucinating and looping in its r
 
 ---
 
-## ollama: hf.co/ggml-org/SmolLM3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+## Ollama: hf.co/ggml-org/SmolLM3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
 
@@ -426,7 +472,7 @@ I had to interrupt the agent because it began hallucinating about a Python proje
 
 ---
 
-## ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+## Ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
 
