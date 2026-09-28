@@ -67,7 +67,7 @@ Scores are based on the final `README.md` produced for the run.
 | LFM 2.5 2.6B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Mellum 2 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| MiMo V2.6 Flash             | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| MiMo V2.6 Flash             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Muse Glimmer 30B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3 Nano 4B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -76,7 +76,7 @@ Scores are based on the final `README.md` produced for the run.
 | Nemotron 3.5 Lightning      | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nex N2.5 Pro                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3 32B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3 32B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 Coder Next           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -521,6 +521,7 @@ I had to interrupt the agent because it became confused about tool use, repeated
 - **poolside/laguna-xs-2.1** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-pro** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **z-ai/glm-5.3-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
@@ -535,5 +536,3 @@ I had to interrupt the agent because it became confused about tool use, repeated
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3.7-flash** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
-- **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-  - It got stuck in a tool-calling loop.
