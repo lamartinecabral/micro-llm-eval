@@ -1,10 +1,3 @@
-<span hidden>
-![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-</span>
-
 # Evaluating micro LLMs
 
 I prepared a simple task for autonomous AI agents to evaluate the capabilities of small LLMs.
