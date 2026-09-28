@@ -127,28 +127,42 @@ Efficiency is the highlight.
 
 ---
 
-## oMLX: mlx-community/K2-Horizon-7B-Uno-oQ6e ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+## oMLX: mlx-community/K2-Horizon-7B-oQ6e ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path": "."})
-read_file({"file_path": "README.md"})
-read_file({"file_path": "package.json"})
+read_file({"path": "package.json"})
+read_file({"path": "README.md"})
 list_directory({"path": "src"})
-list_directory({"file_path": "docs"})
-list_directory({"file_path": "tests"})
-list_directory({"path": "docs"})
 list_directory({"path": "tests"})
 list_directory({"path": "src/tools"})
-read_file({"file_path": ... it was 24 read_file calls in a row
-run_shell_command({"command": "git log --oneline -10 && cat .vsco...
-run_shell_command({"command": "git show 0fff37f --stat && git sho...
-run_shell_command({"command": "git show 0fff37f -- src/utils.ts s...
-read_file({"file_path": "LICENSE"})
-grep_search({"query": "web search|web-search|fetch|tavily|ollama ...
-replace_string_in_file({"file_path": "README.md", "old_text": ...
-replace_string_in_file({"file_path": "README.md", "new_text": ...
-replace_string_in_file({"file_path": "README.md", "new_text": ...
-read_file({"file_path": "README.md"})
+list_directory({"path": "docs"})
+read_file({"path": "src/cli.ts"})
+read_file({"path": "src/run.ts"})
+read_file({"path": "src/io.ts"})
+read_file({"path": "src/tools/index.ts"})
+read_file({"path": "src/settings.ts"})
+read_file({"path": "src/session.ts"})
+read_file({"path": "docs/ollama.md"})
+read_file({"path": "src/tools/read-file.tool.ts"})
+read_file({"path": "src/utils.ts"})
+read_file({"path": "src/tools/write-file.tool.ts"})
+read_file({"path": "src/tools/replace-string-in-file.tool.ts"})
+read_file({"path": "src/tools/run-shell-command.tool.ts"})
+read_file({"path": "src/tools/file-search.tool.ts"})
+read_file({"path": "src/tools/grep-search.tool.ts"})
+read_file({"path": "src/tools/list-directory.tool.ts"})
+grep_search({"query": "webSearch|web_search|fetchPage|searchWeb", "isRegexp": true})
+read_file({"path": "src/thinking.ts"})
+read_file({"path": "tests/session.test.ts"})
+run_shell_command({"command": "grep -rn \"webSearch\\|web_search\\|fetchPageContent\" src/ --include=\"*.ts\" | head -30"})
+run_shell_command({"command": "git log --oneline | head -20; echo \"---\"; git status --short | head -20"})
+run_shell_command({"command": "git show cca9238 --stat; echo \"===\"; git show cca9238 -- README.md package.json | head -200"})
+replace_string_in_file({"path": "README.md", "old_text": ...
+replace_string_in_file({"path": "README.md", "old_text": ...
+replace_string_in_file({"path": "README.md", "old_text": ...
+read_file({"path": "README.md"})
+grep_search({"query": "web|search", "isRegexp": true, "includePattern": "README.md"})
 </pre></details>
 
 **Observations:**
@@ -158,26 +172,6 @@ The agent thoroughly scanned the project and even checked the commit history.
 It noticed the issue and made precise adjustments instead of rewriting the entire file.
 
 It also used the `replace_string_in_file` tool correctly. Small models often struggle with this tool or avoid it entirely.
-
-The only drawback was efficiency: it did too much work for such a simple task.
-
----
-
-## oMLX: DreamFoundries/K2-Horizon-3.7B-MLX-8bit ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-Since the run was very similiar to the one with the 7B version, I decided to not include the log of tool calls.
-</pre></details>
-
-**Observations:**
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the issue and made precise adjustments instead of rewriting the entire file.
-
-It also used the `replace_string_in_file` tool correctly. Small models often struggle with this tool or avoid it entirely.
-
-The only drawback was efficiency: it did too much work for such a simple task.
 
 ---
 
