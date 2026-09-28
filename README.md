@@ -241,19 +241,16 @@ It mostly corrected `README.md`, but did not remove every reference to web searc
 ## Ollama: gemma4:e4b-it-qat ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"./"})
-list_directory({"path":"src"})
-list_directory({"path":"src/tools"})
-read_file({"file_path":"README.md","start_line":1})
-read_file({"file_path":"package.json","start_line":1})
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
 write_file({"content":...
+write_file({"path":"README.md", "content":...
 </pre></details>
 
 **Observations:**
 
-It scanned the files correctly but did not notice the issue.
-
-It made minor adjustments to `README.md` but missed the goal.
+It only read `README.md` and `package.json`, then rewrote `README.md` and missed the goal.
 
 ---
 
@@ -277,24 +274,24 @@ It only read `README.md` and listed some files, then rewrote `README.md` and mis
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
-read_file({"file_path":"package.json"})
-read_file({"file_path":"README.md"})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
 list_directory({"path":"docs"})
-file_search({"query":"src/**/*.{ts,json}"})
-read_file({"file_path":"docs/ollama.md"})
-read_file({"file_path":"src/cli.ts"})
-read_file({"file_path":"CONTRIBUTING.md"})
-list_directory({"path":"tests"})
-grep_search({"query":"AGENTS\\.md","isRegep":"false"})
-search({"query":"**/AGENTS.md"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"package-lock.json","start_line":1,"end_line":50})
 list_directory({"path":"src/tools"})
-read_file({"file_path":"src/session.ts"})
-read_file({"file_path":"src/tools/index.ts"})
-read_file({"file_path":"src/run.ts"})
-read_file({"file_path":"biome.json"})
+read_file({"path":"package-lock.json","start_line":50,"end_line":100})
+read_file({"path":"docs/ollama.md"})
+run_shell_command({"command":"cat .gitignore"})
+read_file({"path":"tsconfig.json"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+grep_search({"isRegexp":true,"query":"CHANGELOG|changelog|VERSION|version.*update|updated"})
+read_file({"path":"src/settings.ts"})
 list_directory({"path":"tests"})
-write_file({"file_path":"README.md","content":...
-read_file({"file_path":"README.md"})
+write_file({"content":...
 </pre></details>
 
 **Observations:**
