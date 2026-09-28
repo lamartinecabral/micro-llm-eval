@@ -119,7 +119,7 @@ Efficiency is the highlight.
 
 ---
 
-## oMLX: mlx-community/K2-Horizon-7B-Uno-oQ6e (oMLX v0.7.0.dev4) ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+## oMLX: mlx-community/K2-Horizon-7B-Uno-oQ6e ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path": "."})
