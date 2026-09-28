@@ -1,3 +1,10 @@
+<span hidden>
+![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+</span>
+
 # Evaluating micro LLMs
 
 I prepared a simple task for autonomous AI agents to evaluate the capabilities of small LLMs.
@@ -35,7 +42,7 @@ Scores are based on the final `README.md` produced for the run.
 - ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - The model noticed the missing feature and updated the README accurately.
 - ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - The model noticed the missing feature and updated the README but missed a reference to the removed feature.
+  - The model noticed the missing feature and updated the README but missed some reference to the removed feature.
 - ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - The model completed the run but did not notice the missing feature.
 - ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
@@ -75,6 +82,7 @@ Scores are based on the final `README.md` produced for the run.
 | Nemotron 3 Super            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3.5 Lightning      | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nex N2.5 Pro                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Qwen 3 30B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 9B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -85,7 +93,6 @@ Scores are based on the final `README.md` produced for the run.
 | SmolLM 3 3B                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Spark X2.5 4B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ternary Bonsai 27B          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Ternary Bonsai 2 27B        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 
 ---
 
@@ -523,11 +530,11 @@ I had to interrupt the agent because it became confused about tool use, repeated
 - **z-ai/glm-5.3-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It only tried to format `README.md`.
+- **qwen/qwen3-30b-a3b-instruct-2507** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3.6-35b-a3b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3.7-flash** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
-- **prism-ml/ternary-bonsai-2-27b** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-  - It had trouble closing reasoning blocks and required user interaction to continue. The run was going well but ended prematurely with error 429.
 - **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
   - It got stuck in a tool-calling loop.
