@@ -1,14 +1,18 @@
 # Evaluating micro LLMs
 
-I prepared a simple task for autonomous AI agents to evaluate the capabilities of small LLMs.
-
-The focus is on 4B-parameter models running on consumer hardware.
+I use a simple repository-maintenance task to compare autonomous AI agents powered by small LLMs. The focus is on 4B-parameter models running on consumer hardware.
 
 As the evaluation evolved, I noticed that the task was challenging even for larger models such as Qwen 3.6 35B A3B and Granite 4.2 30B.
 
 I also included results from inexpensive cloud models for comparison.
 
-### The environment
+## What this evaluates
+
+The task evaluates whether an agent can inspect an unfamiliar project, treat the implementation as the source of truth, identify documentation that no longer matches it, and make a focused but complete correction. Although the final change is documentation-only, producing it requires repository navigation, evidence selection, consistency checking, and reliable use of editing tools. The observations also record how efficiently and safely the agent reaches the result, while the verdict is based on the final `README.md`.
+
+This matters because much of software maintenance is not greenfield code generation. Agents need to understand existing systems well enough to reconcile related artifacts without preserving stale claims, inventing replacement behavior, or rewriting material that is already correct. A small model that can do this reliably on consumer hardware is more practically useful than one that performs well only on isolated coding prompts.
+
+## The environment
 
 The task uses a TypeScript project from which I removed all code related to a web search feature.
 
@@ -20,7 +24,7 @@ It would be interesting to see whether the model takes a shortcut by checking th
 
 The local inference engines are Ollama, oMLX and llama.cpp.
 
-### The prompt
+## The prompt
 
 ```
 analyze the project in the current dir and make `README.md` up to date
@@ -28,7 +32,7 @@ analyze the project in the current dir and make `README.md` up to date
 
 The reasoning effort is set to "medium".
 
-### Scoring rules
+## Scoring rules
 
 Scores are based on the final `README.md` produced for the run.
 
