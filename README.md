@@ -591,7 +591,7 @@ I had to interrupt the agent because it became confused about tool use, repeated
 - **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-  - It did notice the missing feature and made no fix in `README.md` about it.
+  - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
