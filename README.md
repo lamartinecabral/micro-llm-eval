@@ -52,6 +52,7 @@ Scores are based on the final `README.md` produced for the run.
 | Model name                  | Verdict                                                    |
 | --------------------------- | ---------------------------------------------------------- |
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemma 4 E2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemma 4 E4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemma 4 12B                 | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
@@ -589,6 +590,8 @@ I had to interrupt the agent because it became confused about tool use, repeated
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It mostly corrected `README.md`, but did not remove every reference to web search.
+- **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It did notice the missing feature and made no fix in `README.md` about it.
 - **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
