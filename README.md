@@ -53,6 +53,8 @@ Scores are based on the final `README.md` produced for the run.
 | --------------------------- | ---------------------------------------------------------- |
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemini 3.1 Flash Lite       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemini 3.5 Flash Lite       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 E2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemma 4 E4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemma 4 12B                 | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
@@ -573,6 +575,7 @@ I had to interrupt the agent because it became confused about tool use, repeated
 
 ### [Openrouter](https://openrouter.ai/)
 
+- **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemma-4-26b-a4b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemma-4-31b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **inclusionai/ling-3.0-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
@@ -592,6 +595,8 @@ I had to interrupt the agent because it became confused about tool use, repeated
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
+- **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It struggled to use the tools correctly and made adjustments to `README.md` without noticing the missing feature.
 - **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
