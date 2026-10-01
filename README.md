@@ -76,6 +76,7 @@ Scores are based on the final `README.md` produced for the run.
 | K2 Horizon 0.9B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| K2 Horizon MoVA 36B A4B     | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Laguna XS 2.1               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | LFM 2.5 2.6B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -547,6 +548,7 @@ I had to interrupt the agent because it became confused about tool use, repeated
 
 - **IFM/K2-Horizon-7B:featherless-ai** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **IFM/K2-Horizon-3.7B:featherless-ai** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **IFM/K2-Horizon-MoVA-36B-A4B:featherless-ai** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **meta-models/Muse-Glimmer-30B** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **Qwen/Qwen3.8-27B** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **zai-org/GLM-4.7-Flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
