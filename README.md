@@ -95,6 +95,8 @@ Scores are based on the final `README.md` produced for the run.
 | Qwen 3.5 2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 9B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 27B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.6 27B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Qwen 3.6 35B A3B            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.7 Flash              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.8 27B                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -595,6 +597,8 @@ I had to interrupt the agent because it became confused about tool use, repeated
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It mostly corrected `README.md`, but did not remove every reference to web search.
+- **qwen/qwen3.6-27b** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+  - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
@@ -608,6 +612,8 @@ I had to interrupt the agent because it became confused about tool use, repeated
 - **qwen/qwen3-32b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3-coder-next** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
+- **qwen/qwen3.5-27b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3.6-35b-a3b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
