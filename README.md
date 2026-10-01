@@ -51,6 +51,7 @@ Scores are based on the final `README.md` produced for the run.
 
 | Model name                  | Verdict                                                    |
 | --------------------------- | ---------------------------------------------------------- |
+| Agents A1                   | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemini 3.1 Flash Lite       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -300,6 +301,51 @@ run_shell_command({"command":"find . -name \"provider.ts\" ...
 **Observations:**
 
 It mostly corrected `README.md`, but did not remove every reference to web search.
+
+---
+
+## Ollama: hf.co/InternScience/Agents-A1-Q4_K_M-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"cli.ts"})
+read_file({"path":"io.ts"})
+read_file({"path":"tools/test"})
+list_directory({"path":"./src"})
+list_directory({"path":"./tests"})
+list_directory({"path":"./docs"})
+read_file({"path":"./src/cli.ts"})
+read_file({"path":"./src/io.ts"})
+read_file({"path":"./src/tools/"})
+list_directory({"path":"./src/tools"})
+read_file({"path":"./src/tools/index.ts"})
+read_file({"path":"./src/tools/file-search.tool.ts"})
+read_file({"path":"./src/tools/grep-search.tool.ts"})
+read_file({"path":"./README.md"})
+read_file({"path":"./src/run.ts"})
+read_file({"path":"./src/thinking.ts"})
+read_file({"path":"./src/tools/list-directory.tool.ts"})
+read_file({"path":"./src/tools/read-file.tool.ts"})
+read_file({"path":"./src/tools/write-file.tool.ts"})
+read_file({"path":"./src/tools/replace-string-in-file.tool.ts"})
+replace_string_in_file({"path":"./README.md","old_text":...
+read_file({"path":"./README.md"})
+</pre></details>
+
+**Observations:**
+
+Interestingly, it performed worse than its little brother. Was it the quantization? Was it random? Only God knows.
+
+Anyway, it acted just like the other Qwen-based models I tested. This model is based on Qwen 3.5 35B-A3B, and fine-tuning doesn't seem to make much of a difference in this test.
+
+It scanned the files correctly but did not notice the issue.
+
+It completely rewrote `README.md` and missed the goal.
 
 ---
 
