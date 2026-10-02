@@ -81,6 +81,7 @@ Scores are based on the final `README.md` produced for the run.
 | Laguna XS 2.1               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | LFM 2.5 2.6B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ling 3.0 Tiny               | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Mellum 2 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | MiMo V2.6 Flash             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -90,6 +91,7 @@ Scores are based on the final `README.md` produced for the run.
 | Nemotron 3 Super            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3.5 Lightning      | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nex N2.5 Pro                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| North Mini Code             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 32B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 Coder Next           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -238,6 +240,45 @@ The agent thoroughly scanned the project and even checked the commit history.
 It noticed the issue and made precise adjustments instead of rewriting the entire file.
 
 It also used the `replace_string_in_file` tool correctly. Small models often struggle with this tool or avoid it entirely.
+
+---
+
+## Ollama: north-mini-code-1.0:q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"./README.md"})
+read_file({"path":"./package.json"})
+list_directory({"path":"./src"})
+read_file({"path":"./src/cli.ts"})
+read_file({"path":"./src/session.ts"})
+list_directory({"path":"./docs"})
+read_file({"path":"./docs/ollama.md"})
+list_directory({"path":"./tests"})
+file_search({"query":"**/provider.ts"})
+file_search({"query":"**/provider*"})
+grep_search({"query":"provider","isRegexp":false,"includePattern":"**/*.ts","maxResults":20})
+read_file({"path":"./src/utils.ts"})
+list_directory({"path":"./src/tools"})
+read_file({"path":"./src/tools/index.ts"})
+read_file({"path":"./src/tools/read-file.tool.ts"})
+read_file({"path":"./src/run.ts"})
+read_file({"path":"./src/settings.ts"})
+write_file({"path":"./README.md","content":...
+read_file({"path":"./README.md","start_line":1,"end_line":50})
+file_search({"query":"**/web-search/**"})
+grep_search({"query":"web.search|websearch|web_search","isRegexp":false,"maxResults":10})
+grep_search({"query":"web.*search|websearch|cloud.*search","isRegexp":false,"maxResults":10,"includePattern":"**/*.md"})
+list_directory({"path":"./src/tools"})
+file_search({"query":"**/*.md"})
+write_file({"path":"./README.md","content":...
+read_file({"path":"./README.md"})
+read_file({"path":"./package.json"})
+</pre></details>
+
+**Observations:**
+
+It scanned the project correctly, noticed the missing feature and made coherent adjustments to `README.md`.
 
 ---
 
@@ -554,6 +595,47 @@ read_file({"start_line":1,"end_line":100,"path":"README.md"})
 **Observations:**
 
 The model read only `package.json` and `README.md`, then decided that everything was up to date.
+
+---
+
+## Ollama: hf.co/inclusionAI/Ling-3.0-tiny-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":"LICENSE"})
+read_file({"path":".gitignore"})
+read_file({"path":"src/index.ts"})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+file_search({"query":"*.md"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/tools.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"docs/ollama.md"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It made adjustments to `README.md` but did not notice that web search had been removed.
 
 ---
 
