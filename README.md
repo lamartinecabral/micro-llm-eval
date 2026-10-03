@@ -247,6 +247,50 @@ It also used the `replace_string_in_file` tool correctly. Small models often str
 
 ---
 
+## Ollama: batiai/qwen3.8-27b:iq3 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"docs/ollama.md"})
+grep_search({"query":"webSearch|web-search|tavily|web_search|webSearch|chrome|chromePath|search the web|fetch web"})
+run_shell_command({"command":"cd /Users/pipiwu/aiwork/mindpal/.claude/projects/-Users-pipiwu-aiwork-mainmindpal/m...
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; pwd; echo \"---\"; grep -rn \"web\\|Web\\|tavily\\|...
+run_shell_command({"command":"grep -rn \"web\\|Web\\|tavily\\|Tavily\\|chrome\\|browser\\|fetch\" src/ tests/ doc...
+read_file({"path":"src/tools/file-search.tool.ts","start_line":1,"end_line":40})
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git log --oneline -15 2\u003e/dev/null; echo \"=== ...
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git show d50a3c6 --stat 2\u003e/dev/null; echo \"==...
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; grep -rn \"web\\|search the\\|web-search\\|tavily\\|fetch\" README.md"})
+replace_string_in_file({"path":"README.md","old_text":...
+replace_string_in_file({"path":"README.md","old_text":...
+replace_string_in_file({"path":"README.md","old_text":...
+</pre></details>
+
+**Observations:**
+
+This model runs very slowly on my machine, but I really wanted to see how it would perform with 3-bit quantization.
+
+The agent thoroughly scanned the project and even checked the commit history.
+
+It noticed the missing feature and made precise adjustments to `README.md` instead of rewriting the entire file.
+
+The only issue was a hallucinated working directory in a Bash command, but overall, the output was flawless.
+
+---
+
 ## Ollama: north-mini-code-1.0:q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
