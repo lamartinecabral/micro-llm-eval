@@ -88,6 +88,7 @@ Scores are based on the final `README.md` produced for the run.
 | Mellum 2 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | MiMo V2.6 Flash             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Mistral Small 4             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Muse Glimmer 30B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3 Nano 4B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nemotron 3 Nano 30B         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -388,6 +389,33 @@ Interestingly, it performed worse than its little brother. Was it the quantizati
 Anyway, it acted just like the other Qwen-based models I tested. This model is based on Qwen 3.5 35B-A3B, and fine-tuning doesn't seem to make much of a difference in this test.
 
 It scanned the files correctly but did not notice the issue.
+
+It completely rewrote `README.md` and missed the goal.
+
+---
+
+## Ollama: batiai/gemma4-26b:iq3 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json","start_line":1})
+read_file({"path":"README.md","start_line":1})
+list_directory({"path":"src"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/cli.ts","start_line":1})
+list_directory({"path":"docs"})
+read_file({"path":"docs/ollama.md","start_line":1})
+write_file({"content":"...
+write_file({"content":"...
+</pre></details>
+
+**Observations:**
+
+It was interesting to see a 3-bit quantized model in action.
+
+It was able to maintain coherence throughout the run; the only issue was a duplicated tool call at the end.
+
+It scanned the files correctly but did not notice the missing feature.
 
 It completely rewrote `README.md` and missed the goal.
 
@@ -794,10 +822,12 @@ I had to interrupt the agent because it began hallucinating about a Python proje
   - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It struggled to use the tools correctly and made adjustments to `README.md` without noticing the missing feature.
-- **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-  - It made adjustments to `README.md` but did not notice that web search had been removed.
+- **mistralai/mistral-small-2603** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It rewrote `README.md` without removing the references to web search.
 - **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It only tried to format `README.md`.
+- **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3-30b-a3b-instruct-2507** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3-32b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
