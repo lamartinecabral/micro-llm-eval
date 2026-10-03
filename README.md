@@ -54,6 +54,7 @@ Scores are based on the final `README.md` produced for the run.
 | Agents A1                   | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Deepseek 4.1 Flash          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemini 3.5 Flash Lite       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 E2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -63,6 +64,7 @@ Scores are based on the final `README.md` produced for the run.
 | Gemma 4 31B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GLM 4.7 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GLM 5.3 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-OSS 20B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-OSS 120B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | GPT-5 Mini                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | GPT-5 Nano                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -80,6 +82,7 @@ Scores are based on the final `README.md` produced for the run.
 | K2 Horizon MoVA 36B A4B     | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Laguna XS 2.1               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | LFM 2.5 2.6B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| LFM 2.5 8B A1B              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Ling 3.0 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ling 3.0 Tiny               | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Mellum 2 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -683,6 +686,36 @@ It completely rewrote `README.md`, added duplicate sections, and missed the goal
 
 ---
 
+## Ollama: hf.co/LiquidAI/LFM2.5-8B-A1B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md","start_line":1,"end_line":100})
+read_file({"path":"package.json","start_line":1,"end_line":50})
+list_directory({"path":"src"})
+read_file({"path":"src/cli.ts","start_line":1,"end_line":100})
+read_file({"path":"settings.ts","start_line":1,"end_line":100})
+read_file({"path":"src/settings.ts","start_line":1,"end_line":100})
+read_file({"path":"src/settings.ts","start_line":1,"end_line":100})
+replace_string_in_file({"path":"README.md","old_text":...
+</pre></details>
+
+**Observations:**
+
+It made it to the end, but every step was incorrect.
+
+It did not read the important files. It used the tools incorrectly. The `README.md` adjustment added duplicated sections.
+
+---
+
+## Ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
+
+---
+
 ## Ollama: granite4.2:3b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
@@ -696,14 +729,6 @@ I had to interrupt the agent because it began hallucinating and looping in its r
 **Observations:**
 
 I had to interrupt the agent because it began hallucinating about a Python project before making any tool calls.
-
----
-
-## Ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-**Observations:**
-
-I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
 
 ---
 
@@ -737,11 +762,14 @@ I had to interrupt the agent because it became confused about tool use, repeated
 - **nemotron-3-super** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **gpt-oss:120b** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It mostly corrected `README.md`, but did not remove every reference to web search.
+- **gpt-oss:20b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It rewrote `README.md` without removing the references to web search.
 - **nemotron-3-nano:30b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
 
 ### [Openrouter](https://openrouter.ai/)
 
+- **deepseek/deepseek-v4.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemma-4-26b-a4b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemma-4-31b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
