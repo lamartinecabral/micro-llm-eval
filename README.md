@@ -43,7 +43,7 @@ Scores are based on the final `README.md` produced for the run.
 - ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - The model completed the run but did not notice the missing feature.
 - ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-  - The run was not completed because the model got stuck in a reasoning loop or had to be interrupted after a critical hallucination.
+  - The run was not completed because the model got stuck in a reasoning loop, suddenly stopped for no reason, or had to be interrupted after a critical hallucination.
 
 ---
 
