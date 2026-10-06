@@ -53,6 +53,7 @@ Scores are based on the final `README.md` produced for the run.
 | --------------------------- | ---------------------------------------------------------- |
 | Agents A1                   | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Apriel 1.6 15B Thinker      | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Deepseek 4.1 Flash          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -110,6 +111,7 @@ Scores are based on the final `README.md` produced for the run.
 | Qwen 3.8 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Seed 2.0 Mini               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | SmolLM 3 3B                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Solar Pro 4                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Spark X2.5 4B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ternary Bonsai 27B          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 
@@ -847,6 +849,14 @@ This model succeded with 3-bit quantization, but apparently 2-bit is too much.
 
 ---
 
+## Ollama: ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+The agent only read `README.md` and `package.json`, spent thousands of tokens in reasoning, and in the end, when it was about to call the update tool, it stopped.
+
+---
+
 ## Cheap cloud models
 
 ### [Hugging Face's Inference Providers](https://huggingface.co/docs/inference-providers)
@@ -929,3 +939,5 @@ This model succeded with 3-bit quantization, but apparently 2-bit is too much.
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3.7-flash** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
+- **upstage/solar-pro4** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
