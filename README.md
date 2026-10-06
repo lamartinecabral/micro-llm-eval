@@ -53,7 +53,7 @@ Scores are based on the final `README.md` produced for the run.
 | --------------------------- | ---------------------------------------------------------- |
 | Agents A1                   | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Apriel 1.6 15B Thinker      | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| Apriel 1.6 15B Thinker      | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Deepseek 4.1 Flash          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
