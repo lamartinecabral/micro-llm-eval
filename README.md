@@ -465,6 +465,20 @@ It completely rewrote `README.md` and missed the goal.
 
 ---
 
+## Ollama: hf.co/mradermacher/GLM-4.7-Flash-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+Since this run was just an extra Q3 run I decided to not include the tool calls log.
+</pre></details>
+
+**Observations:**
+
+Another 3-bit quantized model in action. It made it to the end but did not notice the missing feature. 
+
+It completely rewrote `README.md` and missed the goal.
+
+---
+
 ## Ollama: gemma4:e4b-it-qat ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -804,6 +818,34 @@ I had to interrupt the agent because it began hallucinating about a Python proje
 
 ---
 
+## Ollama: hf.co/mradermacher/North-Mini-Code-1.0-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
+
+---
+
+## Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+In the end, when the agent was about to make the update tool call, it stopped.
+
+I tried to interact to make it complete the task but it simply could not make final tool call.
+
+---
+
+## Ollama: hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q2_K_XL ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+After a very long session where the model analyzed the project correctly, it suddenly stopped.
+
+This model succeded with 3-bit quantization, but apparently 2-bit is too much.
+
+---
+
 ## Cheap cloud models
 
 ### [Hugging Face's Inference Providers](https://huggingface.co/docs/inference-providers)
@@ -864,6 +906,8 @@ I had to interrupt the agent because it began hallucinating about a Python proje
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
+- **bytedance-seed/seed-2.0-mini** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It did not scanned the project correctly, made minor adjustments to `README.md` and missed the goal.
 - **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It struggled to use the tools correctly and made adjustments to `README.md` without noticing the missing feature.
 - **mistralai/mistral-small-2603** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
