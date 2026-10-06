@@ -108,6 +108,7 @@ Scores are based on the final `README.md` produced for the run.
 | Qwen 3.7 Flash              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.8 27B                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3.8 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Seed 2.0 Mini               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | SmolLM 3 3B                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Spark X2.5 4B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ternary Bonsai 27B          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
