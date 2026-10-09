@@ -55,6 +55,7 @@ Scores are based on the final `README.md` produced for the run.
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Apriel 1.6 15B Thinker      | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Claude Haiku 5.5            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Deepseek 4.1 Flash          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemini 3.5 Flash Lite       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -114,6 +115,7 @@ Scores are based on the final `README.md` produced for the run.
 | Solar Pro 4                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Spark X2.5 4B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ternary Bonsai 27B          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Ternary Bonsai 2 27B        | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 
 ---
 
@@ -175,9 +177,9 @@ read_file({"path": "src/tools/list-directory.tool.ts"})
 grep_search({"query": "webSearch|web_search|fetchPage|searchWeb", "isRegexp": true})
 read_file({"path": "src/thinking.ts"})
 read_file({"path": "tests/session.test.ts"})
-run_shell_command({"command": "grep -rn \"webSearch\\|web_search\\|fetchPageContent\" src/ --include=\"*.ts\" | head -30"})
-run_shell_command({"command": "git log --oneline | head -20; echo \"---\"; git status --short | head -20"})
-run_shell_command({"command": "git show cca9238 --stat; echo \"===\"; git show cca9238 -- README.md package.json | head -200"})
+run_shell_command({"command": "grep -rn \"webSearch\\|web_search\\|fetchPageContent\" ...
+run_shell_command({"command": "git log --oneline | head -20; echo \"---\"; git status ...
+run_shell_command({"command": "git show cca9238 --stat; echo \"===\"; git show cca9238...
 replace_string_in_file({"path": "README.md", "old_text": ...
 replace_string_in_file({"path": "README.md", "old_text": ...
 replace_string_in_file({"path": "README.md", "old_text": ...
@@ -228,8 +230,8 @@ run_shell_command({"command":"git log --oneline -15 && echo \"---STATUS---\" && 
 run_shell_command({"command":"git diff HEAD --stat"})
 run_shell_command({"command":"git show cca9238 --stat"})
 run_shell_command({"command":"git show cca9238 -- README.md package.json | head -120"})
-run_shell_command({"command":"git show cca9238 -- README.md package.json src/tools/index.ts src/utils.ts tests/tools.test.ts"})
-run_shell_command({"command":"grep -rn \"webSearch\\|web_search\\|fetch_page\\|web search\" src/ README.md package.json docs/ 2>/dev/null; echo \"---\"; grep -n \"web\" README.md"})
+run_shell_command({"command":"git show cca9238 -- README.md package.json src/tools/index.ts...
+run_shell_command({"command":"grep -rn \"webSearch\\|web_search\\|fetch_page\\|web search\"...
 replace_string_in_file({"path":"README.md","old_text":...
 replace_string_in_file({"path":"README.md","old_text":...
 replace_string_in_file({"path":"README.md","old_text":...
@@ -247,6 +249,60 @@ The agent thoroughly scanned the project and even checked the commit history.
 It noticed the issue and made precise adjustments instead of rewriting the entire file.
 
 It also used the `replace_string_in_file` tool correctly. Small models often struggle with this tool or avoid it entirely.
+
+---
+
+## oMLX: prism-ml/Ternary-Bonsai-2-27B-mlx-2bit ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path": "."})
+read_file({"path": "README.md"})
+read_file({"path": "package.json"})
+list_directory({"path": "src"})
+list_directory({"path": "docs"})
+list_directory({"path": "tests"})
+read_file({"path": "src/cli.ts"})
+read_file({"path": "src/settings.ts"})
+list_directory({"path": "src/tools"})
+read_file({"path": "src/run.ts"})
+read_file({"path": "src/session.ts"})
+read_file({"path": "src/utils.ts"})
+read_file({"path": "src/thinking.ts"})
+read_file({"path": "src/io.ts"})
+read_file({"path": "src/tools/index.ts"})
+read_file({"path": "tsconfig.json"})
+read_file({"path": "docs/ollama.md"})
+run_shell_command({"command": "cd /workspace 2>/dev/null || pwd; git log --oneline -20 ...
+read_file({"path": "LICENSE"})
+read_file({"path": "biome.json"})
+grep_search({"query": "web.?search|webSearch|web_search|Tavily|tavily|chromePath", ...
+read_file({"path": "src/tools/run-shell-command.tool.ts"})
+read_file({"path": "src/tools/utils.ts"})
+read_file({"path": "package-lock.json", "start_line": 1, "end_line": 80})
+read_file({"path": "src/tools/file-search.tool.ts"})
+read_file({"path": "src/tools/grep-search.tool.ts"})
+list_directory({"path": ".vscode"})
+read_file({"path": "src/tools/list-directory.tool.ts"})
+read_file({"path": "src/tools/write-file.tool.ts"})
+run_shell_command({"command": "wc -l src/*.ts src/tools/*.ts tests/*.ts docs/ollama.md ...
+read_file({"path": ".vscode/settings.json"})
+read_file({"path": "tests/tools.test.ts"})
+read_file({"path": "src/tools/read-file.tool.ts"})
+read_file({"path": "src/tools/replace-string-in-file.tool.ts"})
+grep_search({"isRegexp": true, "query": "dotenv|\\.env"})
+run_shell_command({"command": "ls node_modules/@lamartinecabral 2>/dev/null; npm test ...
+run_shell_command({"command": "ls node_modules 2>/dev/null | head -50; echo \"count: ...
+run_shell_command({"command": "pwd; ls -la | head -20; npm test 2>&1 | head -40"})
+run_shell_command({"command": "npm install 2>&1 | tail -15"})
+run_shell_command({"command": "grep -c \"web-search\" package-lock.json; grep ...
+write_file({"path": "README.md", "content":...
+</pre></details>
+
+**Observations:**
+
+The agent thoroughly scanned the project and even checked the commit history.
+
+It noticed the missing feature and made coherent adjustments to `README.md`.
 
 ---
 
@@ -894,6 +950,7 @@ The agent only read `README.md` and `package.json`, spent thousands of tokens in
 
 ### [Openrouter](https://openrouter.ai/)
 
+- **anthropic/claude-haiku-5.5** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **deepseek/deepseek-v4.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemma-4-26b-a4b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
