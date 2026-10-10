@@ -656,6 +656,47 @@ It only read `README.md` and listed some files, then rewrote `README.md` and mis
 
 ---
 
+## Ollama: batiai/qwen3.6-35b:iq4 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."}
+read_file({"end_line":50,"path":"package.json"}
+read_file({"path":"README.md","end_line":50}
+file_search({"query":"src/**/*.{ts,js,json,md}"}
+read_file({"path":"src/cli.ts"}
+read_file({"path":"src/run.ts"}
+read_file({"path":"src/session.ts"}
+read_file({"path":"src/settings.ts"}
+read_file({"path":"src/thinking.ts"}
+read_file({"path":"src/io.ts"}
+read_file({"path":"src/utils.ts"}
+read_file({"path":"src/tools/index.ts"}
+read_file({"path":"src/tools/file-search.tool.ts"}
+read_file({"path":"src/tools/grep-search.tool.ts"}
+read_file({"path":"src/tools/list-directory.tool.ts"}
+read_file({"path":"src/tools/read-file.tool.ts"}
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"}
+read_file({"path":"src/tools/run-shell-command.tool.ts"}
+read_file({"path":"src/tools/utils.ts"}
+read_file({"path":"src/tools/write-file.tool.ts"}
+list_directory({"path":"docs"}
+file_search({"query":"tests/**/*.{ts,js,md}"}
+read_file({"path":".gitignore"}
+read_file({"path":"tsconfig.json"}
+read_file({"path":"biome.json"}
+read_file({"path":"docs/ollama.md"}
+write_file({"content":...
+read_file({"path":"README.md"}
+</pre></details>
+
+**Observations:**
+
+It scanned the files correctly but did not notice the issue.
+
+It completely rewrote `README.md` and missed the goal.
+
+---
+
 ## Ollama: qwen3.5:9b-q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
