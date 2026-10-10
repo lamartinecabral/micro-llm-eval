@@ -307,50 +307,6 @@ It noticed the missing feature and made coherent adjustments to `README.md`.
 
 ---
 
-## Ollama: batiai/qwen3.8-27b:iq3 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/utils.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"docs/ollama.md"})
-grep_search({"query":"webSearch|web-search|tavily|web_search|webSearch|chrome|chromePath|search the web|fetch web"})
-run_shell_command({"command":"cd /Users/pipiwu/aiwork/mindpal/.claude/projects/-Users-pipiwu-aiwork-mainmindpal/m...
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; pwd; echo \"---\"; grep -rn \"web\\|Web\\|tavily\\|...
-run_shell_command({"command":"grep -rn \"web\\|Web\\|tavily\\|Tavily\\|chrome\\|browser\\|fetch\" src/ tests/ doc...
-read_file({"path":"src/tools/file-search.tool.ts","start_line":1,"end_line":40})
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git log --oneline -15 2\u003e/dev/null; echo \"=== ...
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git show d50a3c6 --stat 2\u003e/dev/null; echo \"==...
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; grep -rn \"web\\|search the\\|web-search\\|tavily\\|fetch\" README.md"})
-replace_string_in_file({"path":"README.md","old_text":...
-replace_string_in_file({"path":"README.md","old_text":...
-replace_string_in_file({"path":"README.md","old_text":...
-</pre></details>
-
-**Observations:**
-
-This model runs very slowly on my machine, but I really wanted to see how it would perform with 3-bit quantization.
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the missing feature and made precise adjustments to `README.md` instead of rewriting the entire file.
-
-The only issue was a hallucinated working directory in a Bash command, but overall, the output was flawless.
-
----
-
 ## Ollama: north-mini-code-1.0:q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -564,33 +520,6 @@ It completely rewrote `README.md` and missed the goal.
 
 ---
 
-## Ollama: batiai/gemma4-26b:iq3 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json","start_line":1})
-read_file({"path":"README.md","start_line":1})
-list_directory({"path":"src"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/cli.ts","start_line":1})
-list_directory({"path":"docs"})
-read_file({"path":"docs/ollama.md","start_line":1})
-write_file({"content":"...
-write_file({"content":"...
-</pre></details>
-
-**Observations:**
-
-It was interesting to see a 3-bit quantized model in action.
-
-It was able to maintain coherence throughout the run; the only issue was a duplicated tool call at the end.
-
-It scanned the files correctly but did not notice the missing feature.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
 ## Ollama: laguna-xs-2.1:q4_K_M ![](https://img.shields.io/badge/PASS-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -690,20 +619,6 @@ read_file({"path":"README.md"})
 **Observations:**
 
 It scanned the files correctly but did not notice the missing feature.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-## Ollama: hf.co/mradermacher/GLM-4.7-Flash-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-Since this run was just an extra Q3 run I decided to not include the tool calls log.
-</pre></details>
-
-**Observations:**
-
-Another 3-bit quantized model in action. It made it to the end but did not notice the missing feature. 
 
 It completely rewrote `README.md` and missed the goal.
 
@@ -1048,25 +963,102 @@ I had to interrupt the agent because it began hallucinating about a Python proje
 
 ---
 
-## Ollama: hf.co/mradermacher/North-Mini-Code-1.0-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+## Ollama: ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
 
-I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
+The agent only read `README.md` and `package.json`, spent thousands of tokens in reasoning, and in the end, when it was about to call the update tool, it stopped.
 
 ---
 
-## Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+## Aggressive quantizations
+
+### Ollama: batiai/qwen3.8-27b:iq3 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"docs/ollama.md"})
+grep_search({"query":"webSearch|web-search|tavily|web_search|webSearch|chrome|chromePath|search the web|fetch web"})
+run_shell_command({"command":"cd /Users/pipiwu/aiwork/mindpal/.claude/projects/-Users-pipiwu-aiwork-mainmindpal/m...
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; pwd; echo \"---\"; grep -rn \"web\\|Web\\|tavily\\|...
+run_shell_command({"command":"grep -rn \"web\\|Web\\|tavily\\|Tavily\\|chrome\\|browser\\|fetch\" src/ tests/ doc...
+read_file({"path":"src/tools/file-search.tool.ts","start_line":1,"end_line":40})
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git log --oneline -15 2\u003e/dev/null; echo \"=== ...
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git show d50a3c6 --stat 2\u003e/dev/null; echo \"==...
+run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; grep -rn \"web\\|search the\\|web-search\\|tavily\\|fetch\" README.md"})
+replace_string_in_file({"path":"README.md","old_text":...
+replace_string_in_file({"path":"README.md","old_text":...
+replace_string_in_file({"path":"README.md","old_text":...
+</pre></details>
 
 **Observations:**
 
-In the end, when the agent was about to make the update tool call, it stopped.
+This model runs very slowly on my machine, but I really wanted to see how it would perform with 3-bit quantization.
 
-I tried to interact to make it complete the task but it simply could not make final tool call.
+The agent thoroughly scanned the project and even checked the commit history.
+
+It noticed the missing feature and made precise adjustments to `README.md` instead of rewriting the entire file.
+
+The only issue was a hallucinated working directory in a Bash command, but overall, the output was flawless.
 
 ---
 
-## Ollama: hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q2_K_XL ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+### Ollama: batiai/gemma4-26b:iq3 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json","start_line":1})
+read_file({"path":"README.md","start_line":1})
+list_directory({"path":"src"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/cli.ts","start_line":1})
+list_directory({"path":"docs"})
+read_file({"path":"docs/ollama.md","start_line":1})
+write_file({"content":"...
+write_file({"content":"...
+</pre></details>
+
+**Observations:**
+
+It was interesting to see a 3-bit quantized model in action.
+
+It was able to maintain coherence throughout the run; the only issue was a duplicated tool call at the end.
+
+It scanned the files correctly but did not notice the missing feature.
+
+It completely rewrote `README.md` and missed the goal.
+
+---
+
+### Ollama: hf.co/mradermacher/GLM-4.7-Flash-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+Since this run was just an extra Q3 run I decided to not include the tool calls log.
+</pre></details>
+
+**Observations:**
+
+Another 3-bit quantized model in action. It made it to the end but did not notice the missing feature. 
+
+It completely rewrote `README.md` and missed the goal.
+
+---
+
+### Ollama: hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q2_K_XL ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
 
@@ -1076,11 +1068,21 @@ This model succeded with 3-bit quantization, but apparently 2-bit is too much.
 
 ---
 
-## Ollama: ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+### Ollama: hf.co/mradermacher/North-Mini-Code-1.0-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
 
-The agent only read `README.md` and `package.json`, spent thousands of tokens in reasoning, and in the end, when it was about to call the update tool, it stopped.
+I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
+
+---
+
+### Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+In the end, when the agent was about to make the update tool call, it stopped.
+
+I tried to interact to make it complete the task but it simply could not make final tool call.
 
 ---
 
