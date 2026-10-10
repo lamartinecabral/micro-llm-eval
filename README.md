@@ -78,6 +78,7 @@ Scores are based on the final `README.md` produced for the run.
 | Granite 4.2 8B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Granite 4.2 30B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | HY3                         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Inkling                     | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 0.9B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -1210,5 +1211,7 @@ I tried to interact to make it complete the task but it simply could not make fi
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3.7-flash** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
+- **thinkingmachines/inkling** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **upstage/solar-pro4** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
