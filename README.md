@@ -82,7 +82,7 @@ Scores are based on the final `README.md` produced for the run.
 | K2 Horizon 3.7B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon MoVA 36B A4B     | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Laguna XS 2.1               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Laguna XS 2.1               | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | LFM 2.5 2.6B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | LFM 2.5 8B A1B              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Ling 3.0 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -97,6 +97,7 @@ Scores are based on the final `README.md` produced for the run.
 | Nemotron 3 Super            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3.5 Lightning      | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nex N2.5 Pro                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Nex N2.5 Mini               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | North Mini Code             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 32B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -389,6 +390,72 @@ It scanned the project correctly, noticed the missing feature and made coherent 
 
 ---
 
+## Ollama: hf.co/bartowski/nex-agi_Nex-N2.5-mini-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json","start_line":1,"end_line":200})
+read_file({"path":"README.md","start_line":1,"end_line":300})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"tsconfig.json","start_line":1,"end_line":200})
+read_file({"path":"biome.json","start_line":1,"end_line":200})
+read_file({"path":".gitignore","start_line":1,"end_line":200})
+read_file({"path":"src/cli.ts","start_line":1,"end_line":400})
+read_file({"path":"src/tools/index.ts","start_line":1,"end_line":500})
+read_file({"path":"src/io.ts","start_line":1,"end_line":500})
+read_file({"path":"src/run.ts","start_line":1,"end_line":600})
+read_file({"path":"src/session.ts","start_line":1,"end_line":500})
+read_file({"path":"src/settings.ts","start_line":1,"end_line":500})
+read_file({"path":"src/thinking.ts","start_line":1,"end_line":500})
+read_file({"path":"src/utils.ts","start_line":1,"end_line":500})
+list_directory({"path":"src/tools"})
+read_file({"path":"docs/ollama.md","start_line":1,"end_line":400})
+read_file({"path":"tests/helpers.test.ts","start_line":1,"end_line":500})
+read_file({"path":"tests/session.test.ts","start_line":1,"end_line":500})
+read_file({"path":"tests/settings.test.ts","start_line":1,"end_line":500})
+read_file({"path":"tests/tools.test.ts","start_line":1,"end_line":500})
+read_file({"path":"LICENSE","start_line":1,"end_line":100})
+read_file({"path":"src/tools/utils.ts","start_line":1,"end_line":500})
+read_file({"path":"src/tools/file-search.tool.ts","start_line":1,"end_line":500})
+read_file({"path":"src/tools/grep-search.tool.ts","start_line":1,"end_line":500})
+read_file({"path":"src/tools/list-directory.tool.ts","start_line":1,"end_line":500})
+read_file({"path":"src/tools/read-file.tool.ts","start_line":1,"end_line":500})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts","start_line":1,"end_line":500})
+read_file({"path":"src/tools/run-shell-command.tool.ts","start_line":1,"end_line":500})
+read_file({"path":"src/tools/write-file.tool.ts","start_line":1,"end_line":500})
+run_shell_command({"command":"git status --short \u0026\u0026 node --version \u0026\u0026 npm --version"})
+run_shell_command({"command":"npm test"})
+run_shell_command({"command":"npm run typecheck"})
+run_shell_command({"command":"npm run lint"})
+run_shell_command({"command":"git log -5 --oneline --decorate"})
+run_shell_command({"command":"npm pack --dry-run"})
+run_shell_command({"command":"git show --stat --oneline HEAD \u0026\u0026 git show --format=f...
+run_shell_command({"command":"git show HEAD^:README.md"})
+run_shell_command({"command":"git diff HEAD -- README.md \u0026\u0026 git status --short"})
+grep_search({"isRegexp":true,"query":"web search|web_search|tavily|chrome|web","includePattern":"**/*.{ts,md,json,jsonc}","maxResults":100})
+read_file({"path":".vscode/settings.json","start_line":1,"end_line":200})
+read_file({"path":"package-lock.json","start_line":1,"end_line":120})
+run_shell_command({"command":"git status --porcelain=v1 \u0026\u0026 git diff -- package-lock...
+run_shell_command({"command":"git log --oneline -- README.md \u0026\u0026 git log -p -- README.md | head -n 250"})
+run_shell_command({"command":"node -e 'const p=require(\"./package-lock.json\"); console.log(...
+run_shell_command({"command":"tmp=$(mktemp -d); printf 'export default { baseURL: \"x\", apiK...
+write_file({"content":...
+run_shell_command({"command":"git diff -- README.md \u0026\u0026 git status --short"})
+read_file({"path":"README.md","start_line":1,"end_line":220})
+grep_search({"isRegexp":false,"query":"search the web|fetch web|webSearch|web-search","includePattern":"README.md","maxResults":20})
+run_shell_command({"command":"git diff --check \u0026\u0026 git status --short"})
+</pre></details>
+
+**Observations:**
+
+The agent thoroughly scanned the project and even checked the commit history.
+
+It noticed the missing feature and made coherent adjustments to `README.md`.
+
+---
+
 ## Ollama: gemma4:12b-it-qat ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -521,6 +588,62 @@ It was able to maintain coherence throughout the run; the only issue was a dupli
 It scanned the files correctly but did not notice the missing feature.
 
 It completely rewrote `README.md` and missed the goal.
+
+---
+
+## Ollama: laguna-xs-2.1:q4_K_M ![](https://img.shields.io/badge/PASS-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+read_file({"path":"package.json"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/cli.ts"})
+list_directory({"path":"docs"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+list_directory({"path":"tests"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"biome.json"})
+read_file({"path":".gitignore"})
+read_file({"path":"LICENSE"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"src/thinking.ts"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+run_shell_command({"command":"cd /workspace \u0026\u0026 npm test"})
+run_shell_command({"command":"npm test"})
+run_shell_command({"command":"npm install"})
+run_shell_command({"command":"npm test"})
+run_shell_command({"command":"npm run typecheck"})
+run_shell_command({"command":"npm run lint"})
+read_file({"path":"README.md"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+list_directory({"path":"."})
+read_file({"end_line":50,"path":"README.md","start_line":1})
+read_file({"end_line":50,"path":"README.md","start_line":1})
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It read all project files, did not notice the missing feature, completely rewrote `README.md` and missed the goal.
 
 ---
 
@@ -885,6 +1008,14 @@ I had to interrupt the agent because it became confused about tool use, repeated
 
 ---
 
+## Ollama: glm-4.7-flash:q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+In the end, when the agent was about to make the update tool call, it stopped.
+
+---
+
 ## Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
@@ -960,7 +1091,6 @@ The agent only read `README.md` and `package.json`, spent thousands of tokens in
 - **openai/gpt-5.4-mini** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **openai/gpt-5.6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **poolside/laguna-xs-2.1** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
