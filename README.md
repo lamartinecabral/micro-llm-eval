@@ -64,7 +64,7 @@ Scores are based on the final `README.md` produced for the run.
 | Gemma 4 12B                 | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Gemma 4 26B A4B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 31B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GLM 4.7 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GLM 4.7 Flash               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GLM 5.3 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-OSS 20B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-OSS 120B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
@@ -647,6 +647,54 @@ It read all project files, did not notice the missing feature, completely rewrot
 
 ---
 
+## Ollama: glm-4.7-flash:q4_K_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/tools/index.ts"})
+list_directory({"path":"tools"})
+file_search({"query":"*.ts"})
+list_directory({"path":"tools"})
+grep_search({"query":"export.*function.*tool","includePattern":"*.ts"})
+grep_search({"query":"export.*function.*tool","includePattern":"*.ts","isRegexp":false})
+bash_ls_cmd({"ls -la":""})
+run_shell_command({"command":"ls -la"})
+run_shell_command({"command":"find src -name \"*tool*.ts\""})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/settings.ts"})
+file_search({"query":"*.ts"})
+read_file({"path":"src/utils.ts"})
+run_shell_command({"command":"find . -name \"AGENTS.md\" -o -name \"provider.ts\""})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It scanned the files correctly but did not notice the missing feature.
+
+It completely rewrote `README.md` and missed the goal.
+
+---
+
 ## Ollama: hf.co/mradermacher/GLM-4.7-Flash-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1008,14 +1056,6 @@ I had to interrupt the agent because it became confused about tool use, repeated
 
 ---
 
-## Ollama: glm-4.7-flash:q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-**Observations:**
-
-In the end, when the agent was about to make the update tool call, it stopped.
-
----
-
 ## Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 **Observations:**
@@ -1091,6 +1131,7 @@ The agent only read `README.md` and `package.json`, spent thousands of tokens in
 - **openai/gpt-5.4-mini** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **openai/gpt-5.6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **poolside/laguna-xs-2.1** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
