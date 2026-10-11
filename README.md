@@ -102,6 +102,7 @@ Scores are based on the final `README.md` produced for the run.
 | Nex N2.5 Pro                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nex N2.5 Mini               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | North Mini Code             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ornith 1.5 9B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 32B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 Coder Next           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -729,6 +730,67 @@ The agent thoroughly scanned the project and even checked the commit history.
 It noticed the issue and made precise adjustments instead of rewriting the entire file.
 
 It also used the `replace_string_in_file` tool correctly. Small models often struggle with this tool or avoid it entirely.
+
+---
+
+### Ollama: ornith-1.5:9b ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+read_file({"path":"biome.json"})
+read_file({"path":"tsconfig.json"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+list_directory({"path":".vscode"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+run_shell_command({"command":"cd /testbed 2\u003e/dev/null || cd . ; git log --oneline -20 2\u003e/dev/null; echo \"---TAGS---\"; git tag 2\u003e/dev/null; echo \"---VERSION---\"; node -e \"console.log(require('./package.json').version)\""})
+read_file({"path":".vscode/settings.json"})
+read_file({"path":".gitignore"})
+run_shell_command({"command":...
+run_shell_command({"command":...
+run_shell_command({"command":...
+run_shell_command({"command":...
+run_shell_command({"command":...
+run_shell_command({"command":...
+run_shell_command({"command":...
+grep_search({"query":"web[sS]earch|tavily|WebSearch|webSearch","isRegexp":true})
+run_shell_command({"command":...
+write_file({"path":"README.md","content":...
+run_shell_command({"command":...
+run_shell_command({"command":...
+</pre></details>
+
+**Observations:**
+
+I had to interrupt the agent because it was in a very annoying "Actually, let me reconsider" loop.
+
+At this point it had already scanned the project, checked last git commits, and noticed the missing feature.
+
+I told it to "stop reconsidering and finish the job", and the agent finally made the update with precise adjustments.
 
 ---
 
