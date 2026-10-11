@@ -49,78 +49,79 @@ Scores are based on the final `README.md` produced for the run.
 
 ## Summary
 
-| Model name                  | Verdict                                                    |
-| --------------------------- | ---------------------------------------------------------- |
-| Agents A1                   | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Apriel 1.6 15B Thinker      | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Bonsai 27B 1-bit            | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Claude Haiku 5.5            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Deepseek 4.1 Flash          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Gemini 3.1 Flash Lite       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Gemini 3.5 Flash Lite       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Gemma 4 E2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Gemma 4 E4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Gemma 4 12B                 | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Gemma 4 26B A4B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Gemma 4 31B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GLM 4.7 Flash               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| GLM 5.3 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GPT-OSS 20B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| GPT-OSS 120B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| GPT-5 Mini                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| GPT-5 Nano                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| GPT-5.4 Mini                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GPT-5.4 Nano                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| GPT-5.6 Luna                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GPT-6 Luna                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Granite 4.2 3B              | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Granite 4.2 8B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Granite 4.2 30B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| HY3                         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Inkling                     | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| K2 Horizon 0.9B             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| K2 Horizon 3.7B             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| K2 Horizon 7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| K2 Horizon MoVA 36B A4B     | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Laguna XS 2.1               | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| LFM 2.5 2.6B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| LFM 2.5 8B A1B              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Ling 3.0 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Ling 3.0 Tiny               | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Mellum 2 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| MiMo V2.6 Flash             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| MiMo V2.6 Pro               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Mistral Small 4             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Ministral 3 8B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Muse Glimmer 30B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Nemotron 3 Nano 4B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Nemotron 3 Nano 30B         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Nemotron 3 Super            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Nemotron 3.5 Lightning      | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Nex N2.5 Pro                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Nex N2.5 Mini               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| North Mini Code             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Ornith 1.5 9B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Qwen 3 30B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3 32B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3 Coder Next           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.5 2B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.5 9B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.5 27B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.6 27B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Qwen 3.6 35B A3B            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.7 Flash              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.8 27B                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Qwen 3.8 Flash              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Seed 2.0 Mini               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| SmolLM 3 3B                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Solar Pro 4                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Spark X2.5 4B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Ternary Bonsai 27B          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Ternary Bonsai 2 27B        | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Model name                    | Verdict                                                    |
+| ----------------------------- | ---------------------------------------------------------- |
+| Agents A1                     | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| Agents A1 4B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Bonsai 27B 1-bit              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Deepseek 4.1 Flash            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemini 3.5 Flash Lite         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Gemma 4 31B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GLM 4.7 Flash                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GLM 5.3 Flash                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GPT-OSS 120B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| GPT-5 Mini                    | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GPT-5.4 Mini                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-5.4 Nano                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| GPT-5.6 Luna                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-6 Luna                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| HY3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| K2 Horizon MoVA 36B A4B       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Laguna XS 2.1                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| LFM 2.5 8B A1B                | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| Ling 3.0 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ling 3.0 Tiny                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| Mellum 2 12B A2.5B Thinking   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| MiMo V2.6 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| MiMo V2.6 Pro                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Ministral 3 8B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Muse Glimmer 30B              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nemotron 3 Super              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nex N2.5 Pro                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Nex N2.5 Mini                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| North Mini Code               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ornith 1.5 9B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Qwen 3 30B A3B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3 32B                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3 Coder Next             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 2B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 4B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 9B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 27B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.6 27B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Qwen 3.6 35B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.7 Flash                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Qwen 3.8 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Spark X2.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Ternary Bonsai 27B            | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Ternary Bonsai 2 27B          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 
 ---
 
@@ -981,7 +982,7 @@ read_file({"start_line":1,"end_line":100,"path":"README.md"})
 
 **Observations:**
 
-The model read only `package.json` and `README.md`, then decided that everything was up to date.
+The agent read only `package.json` and `README.md`, then decided that everything was up to date.
 
 ---
 
@@ -1045,6 +1046,18 @@ replace_string_in_file({"path":"README.md","old_text":...
 It made it to the end, but every step was incorrect.
 
 It did not read the important files. It used the tools incorrectly. The `README.md` adjustment added duplicated sections.
+
+---
+
+### Ollama: hf.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+**Observations:**
+
+The agent read only `package.json` and `README.md`.
+
+After thousands of tokens spent in a reasoning loop, it finally called a tool to overwrite `README.md`.
+
+The only change? A single trailing newline was removed. I then stopped the agent.
 
 ---
 
