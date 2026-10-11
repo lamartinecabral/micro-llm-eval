@@ -93,6 +93,7 @@ Scores are based on the final `README.md` produced for the run.
 | MiMo V2.6 Flash             | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Mistral Small 4             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Ministral 3 8B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Muse Glimmer 30B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3 Nano 4B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nemotron 3 Nano 30B         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -783,6 +784,23 @@ read_file({"path":"README.md"})
 It scanned the files correctly but did not notice the issue.
 
 It completely rewrote `README.md` and missed the goal.
+
+---
+
+### Ollama: hf.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+list_directory({"path":"docs"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+web_search({"query":"what is ollama and how would you write a modern Node js project README.md"})
+read_file({"path":"README.md","start_line":1,"end_line":50})
+</pre></details>
+
+**Observations:**
+
+The agent did not scan the project correctly and couldn't even use a tool to update the file.
 
 ---
 
