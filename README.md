@@ -1059,6 +1059,77 @@ The only issue was a hallucinated working directory in a Bash command, but overa
 
 ---
 
+### Ollama: hf.co/batiai/Qwen3.8-27B-GGUF:Q2_K_S ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+file_search({"query":"README*"})
+read_file({"path":"README.md","start_line":1,"end_line":200})
+read_file({"path":"package.json","start_line":1,"end_line":100})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts","start_line":1,"end_line":200})
+list_directory({"path":"src/tools"})
+list_directory({"path":"tests"})
+read_file({"path":"src/utils.ts","start_line":1,"end_line":150})
+read_file({"path":"src/session.ts","start_line":1,"end_line":120})
+run_shell_command({"command":"git log --oneline -20"})
+read_file({"path":"src/run.ts","start_line":1,"end_line":120})
+read_file({"path":"src/tools/index.ts","start_line":1,"end_line":100})
+read_file({"path":"docs/ollama.md","start_line":1,"end_line":100})
+grep_search({"query":"web|search|tavily","isRegexp":true,"includePattern":"src/**","maxResults":30})
+read_file({"path":"src/settings.ts","start_line":1,"end_line":100})
+read_file({"path":"src/tools/utils.ts","start_line":1,"end_line":120})
+read_file({"path":"src/run.ts","start_line":120,"end_line":220})
+grep_search({"query":"webSearch|web_search|web-search","isRegexp":true,"includePattern":"src/**","maxResults":20})
+run_shell_command({"command":"cat docs/ollama.md | head -5; echo ---; cat .gitignore; echo ---; ls -la"})
+read_file({"path":"src/io.ts","start_line":1,"end_line":150})
+read_file({"path":"src/thinking.ts","start_line":1,"end_line":80})
+run_shell_command({"command":"git log --oneline -1; git show --stat d50a3c6 | head -20; git status --short"})
+run_shell_command({"command":"grep -rn \"webSearch\\|web-search\" src/ || echo \"no web search references in src/\""})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md","start_line":1,"end_line":60})
+read_file({"path":"src/tools/list-directory.tool.ts","start_line":1,"end_line":30})
+</pre></details>
+
+**Observations:**
+
+The agent thoroughly scanned the project and even checked the commit history.
+
+It noticed the missing feature and rewrote `README.md` with precise adjustments.
+
+---
+
+## Ollama: hf.co/prism-ml/Bonsai-27B-gguf:Q1_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"docs"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"biome.json"})
+file_search({"query":"AGENTS.md"})
+read_file({"path":"src/tools.ts"})
+grep_search({"query":"AGENTS.md","isRegexp":false,"maxResults":5})
+list_directory({"path":"src/tools"})
+grep_search({"query":"AGENTS.md","isRegexp":false,"maxResults":5,"includePattern":"node_modules/**"})
+read_file({"path":"tests/helpers.test.ts"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It is very impressive to see a 1-bit quantized model run a session and make it to the end coherently.
+
+But it did not notice the missing feature, completely rewrote `README.md` and missed the goal.
+
+---
+
 ### Ollama: batiai/gemma4-26b:iq3 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1106,7 +1177,7 @@ It completely rewrote `README.md` and missed the goal.
 
 After a very long session where the model analyzed the project correctly, it suddenly stopped.
 
-This model succeded with 3-bit quantization, but apparently 2-bit is too much.
+This model succeded with the 2-bit quantization version from batiai. I'm not sure what is the difference to unsloth.
 
 ---
 
@@ -1138,6 +1209,7 @@ I tried to interact to make it complete the task but it simply could not make fi
 - **meta-models/Muse-Glimmer-30B** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **Qwen/Qwen3.8-27B** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **zai-org/GLM-4.7-Flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - local run failed
 - **InternScience/Agents-A1-4B:featherless-ai** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **prism-ml/Ternary-Bonsai-27B-gguf** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
@@ -1176,6 +1248,7 @@ I tried to interact to make it complete the task but it simply could not make fi
 - **openai/gpt-5.6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **poolside/laguna-xs-2.1** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - local run failed
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
