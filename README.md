@@ -54,6 +54,7 @@ Scores are based on the final `README.md` produced for the run.
 | Agents A1                   | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Agents A1 4B                | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Apriel 1.6 15B Thinker      | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Bonsai 27B 1-bit            | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Claude Haiku 4.5            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Deepseek 4.1 Flash          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
