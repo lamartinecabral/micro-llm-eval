@@ -59,7 +59,8 @@ Scores are based on the final `README.md` produced for the run.
 | Bonsai 27B 1-bit              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Deepseek 4.1 Flash            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Deepseek V3.2                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Deepseek V4.1 Flash           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemini 3.5 Flash Lite         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -1399,6 +1400,7 @@ Since the focus is on locally running models, cloud model results are provided f
 ### [Openrouter](https://openrouter.ai/)
 
 - **anthropic/claude-haiku-5.5** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **deepseek/deepseek-v3.2** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **deepseek/deepseek-v4.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemma-4-26b-a4b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
