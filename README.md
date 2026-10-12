@@ -55,7 +55,7 @@ Scores are based on the final `README.md` produced for the run.
 | ----------------------------- | ---------------------------------------------------------- |
 | Agents A1                     | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Agents A1 4B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
+| Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Bonsai 27B 1-bit              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -77,7 +77,7 @@ Scores are based on the final `README.md` produced for the run.
 | GPT-5.4 Nano                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | GPT-5.6 Luna                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-6 Luna                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
+| Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | HY3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -87,19 +87,19 @@ Scores are based on the final `README.md` produced for the run.
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon MoVA 36B A4B       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Laguna XS 2.1                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
+| LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | LFM 2.5 8B A1B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ling 3.0 Tiny                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Mellum 2 12B A2.5B Thinking   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | MiMo V2.6 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ministral 3 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Muse Glimmer 30B              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)    |
+| Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3 Super              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nex N2.5 Pro                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -119,7 +119,7 @@ Scores are based on the final `README.md` produced for the run.
 | Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3.8 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
+| SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Spark X2.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ternary Bonsai 27B            | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
@@ -227,22 +227,6 @@ It mostly corrected `README.md`, but did not remove every reference to web searc
 
 ---
 
-### Ollama: gemma4:e4b-it-qat ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-write_file({"content":...
-write_file({"path":"README.md", "content":...
-</pre></details>
-
-**Observations:**
-
-It only read `README.md` and `package.json`, then rewrote `README.md` and missed the goal.
-
----
-
 ### Ollama: qwen3.5:4b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -272,22 +256,6 @@ write_file({"content":...
 It scanned the files correctly but did not notice the issue.
 
 It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: nemotron-3-nano:4b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md","start_line":1,"end_line":20})
-list_directory({"path":"docs/"})
-list_directory({"path":"src/"})
-write_file({"path":"README.md","content":...
-</pre></details>
-
-**Observations:**
-
-It read only part of `README.md` and listed some files, then rewrote `README.md` with incoherent content.
 
 ---
 
@@ -332,6 +300,38 @@ read_file({"path":"README.md"})
 It scanned the files correctly but did not notice the issue.
 
 It completely rewrote `README.md`, added duplicate sections, and missed the goal.
+
+---
+
+### Ollama: gemma4:e4b-it-qat ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+write_file({"content":...
+write_file({"path":"README.md", "content":...
+</pre></details>
+
+**Observations:**
+
+It only read `README.md` and `package.json`, then rewrote `README.md` and missed the goal.
+
+---
+
+### Ollama: nemotron-3-nano:4b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md","start_line":1,"end_line":20})
+list_directory({"path":"docs/"})
+list_directory({"path":"src/"})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Observations:**
+
+It read only part of `README.md` and listed some files, then rewrote `README.md` with incoherent content.
 
 ---
 
@@ -881,22 +881,6 @@ The agent only read `README.md` and `package.json`, spent thousands of tokens in
 
 # 2B-dense & 8B-MoE class models
 
-### Ollama: gemma4:e2b-it-qat ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"end_line":500,"path":"README.md","start_line":1})
-list_directory({"path":"src/"})
-list_directory({"path":"tests/"})
-write_file({"content":...
-</pre></details>
-
-**Observations:**
-
-It only read `README.md` and listed some files, then rewrote `README.md` and missed the goal.
-
----
-
 ### Ollama: qwen3.5:2b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -976,20 +960,6 @@ However, it did not scan the project correctly and missed the goal.
 
 ---
 
-### Ollama: hf.co/JetBrains/Mellum2-12B-A2.5B-Thinking-GGUF-Q4_K_M:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json","start_line":1,"end_line":100})
-read_file({"start_line":1,"end_line":100,"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-The agent read only `package.json` and `README.md`, then decided that everything was up to date.
-
----
-
 ### Ollama: hf.co/inclusionAI/Ling-3.0-tiny-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1031,6 +1001,22 @@ It made adjustments to `README.md` but did not notice that web search had been r
 
 ---
 
+### Ollama: gemma4:e2b-it-qat ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"end_line":500,"path":"README.md","start_line":1})
+list_directory({"path":"src/"})
+list_directory({"path":"tests/"})
+write_file({"content":...
+</pre></details>
+
+**Observations:**
+
+It only read `README.md` and listed some files, then rewrote `README.md` and missed the goal.
+
+---
+
 ### Ollama: hf.co/LiquidAI/LFM2.5-8B-A1B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1053,7 +1039,21 @@ It did not read the important files. It used the tools incorrectly. The `README.
 
 ---
 
-### Ollama: hf.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+### Ollama: hf.co/JetBrains/Mellum2-12B-A2.5B-Thinking-GGUF-Q4_K_M:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json","start_line":1,"end_line":100})
+read_file({"start_line":1,"end_line":100,"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+The agent read only `package.json` and `README.md`, then decided that everything was up to date.
+
+---
+
+### Ollama: hf.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
@@ -1324,14 +1324,14 @@ Since the focus is on locally running models, cloud model results are provided f
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **prism-ml/Ternary-Bonsai-27B-AWQ-4bit** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It mostly corrected `README.md`, but did not remove every reference to web search.
-- **ibm-granite/granite-4.2-8b** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-  - It read only `README.md` and `package.json`, then made adjustments to `README.md`.
 - **ibm-granite/granite-4.2-30b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **Qwen/Qwen3.5-9B** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
 - **Qwen/Qwen3.6-35B-A3B** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
+- **ibm-granite/granite-4.2-8b** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+  - It read only `README.md` and `package.json`, then made adjustments to `README.md`.
 
 ### [Ollama's cloud](https://docs.ollama.com/cloud)
 
@@ -1370,14 +1370,10 @@ Since the focus is on locally running models, cloud model results are provided f
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
-- **bytedance-seed/seed-2.0-mini** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-  - It did not scanned the project correctly, made minor adjustments to `README.md` and missed the goal.
 - **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It struggled to use the tools correctly and made adjustments to `README.md` without noticing the missing feature.
 - **mistralai/mistral-small-2603** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
-- **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-  - It only tried to format `README.md`.
 - **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3-30b-a3b-instruct-2507** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
@@ -1396,3 +1392,7 @@ Since the focus is on locally running models, cloud model results are provided f
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **upstage/solar-pro4** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
+- **bytedance-seed/seed-2.0-mini** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+  - It did not scanned the project correctly, made minor adjustments to `README.md` and missed the goal.
+- **nvidia/nemotron-3.5-lightning** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+  - It only tried to format `README.md`.
