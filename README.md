@@ -106,6 +106,7 @@ Scores are based on the final `README.md` produced for the run.
 | Nex N2.5 Mini                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | North Mini Code               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ornith 1.5 9B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ornith 1.5 35B                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 32B                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 Coder Next             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -429,6 +430,58 @@ read_file({"path":"./package.json"})
 It scanned the project correctly, noticed the missing feature and made coherent adjustments to `README.md`.
 
 ---
+
+### Ollama: ornith-1.5:35b ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":".gitignore"})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/utils.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"docs/ollama.md"})
+run_shell_command({"command":"cat LICENSE | head -20; echo \"---GITLOG---\"; git log --oneline -15;...
+file_search({"query":"**/*"})
+grep_search({"query":"webSearch|web-search|tavily|web search|fetch","isRegexp":true})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":".vscode/settings.json"})
+grep_search({"query":"dotenv","isRegexp":false})
+grep_search({"query":"web-search|websearch|WebSearch","isRegexp":true,"includePattern":"src/**/*.ts"})
+run_shell_command({"command":"git log -1 --format=\"%ci\"; echo \"---\"; tail -5 package-lock.json"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It scanned the project correctly and checked git commits
+
+It noticed the missing feature and rewrote `README.md` coherently.
 
 ### Ollama: hf.co/bartowski/nex-agi_Nex-N2.5-mini-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
