@@ -43,7 +43,7 @@ Scores are based on the final `README.md` produced for the run.
 - ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - The agent completed the run but did not notice the missing feature.
 - ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-  - The agent completed the run but was unable to make the correct tool calls to analyze the project.
+  - The agent completed the run but its tool calls are not compatible with a project analysis.
 - ![](https://img.shields.io/badge/FAIL-CRASHED-black)
   - The run was not completed because the model got stuck in a reasoning loop, suddenly stopped for no reason, or had to be interrupted after a critical hallucination.
 
@@ -62,8 +62,8 @@ Scores are based on the final `README.md` produced for the run.
 | Deepseek 4.1 Flash            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemini 3.5 Flash Lite         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 31B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -78,7 +78,7 @@ Scores are based on the final `README.md` produced for the run.
 | GPT-5.6 Luna                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-6 Luna                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
-| Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | HY3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -88,20 +88,20 @@ Scores are based on the final `README.md` produced for the run.
 | K2 Horizon MoVA 36B A4B       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Laguna XS 2.1                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
-| LFM 2.5 8B A1B                | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| LFM 2.5 8B A1B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ling 3.0 Tiny                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Mellum 2 12B A2.5B Thinking   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
+| Mellum 2 12B A2.5B Thinking   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | MiMo V2.6 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Ministral 3 8B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Ministral 3 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Muse Glimmer 30B              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)    |
 | Nemotron 3 Super              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nex N2.5 Pro                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nex N2.5 Mini                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | North Mini Code               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -118,7 +118,7 @@ Scores are based on the final `README.md` produced for the run.
 | Qwen 3.7 Flash                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3.8 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Spark X2.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -1340,8 +1340,8 @@ Since the focus is on locally running models, cloud model results are provided f
   - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **gpt-oss:20b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
-- **nemotron-3-nano:30b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-  - It rewrote `README.md` without removing the references to web search.
+- **nemotron-3-nano:30b** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+  - It did not scan the project correctly, and rewrote `README.md` without noticing the missing feature.
 
 ### [Openrouter](https://openrouter.ai/)
 
