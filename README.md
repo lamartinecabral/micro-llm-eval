@@ -44,7 +44,7 @@ Scores are based on the final `README.md` produced for the run.
   - The agent completed the run but did not notice the missing feature.
 - ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
   - The agent completed the run but its tool calls are not compatible with a project analysis.
-- ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+- ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
   - The run was not completed because the model got stuck in a reasoning loop, suddenly stopped for no reason, or had to be interrupted after a critical hallucination.
 
 ---
@@ -55,7 +55,7 @@ Scores are based on the final `README.md` produced for the run.
 | ----------------------------- | ---------------------------------------------------------- |
 | Agents A1                     | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Agents A1 4B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
+| Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
 | Bonsai 27B 1-bit              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -77,7 +77,7 @@ Scores are based on the final `README.md` produced for the run.
 | GPT-5.4 Nano                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | GPT-5.6 Luna                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-6 Luna                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
+| Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
 | Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | HY3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -87,7 +87,7 @@ Scores are based on the final `README.md` produced for the run.
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon MoVA 36B A4B       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Laguna XS 2.1                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
+| LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
 | LFM 2.5 8B A1B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ling 3.0 Tiny                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
@@ -119,7 +119,7 @@ Scores are based on the final `README.md` produced for the run.
 | Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3.8 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-black)       |
+| SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)       |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Spark X2.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ternary Bonsai 27B            | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
@@ -335,7 +335,7 @@ It completely rewrote `README.md`, added duplicate sections, and missed the goal
 
 ---
 
-### Ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+### Ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
@@ -343,7 +343,7 @@ I had to interrupt the agent because it became confused about tool use, repeated
 
 ---
 
-### Ollama: granite4.2:3b ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+### Ollama: granite4.2:3b ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
@@ -351,7 +351,7 @@ I had to interrupt the agent because it began hallucinating and looping in its r
 
 ---
 
-### Ollama: hf.co/ggml-org/SmolLM3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+### Ollama: hf.co/ggml-org/SmolLM3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
@@ -871,7 +871,7 @@ The agent did not scan the project correctly and couldn't even use a tool to upd
 
 ---
 
-### Ollama: ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+### Ollama: ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
@@ -1277,7 +1277,7 @@ It completely rewrote `README.md` and missed the goal.
 
 ---
 
-### Ollama: hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q2_K_XL ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+### Ollama: hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q2_K_XL ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
@@ -1287,7 +1287,7 @@ This model succeded with the 2-bit quantization version from batiai. I'm not sur
 
 ---
 
-### Ollama: hf.co/mradermacher/North-Mini-Code-1.0-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+### Ollama: hf.co/mradermacher/North-Mini-Code-1.0-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
@@ -1295,7 +1295,7 @@ I had to interrupt the agent because it became confused about tool use, repeated
 
 ---
 
-### Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-CRASHED-black)
+### Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
 
 **Observations:**
 
