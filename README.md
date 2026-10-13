@@ -90,6 +90,7 @@ Scores are based on the final `README.md` produced for the run.
 | Laguna XS 2.1                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | LFM 2.5 8B A1B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| LFM 2.5 24B A2B               | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ling 3.0 Tiny                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Mellum 2 12B A2.5B Thinking   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -737,6 +738,31 @@ Anyway, it acted just like the other Qwen-based models I tested. This model is b
 It scanned the files correctly but did not notice the issue.
 
 It completely rewrote `README.md` and missed the goal.
+
+---
+
+### Ollama: hf.co/LiquidAI/LFM2.5-24B-A2B-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+run_shell_command({"command":"grep -rn \"TODO\\|FIXME\\|XXX\\|NOTE\" . 2\u003e/dev/null | head -50"})
+read_file({"path":"package.json"})
+list_directory({"path":"tests"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"docs/ollama.md"})
+run_shell_command({"command":"cd /workspace \u0026\u0026 git status 2\u003e/dev/null || echo \"not a git repo\""})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"AGENTS.md"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It did not scan the project correctly, completely rewrote `README.md` and missed the goal.
 
 ---
 
