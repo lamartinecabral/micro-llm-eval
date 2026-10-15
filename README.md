@@ -104,6 +104,7 @@ Scores are based on the final `README.md` produced for the run.
 | Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3 Super              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nex N2.5 Pro                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nex N2.5 Mini                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | North Mini Code               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -1455,6 +1456,8 @@ Since the focus is on locally running models, cloud model results are provided f
   - It struggled to use the tools correctly and made adjustments to `README.md` without noticing the missing feature.
 - **mistralai/mistral-small-2603** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
+- **nvidia/nemotron-3.5-super-vl** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3-30b-a3b-instruct-2507** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
