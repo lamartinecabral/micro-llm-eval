@@ -1234,6 +1234,56 @@ It noticed the missing feature and rewrote `README.md` with precise adjustments.
 
 ---
 
+### Ollama: bonsai-2:27b ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/run.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/thinking.ts"})
+grep_search({"query":"web|tavily|fetch|browser|chrome","isRegexp":false,"maxResults":50})
+grep_search({"query":"web_search|webSearch|tavily|chrome|browser","isRegexp":true,"maxResults":50})
+grep_search({"query":"web-search|puppeteer","isRegexp":true,"includePattern":"package-lock.json","maxResults":30})
+read_file({"path":"src/io.ts"})
+grep_search({"query":"import|require","isRegexp":false,"includePattern":"src/**","maxResults":100})
+grep_search({"query":"import.*from","isRegexp":true,"includePattern":"src/*","maxResults":80})
+run_shell_command({"command":"cd \"$(dirname ~ 2\u003e/dev/null || true)\" 2\u003e/dev/null; git -C . log...
+grep_search({"query":"dotenv|fast-glob","isRegexp":true,"maxResults":30})
+run_shell_command({"command":"git log --oneline -15 2\u003e\u00261; echo \"---STATUS---\"; git status 2...
+run_shell_command({"command":"git show d50a3c6 --stat; echo \"=== README diff ===\"; git show d50a3c6 -- README.md"})
+run_shell_command({"command":"git show d50a3c6 -- package.json src/tools/index.ts"})
+write_file({"path":"README.md","content":...
+run_shell_command({"command":"ls node_modules 2\u003e/dev/null | head; echo \"--- node/npm versions ---\";...
+run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 npm install --package-lock-only 2\u003e\u00261 | ...
+run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 grep -c \"web-search\\|puppeteer\" package-lock.j...
+run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 echo \"=== README ===\" \u0026\u0026 cat README.m...
+run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 git add README.md package-lock.json \u0026\u0026 ...
+</pre></details>
+
+**Observations:**
+
+The agent correctly scanned the project and even checked the commit history.
+
+During the run, I got a little impatient and stopped the agent at the beginning of an “Actually, let me reconsider” loop, telling it to “stop reconsidering and finish the task.”
+
+It identified the missing feature and made precise adjustments to `README.md`.
+
+It also updated `package-lock.json` and committed the changes, which I wasn't happy about since that was outside the scope of the task. Still, I'll count it as correct.
+
+This model is a specialized quantization of Qwen3.8 27B that retains most of its intelligence while using a fraction of the memory. Very impressive.
+
 ### oMLX: prism-ml/Ternary-Bonsai-2-27B-mlx-2bit ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
