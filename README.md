@@ -98,8 +98,9 @@ Scores are based on the final `README.md` produced for the run.
 | Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | MiMo V2.6 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| MiniMax M3.1 Flash            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ministral 3 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Muse Glimmer 30B              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -134,7 +135,7 @@ Scores are based on the final `README.md` produced for the run.
 
 # 4B-dense class models
 
-### llama.cpp: IFM/K2-Horizon-3.7B-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+### ifm-ai/llama.cpp: IFM/K2-Horizon-3.7B-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -1467,6 +1468,7 @@ Since the focus is on locally running models, cloud model results are provided f
 
 ### [Ollama's cloud](https://docs.ollama.com/cloud)
 
+- **minimax-m3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **nemotron-3-super** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **beam** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It mostly corrected `README.md`, but did not remove every reference to web search.
