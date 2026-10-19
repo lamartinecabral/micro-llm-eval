@@ -84,6 +84,7 @@ Scores are based on the final `README.md` produced for the run.
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | HY3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Jan Code 4B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -362,6 +363,16 @@ I had to interrupt the agent because it began hallucinating and looping in its r
 **Observations:**
 
 I had to interrupt the agent because it began hallucinating about a Python project before making any tool calls.
+
+---
+
+### Ollama: hf.co/janhq/Jan-code-4b-gguf:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
+
+**Observations:**
+
+It only returned `{"name": "list_directory", "arguments": {"path": "."}}\n</tool_call>` inside a reasoning block.
+
+Completely useless.
 
 ---
 
@@ -736,7 +747,7 @@ read_file({"path":"./README.md"})
 
 Interestingly, it performed worse than its little brother. Was it the quantization? Was it random? Only God knows.
 
-Anyway, it acted just like the other Qwen-based models I tested. This model is based on Qwen 3.5 35B-A3B, and fine-tuning doesn't seem to make much of a difference in this test.
+Anyway, it acted just like Qwen 3.5 35B-A3B, the fine-tuning doesn't seem to make much of a difference in this test.
 
 It scanned the files correctly but did not notice the issue.
 
