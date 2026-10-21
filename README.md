@@ -58,6 +58,9 @@ Scores are based on the final `README.md` produced for the run.
 | Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Beam                          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Bonsai 27B 1-bit              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
+| Bonsai Ternary 27B            | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
+| Bonsai 2 Ternary 4B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Bonsai 2 Ternary 27B          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Deepseek V3.2                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -129,8 +132,6 @@ Scores are based on the final `README.md` produced for the run.
 | SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Spark X2.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Ternary Bonsai 27B            | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Ternary Bonsai 2 27B          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 
 ---
 
@@ -307,6 +308,29 @@ read_file({"path":"README.md"})
 It scanned the files correctly but did not notice the issue.
 
 It completely rewrote `README.md`, added duplicate sections, and missed the goal.
+
+---
+
+### Ollama: bonsai-2:4b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+list_directory({"path":"docs"})
+read_file({"path":"docs/ollama.md"})
+list_directory({"path":"src"})
+read_file({"path":"package.json"})
+list_directory({"path":"~/.localai"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/session.ts"})
+run_shell_command({"command":"find . -name \"*.md\" -type f | grep -v node_modules|head -20"})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Observations:**
+
+It did not scan the project correctly and completely rewrote `README.md`.
 
 ---
 
@@ -1205,6 +1229,53 @@ The only issue was a hallucinated working directory in a Bash command, but overa
 
 ---
 
+### Ollama: hf.co/AtomicChat/Ornith-1.5-35B-A3B-GGUF:IQ3_XXS ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":".gitignore"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+run_shell_command({"command":"cd \"$(git rev-parse --show-toplevel 2\u003e/dev/null || ec...
+run_shell_command({"command":"echo \"=== HEADERS in README ===\"; grep -n '^#' README.md;...
+write_file({"content":..."path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It scanned the project correctly and checked git commits
+
+It noticed the missing feature and rewrote `README.md` coherently.
+
+---
+
 ### Ollama: hf.co/batiai/Qwen3.8-27B-GGUF:Q2_K_S ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1349,6 +1420,49 @@ The agent thoroughly scanned the project and even checked the commit history.
 It noticed the missing feature and made coherent adjustments to `README.md`.
 
 ---
+
+### Ollama: hf.co/AtomicChat/Ornith-1.5-35B-A3B-GGUF:IQ2_S ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":".gitignore"})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/thinking.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/cli.ts","start_line":1})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+write_file({"content":..., "path":"README.md"})
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It did notice the missing feature but the updated `README.md` had no fix about it.
 
 ### Ollama: hf.co/prism-ml/Bonsai-27B-gguf:Q1_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
