@@ -95,6 +95,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Deepseek V3.2                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Deepseek V4.1 Flash           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Flint                         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemini 3.5 Flash Lite         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -1680,6 +1681,7 @@ Since the focus is on locally running models, cloud model results are provided f
 - **poolside/laguna-xs-2.1** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - local run failed
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **recursive/flint-v1.0:free** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **xiaomi/mimo-v2.6-pro** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
