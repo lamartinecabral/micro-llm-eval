@@ -60,6 +60,7 @@ Scores are based on the final `README.md` produced for the run.
 | Bonsai 27B 1-bit              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
 | Bonsai Ternary 27B            | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Bonsai 2 Ternary 4B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Bonsai 2 Ternary 9B           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Bonsai 2 Ternary 27B          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
