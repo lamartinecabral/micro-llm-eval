@@ -972,6 +972,36 @@ It completely rewrote `README.md` and missed the goal.
 
 ---
 
+### Ollama: bonsai-2:9b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+read_file({"path":"src/cli.ts"})
+list_directory({"path":"docs"})
+read_file({"path":"README.md"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/settings.ts"})
+list_directory({"path":"./AGENTS.md"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/index.ts"})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Observations:**
+
+It scanned the files correctly but did not notice the issue.
+
+It completely rewrote `README.md` and missed the goal.
+
+---
+
 ### Ollama: hf.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 <details><summary><b>Tool calls:</b></summary><pre>
