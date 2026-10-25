@@ -1482,6 +1482,68 @@ It noticed the missing feature and made coherent adjustments to `README.md`.
 
 ---
 
+### Ollama: hf.co/AtomicChat/Flint-GGUF:IQ2_XXS ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+read_file({"path":"."})
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/tools"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+run_shell_command({"command":"git log --oneline -20 \u0026\u0026 git status --short | head -30"})
+read_file({"path":".gitignore"})
+read_file({"path":".vscode"})
+list_directory({"path":".vscode"})
+read_file({"path":".vscode/settings.json"})
+grep_search({"query":"webSearch|web-search|web_search|web fetch|web search","isRegexp":true,"maxResults":30})
+grep_search({"query":"provider\\.ts|getProvider|baseURL|apiKey","isRegexp":true,"maxResults":30})
+read_file({"path":"src/tools/write-file.tool.ts"})
+replace_string_in_file({"path":"src/tools/replace-string-in-file.tool.ts","old_text":...
+list_directory({"path":"."})
+read_file({"path":"docs/ollama.md"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+replace_string_in_file({"path":"README.md","old_text":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Observations:**
+
+It was very interesting to see a 2-bit quantized MoE model succeed at this test.
+
+It scanned the project correctly, but only identified the missing feature after checking the Git history.
+
+It made some incorrect tool calls along the way, but ultimately produced the correct `README.md`.
+
+---
+
 ### Ollama: hf.co/AtomicChat/Ornith-1.5-35B-A3B-GGUF:IQ2_S ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
