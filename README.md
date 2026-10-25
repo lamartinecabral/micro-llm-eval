@@ -95,7 +95,8 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Deepseek V3.2                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Deepseek V4.1 Flash           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Flint                         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Flint 40B A2.5B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| G9v3-3B                       | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemini 3.5 Flash Lite         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -339,6 +340,47 @@ read_file({"path":"README.md"})
 It scanned the files correctly but did not notice the issue.
 
 It completely rewrote `README.md`, added duplicate sections, and missed the goal.
+
+---
+
+### Ollama: hf.co/bartowski/ai9stars_G9v3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+read_file({"path":"src/tools/cli.ts"})
+read_file({"path":"src/tools/run.ts"})
+read_file({"path":"src/tools/settings.ts"})
+list_directory({"path":"tools"})
+run_shell_command({"command":"ls -la"})
+run_shell_command({"command":"find src -type f 2\u003e/dev/null"})
+run_shell_command({"command":"cat package.json"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"README.md"})
+file_search({"query":"AGENTS.md provider.ts"})
+list_directory({"path":"docs"})
+file_search({"query":"package.json"})
+read_file({"path":"docs/ollama.md"})
+write_file({"path":"README.md","content":...
+write_file({"content":...
+read_file({"path":"README.md"})
+read_file({"path":"src/utils.ts"})
+run_shell_command({"command":"rm README.md \u0026\u0026 git add README.md...
+write_file({"path":"README.md","content":...
+grep_search({"query":"provider.ts","isRegexp":true})
+list_directory({"path":"src"})
+file_search({"query":"provider.ts"})
+grep_search({"isRegexp":true,"query":"AGENTS.md"})
+write_file({"content":...
+</pre></details>
+
+**Observations:**
+
+It struggled to use the file tools, did not scan the project correctly, removed a section from `README.md`, and missed the goal.
 
 ---
 
