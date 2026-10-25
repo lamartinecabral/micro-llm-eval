@@ -120,7 +120,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | HY3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Jan Code 4B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
-| K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon MoVA 36B A4B       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -134,6 +134,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | MiMo V2.6 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | MiMo V2.6 Pro                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| MiniCPM5-2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | MiniMax M3.1 Flash            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ministral 3 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -1145,42 +1146,6 @@ It completely rewrote `README.md` and missed the goal.
 
 ---
 
-### oMLX: SirSahOl/K2-Horizon-0.9B-chat-mlx-8bit ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path": "."})
-read_file({"path": "README.md"})
-read_file({"path": "package.json"})
-read_file({"path": "tsconfig.json"})
-read_file({"path": "biome.json"})
-read_file({"path": "AGENTS.md"})
-read_file({"path": "docs/ollama.md"})
-list_directory({"path": "src"})
-read_file({"path": "tests"})
-list_directory({"path": "tests"})
-read_file({"path": "src/cli.ts"})
-read_file({"path": "src/settings.ts"})
-read_file({"path": "src/io.ts"})
-read_file({"path": "src/session.ts"})
-file_search({"query": "AGENTS.md"})
-write_file({"path": "README.md", "content": ...
-file_search({"query": "AGENTS.md", "includePattern": "*.md"})
-web_search({"query": "AGENTS.md"})
-write_file({"path": "README.md", "content": ...
-read_file({"path": "README.md"})
-write_file({"path": "README.md", "content": ...
-write_file({"path": "README.md", "content": ...
-write_file({"path": "README.md", "content": ...
-</pre></details>
-
-**Observations:**
-
-A 0.9B model's ability to maintain coherence during a long agent session is impressive.
-
-However, it did not scan the project correctly and missed the goal.
-
----
-
 ### Ollama: hf.co/inclusionAI/Ling-3.0-tiny-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1222,6 +1187,42 @@ It made adjustments to `README.md` but did not notice that web search had been r
 
 ---
 
+### oMLX: SirSahOl/K2-Horizon-0.9B-chat-mlx-8bit ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path": "."})
+read_file({"path": "README.md"})
+read_file({"path": "package.json"})
+read_file({"path": "tsconfig.json"})
+read_file({"path": "biome.json"})
+read_file({"path": "AGENTS.md"})
+read_file({"path": "docs/ollama.md"})
+list_directory({"path": "src"})
+read_file({"path": "tests"})
+list_directory({"path": "tests"})
+read_file({"path": "src/cli.ts"})
+read_file({"path": "src/settings.ts"})
+read_file({"path": "src/io.ts"})
+read_file({"path": "src/session.ts"})
+file_search({"query": "AGENTS.md"})
+write_file({"path": "README.md", "content": ...
+file_search({"query": "AGENTS.md", "includePattern": "*.md"})
+web_search({"query": "AGENTS.md"})
+write_file({"path": "README.md", "content": ...
+read_file({"path": "README.md"})
+write_file({"path": "README.md", "content": ...
+write_file({"path": "README.md", "content": ...
+write_file({"path": "README.md", "content": ...
+</pre></details>
+
+**Observations:**
+
+A 0.9B model's ability to maintain coherence during a long agent session is impressive.
+
+However, it did not scan the project correctly and missed the goal.
+
+---
+
 ### Ollama: gemma4:e2b-it-qat ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1257,6 +1258,20 @@ replace_string_in_file({"path":"README.md","old_text":...
 It made it to the end, but every step was incorrect.
 
 It did not read the important files. It used the tools incorrectly. The `README.md` adjustment added duplicated sections.
+
+---
+
+### Ollama: hf.co/bartowski/MiniCPM5-2B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+</pre></details>
+
+**Observations:**
+
+The agent read only `package.json` and `README.md`, then decided that everything was up to date.
 
 ---
 
