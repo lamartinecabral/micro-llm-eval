@@ -63,6 +63,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -163,6 +164,24 @@ The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
 - Adds a new "Tools" section. (**Acceptable**)
 - Minor adjustments in other sections. (**Acceptable**)
+
+---
+
+### llama.cpp: ggml-org/gemma-4-E4B-it-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"./"})
+read_file({"path":"package.json","start_line":1})
+read_file({"path":"README.md","start_line":1})
+</pre></details>
+
+**Total tokens:** 3297
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 64
+
+**Observations:**
+
+The agent only read `package.json` and `README.md` then decided no updates are necessary.
 
 ---
 
