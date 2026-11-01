@@ -1,3 +1,15 @@
+> **DISCLAIMER**
+> 
+> The results below are obsolete and deprecated.
+> 
+> A new environment is required to ensure that the target issue is obfuscated in the Git history, preventing the task from being trivially solved by inspecting the repository history. Therefore, all **PASS** results must be rerun.
+> 
+> Additionally, Ollama silently strips reasoning traces. Consequently, all **FAIL** results obtained with Ollama are invalid.
+> 
+> Finally, result reports should include token usage and sampling parameters. This will be addressed in the upcoming test reports on the main branch.
+
+---
+
 # Evaluating Small LLMs on Repository Maintenance
 
 This project evaluates autonomous coding agents powered primarily by **4B-parameter LLMs running on consumer hardware**. The benchmark uses a simple repository-maintenance task to assess whether small models can understand an unfamiliar codebase, identify outdated documentation, and make accurate, focused corrections.
