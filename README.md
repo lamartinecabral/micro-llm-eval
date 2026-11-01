@@ -153,7 +153,7 @@ run_shell_command({"command":"npm test 2>&1 | tail -15"})
 
 **Total tokens:** 24625
 
-**Settings:** reasoning high, temperature 1.0, top_p 0.95
+**Settings:** reasoning high, temp = 1.0, top-p = 0.95
 
 **Observations:**
 
@@ -421,7 +421,7 @@ read_file({"path":"README.md"})
 
 **Total tokens:** 10799
 
-**Settings:** reasoning high, temperature 0.6, top_p 0.95
+**Settings:** reasoning high, temp = 0.6, top-p = 0.95
 
 **Observations:**
 
