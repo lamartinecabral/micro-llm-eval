@@ -6,19 +6,11 @@ The evaluation has also expanded to include larger models, such as Qwen 3.6 35B 
 
 ## What the benchmark evaluates
 
-The task tests whether an agent can:
-
 - Navigate and understand an unfamiliar codebase.
 - Treat the implementation as the source of truth when documentation contradicts it.
 - Identify obsolete claims and references.
 - Update the documentation accurately and completely.
 - Use its available tools reliably without introducing unnecessary changes.
-
-Although the requested output is documentation-only, completing the task requires repository exploration, evidence gathering, consistency checking, and controlled file editing.
-
-The evaluation considers both the final result and the agent's behavior during execution. However, the correctness verdict is based on the final `README.md`.
-
-The broader motivation is to understand how reliably small models can perform practical software-maintenance tasks. A model that can reconcile existing artifacts with the actual state of a project may be more useful in everyday development than one that excels only at isolated code-generation prompts.
 
 ## Test environment
 
@@ -26,23 +18,11 @@ The broader motivation is to understand how reliably small models can perform pr
 
 The benchmark uses a TypeScript project from which all code related to a web search feature has been removed. The existing documentation still refers to that feature.
 
-The agent is expected to inspect the project, recognize that the feature is no longer implemented, and update `README.md` accordingly.
-
-An interesting aspect of the experiment is whether the agent independently investigates the codebase or takes a shortcut by consulting Git history. Observing this behavior helps characterize the agent's approach, although consulting history is not inherently incorrect.
+The agent is expected to inspect the project, recognize that the feature is no longer implemented, and update `README.md` accordingly. The feature-removal diff is obfuscated in Git history to prevent the task from being trivially solved by inspecting the commit history.
 
 ### Agent harness
 
 [LAWT](https://github.com/lamartinecabral/lawt) provides the underlying agent harness. It offers a minimal execution environment with a basic system prompt, file-manipulation tools, shell command execution, and visibility into the model's responses.
-
-### Inference engines
-
-Local models are run using the following inference engines:
-
-- Ollama
-- oMLX
-- llama.cpp
-
-Inexpensive cloud models are also included as a comparison group.
 
 ## Task prompt
 
@@ -51,8 +31,6 @@ Each agent receives the following prompt:
 ```text
 analyze the project in the current dir and make `README.md` up to date
 ```
-
-The reasoning effort is set to `medium`.
 
 ## Scoring
 
@@ -82,1291 +60,56 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 
 | Model name                    | Verdict                                                    |
 | ----------------------------- | ---------------------------------------------------------- |
-| Agents A1                     | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Agents A1 4B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
-| Beam                          | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Bonsai 27B 1-bit              | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Bonsai Ternary 27B            | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| Bonsai 2 Ternary 4B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Bonsai 2 Ternary 9B           | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Bonsai 2 Ternary 27B          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Deepseek V3.2                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Deepseek V4.1 Flash           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Flint 40B A2.5B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| G9v3-3B                       | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Gemini 3.5 Flash Lite         | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Gemma 4 31B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GLM 4.7 Flash                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| GLM 5.3 Flash                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| GPT-OSS 120B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| GPT-5 Mini                    | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| GPT-5.4 Mini                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GPT-5.4 Nano                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
-| GPT-5.6 Luna                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| GPT-6 Luna                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
+| GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| HY3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Jan Code 4B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
-| K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| K2 Horizon MoVA 36B A4B       | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Laguna XS 2.1                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
-| LFM 2.5 8B A1B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| LFM 2.5 24B A2B               | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Ling 3.0 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Ling 3.0 Tiny                 | ![](https://img.shields.io/badge/PASS-INCORRECT-orange)    |
-| Mellum 2 12B A2.5B Thinking   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Mellum 2.1 12B A2.5B Thinking | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
-| MiMo V2.6 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| MiMo V2.6 Pro                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| MiniCPM5-2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| MiniMax M3.1 Flash            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Ministral 3 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Muse Glimmer 30B              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| Nemotron 3 Super              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Nex N2.5 Pro                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Nex N2.5 Mini                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| North Mini Code               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Ornith 1.5 9B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Ornith 1.5 35B                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ornith 1.5 35B A3B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 32B                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 Coder Next             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.5 2B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.5 4B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 9B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 27B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.6 27B                  | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Qwen 3.6 35B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.7 Flash                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
-| Qwen 3.8 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
-| SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| Spark X2.5 4B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 
 ---
 
-# 4B-dense class models
+## 4B-dense class
 
-### ifm-ai/llama.cpp: IFM/K2-Horizon-3.7B-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-run_shell_command({"command":"pwd && ls -la"})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-run_shell_command({"command":"find src tests docs -type f | head -100"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"tests/settings.test.ts"})
-read_file({"path":"tests/tools.test.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-run_shell_command({"command":"git log --oneline -15 && echo \"---STATUS---\" && git status"})
-run_shell_command({"command":"git diff HEAD --stat"})
-run_shell_command({"command":"git show cca9238 --stat"})
-run_shell_command({"command":"git show cca9238 -- README.md package.json | head -120"})
-run_shell_command({"command":"git show cca9238 -- README.md package.json src/tools/index.ts...
-run_shell_command({"command":"grep -rn \"webSearch\\|web_search\\|fetch_page\\|web search\"...
-replace_string_in_file({"path":"README.md","old_text":...
-replace_string_in_file({"path":"README.md","old_text":...
-replace_string_in_file({"path":"README.md","old_text":...
-read_file({"path":"README.md"})
-run_shell_command({"command":"grep -in \"web\\|search\" README.md"})
-run_shell_command({"command":"git diff README.md"})
-</pre></details>
-
-**Observations:**
-
-The model requires reasoning effort `high` to work properly.
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the issue and made precise adjustments instead of rewriting the entire file.
-
-It also used the `replace_string_in_file` tool correctly. Small models often struggle with this tool or avoid it entirely.
-
----
-
-### Ollama: hf.co/InternScience/Agents-A1-4B-Q8_0-GGUF:Q8_0 ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-list_directory({"path":"src"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/io.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"."})
-list_directory({"path":"docs"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-list_directory({"path":"tests"})
-run_shell_command({"command":"find . -name \"*.md\" -type f"})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-read_file({"path":"tests/tools.test.ts"})
-read_file({"path":"docs/ollama.md"})
-write_file({"path":"README.md","content":...
-read_file({"path":"src/utils.ts"})
-run_shell_command({"command":"find . -name \"provider.ts\" ...
-</pre></details>
-
-**Observations:**
-
-It mostly corrected `README.md`, but did not remove every reference to web search.
-
----
-
-### Ollama: qwen3.5:4b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+### llama.cpp: IFM/K2-Horizon-3.7B-GGUF:Q8_0 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
 read_file({"path":"README.md"})
 read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"package-lock.json","start_line":1,"end_line":50})
-list_directory({"path":"src/tools"})
-read_file({"path":"package-lock.json","start_line":50,"end_line":100})
-read_file({"path":"docs/ollama.md"})
-run_shell_command({"command":"cat .gitignore"})
 read_file({"path":"tsconfig.json"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-grep_search({"isRegexp":true,"query":"CHANGELOG|changelog|VERSION|version.*update|updated"})
-read_file({"path":"src/settings.ts"})
-list_directory({"path":"tests"})
-write_file({"content":...
-</pre></details>
-
-**Observations:**
-
-It scanned the files correctly but did not notice the issue.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/XHToken/Spark-X2.5-4B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
 list_directory({"path":"src"})
-list_directory({"path":"tests"})
 list_directory({"path":"docs"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"biome.json"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/tools"})
-read_file({"path":"src/thinking"})
-read_file({"path":"src/utils"})
-read_file({"path":"docs/ollama.md"})
+list_directory({"path":"tests"})
 list_directory({"path":"src/tools"})
-list_directory({"path":"src"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"src/thinking.ts"})
+read_file({"path":"docs/ollama.md"})
 read_file({"path":"LICENSE"})
-read_file({"path":".gitignore"})
-read_file({"path":"tests/tools.test.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It scanned the files correctly but did not notice the issue.
-
-It completely rewrote `README.md`, added duplicate sections, and missed the goal.
-
----
-
-### Ollama: hf.co/bartowski/ai9stars_G9v3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-read_file({"path":"src/tools/cli.ts"})
-read_file({"path":"src/tools/run.ts"})
-read_file({"path":"src/tools/settings.ts"})
-list_directory({"path":"tools"})
-run_shell_command({"command":"ls -la"})
-run_shell_command({"command":"find src -type f 2\u003e/dev/null"})
-run_shell_command({"command":"cat package.json"})
 read_file({"path":"src/cli.ts"})
 read_file({"path":"src/run.ts"})
 read_file({"path":"src/settings.ts"})
-read_file({"path":"README.md"})
-file_search({"query":"AGENTS.md provider.ts"})
-list_directory({"path":"docs"})
-file_search({"query":"package.json"})
-read_file({"path":"docs/ollama.md"})
-write_file({"path":"README.md","content":...
-write_file({"content":...
-read_file({"path":"README.md"})
-read_file({"path":"src/utils.ts"})
-run_shell_command({"command":"rm README.md \u0026\u0026 git add README.md...
-write_file({"path":"README.md","content":...
-grep_search({"query":"provider.ts","isRegexp":true})
-list_directory({"path":"src"})
-file_search({"query":"provider.ts"})
-grep_search({"isRegexp":true,"query":"AGENTS.md"})
-write_file({"content":...
-</pre></details>
-
-**Observations:**
-
-It struggled to use the file tools, did not scan the project correctly, removed a section from `README.md`, and missed the goal.
-
----
-
-### Ollama: bonsai-2:4b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-list_directory({"path":"docs"})
-read_file({"path":"docs/ollama.md"})
-list_directory({"path":"src"})
-read_file({"path":"package.json"})
-list_directory({"path":"~/.localai"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/thinking.ts"})
 read_file({"path":"src/session.ts"})
-run_shell_command({"command":"find . -name \"*.md\" -type f | grep -v node_modules|head -20"})
-write_file({"path":"README.md","content":...
-</pre></details>
-
-**Observations:**
-
-It did not scan the project correctly and completely rewrote `README.md`.
-
----
-
-### Ollama: gemma4:e4b-it-qat ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-write_file({"content":...
-write_file({"path":"README.md", "content":...
-</pre></details>
-
-**Observations:**
-
-It only read `README.md` and `package.json`, then rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: nemotron-3-nano:4b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md","start_line":1,"end_line":20})
-list_directory({"path":"docs/"})
-list_directory({"path":"src/"})
-write_file({"path":"README.md","content":...
-</pre></details>
-
-**Observations:**
-
-It read only part of `README.md` and listed some files, then rewrote `README.md` with incoherent content.
-
----
-
-### Ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
-
----
-
-### Ollama: granite4.2:3b ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-I had to interrupt the agent because it began hallucinating and looping in its reasoning about a nonexistent typo.
-
----
-
-### Ollama: hf.co/ggml-org/SmolLM3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-I had to interrupt the agent because it began hallucinating about a Python project before making any tool calls.
-
----
-
-### Ollama: hf.co/janhq/Jan-code-4b-gguf:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-It only returned `{"name": "list_directory", "arguments": {"path": "."}}\n</tool_call>` inside a reasoning block.
-
-Completely useless.
-
----
-
-# 30B-MoE class models
-
-### Ollama: batiai/gemma4-26b:iq4 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path": "."})
-read_file({"path": "package.json"})
-read_file({"path": "src/cli.ts"})
-read_file({"path": "src/run.ts"})
-read_file({"path": "src/tools/index.ts"})
-read_file({"path": "README.md"})
-read_file({"path": "src/tools/file-search.tool.ts"})
-list_directory({"path": "src/tools"})
-read_file({"path": "src/utils.ts"})
-read_file({"path": "src/session.ts"})
-read_file({"path": "src/settings.ts"})
-read_file({"path": "src/io.ts"})
-write_file({"content": ...
-</pre></details>
-
-**Observations:**
-
-Before reading `README.md`, it correctly selected the key files and immediately noticed the issue.
-
-It did not read every file, but it read the most important ones.
-
-It used `write_file` to overwrite the README, but the resulting changes were precise.
-
-Efficiency is the highlight.
-
----
-
-### Ollama: north-mini-code-1.0:q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"./README.md"})
-read_file({"path":"./package.json"})
-list_directory({"path":"./src"})
-read_file({"path":"./src/cli.ts"})
-read_file({"path":"./src/session.ts"})
-list_directory({"path":"./docs"})
-read_file({"path":"./docs/ollama.md"})
-list_directory({"path":"./tests"})
-file_search({"query":"**/provider.ts"})
-file_search({"query":"**/provider*"})
-grep_search({"query":"provider","isRegexp":false,"includePattern":"**/*.ts","maxResults":20})
-read_file({"path":"./src/utils.ts"})
-list_directory({"path":"./src/tools"})
-read_file({"path":"./src/tools/index.ts"})
-read_file({"path":"./src/tools/read-file.tool.ts"})
-read_file({"path":"./src/run.ts"})
-read_file({"path":"./src/settings.ts"})
-write_file({"path":"./README.md","content":...
-read_file({"path":"./README.md","start_line":1,"end_line":50})
-file_search({"query":"**/web-search/**"})
-grep_search({"query":"web.search|websearch|web_search","isRegexp":false,"maxResults":10})
-grep_search({"query":"web.*search|websearch|cloud.*search","isRegexp":false,"maxResults":10,"includePattern":"**/*.md"})
-list_directory({"path":"./src/tools"})
-file_search({"query":"**/*.md"})
-write_file({"path":"./README.md","content":...
-read_file({"path":"./README.md"})
-read_file({"path":"./package.json"})
-</pre></details>
-
-**Observations:**
-
-It scanned the project correctly, noticed the missing feature and made coherent adjustments to `README.md`.
-
----
-
-### Ollama: ornith-1.5:35b ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"biome.json"})
-read_file({"path":".gitignore"})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-list_directory({"path":"tests"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
+read_file({"path":"src/tools/index.ts"})
 read_file({"path":"src/io.ts"})
-read_file({"path":"src/settings.ts"})
+read_file({"path":"src/utils.ts"})
 read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/utils.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"docs/ollama.md"})
-run_shell_command({"command":"cat LICENSE | head -20; echo \"---GITLOG---\"; git log --oneline -15;...
-file_search({"query":"**/*"})
-grep_search({"query":"webSearch|web-search|tavily|web search|fetch","isRegexp":true})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/tools.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-read_file({"path":".vscode/settings.json"})
-grep_search({"query":"dotenv","isRegexp":false})
-grep_search({"query":"web-search|websearch|WebSearch","isRegexp":true,"includePattern":"src/**/*.ts"})
-run_shell_command({"command":"git log -1 --format=\"%ci\"; echo \"---\"; tail -5 package-lock.json"})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It scanned the project correctly and checked git commits
-
-It noticed the missing feature and rewrote `README.md` coherently.
-
-### Ollama: hf.co/bartowski/nex-agi_Nex-N2.5-mini-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json","start_line":1,"end_line":200})
-read_file({"path":"README.md","start_line":1,"end_line":300})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-list_directory({"path":"tests"})
-read_file({"path":"tsconfig.json","start_line":1,"end_line":200})
-read_file({"path":"biome.json","start_line":1,"end_line":200})
-read_file({"path":".gitignore","start_line":1,"end_line":200})
-read_file({"path":"src/cli.ts","start_line":1,"end_line":400})
-read_file({"path":"src/tools/index.ts","start_line":1,"end_line":500})
-read_file({"path":"src/io.ts","start_line":1,"end_line":500})
-read_file({"path":"src/run.ts","start_line":1,"end_line":600})
-read_file({"path":"src/session.ts","start_line":1,"end_line":500})
-read_file({"path":"src/settings.ts","start_line":1,"end_line":500})
-read_file({"path":"src/thinking.ts","start_line":1,"end_line":500})
-read_file({"path":"src/utils.ts","start_line":1,"end_line":500})
-list_directory({"path":"src/tools"})
-read_file({"path":"docs/ollama.md","start_line":1,"end_line":400})
-read_file({"path":"tests/helpers.test.ts","start_line":1,"end_line":500})
-read_file({"path":"tests/session.test.ts","start_line":1,"end_line":500})
-read_file({"path":"tests/settings.test.ts","start_line":1,"end_line":500})
-read_file({"path":"tests/tools.test.ts","start_line":1,"end_line":500})
-read_file({"path":"LICENSE","start_line":1,"end_line":100})
-read_file({"path":"src/tools/utils.ts","start_line":1,"end_line":500})
-read_file({"path":"src/tools/file-search.tool.ts","start_line":1,"end_line":500})
-read_file({"path":"src/tools/grep-search.tool.ts","start_line":1,"end_line":500})
-read_file({"path":"src/tools/list-directory.tool.ts","start_line":1,"end_line":500})
-read_file({"path":"src/tools/read-file.tool.ts","start_line":1,"end_line":500})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts","start_line":1,"end_line":500})
-read_file({"path":"src/tools/run-shell-command.tool.ts","start_line":1,"end_line":500})
-read_file({"path":"src/tools/write-file.tool.ts","start_line":1,"end_line":500})
-run_shell_command({"command":"git status --short \u0026\u0026 node --version \u0026\u0026 npm --version"})
-run_shell_command({"command":"npm test"})
-run_shell_command({"command":"npm run typecheck"})
-run_shell_command({"command":"npm run lint"})
-run_shell_command({"command":"git log -5 --oneline --decorate"})
-run_shell_command({"command":"npm pack --dry-run"})
-run_shell_command({"command":"git show --stat --oneline HEAD \u0026\u0026 git show --format=f...
-run_shell_command({"command":"git show HEAD^:README.md"})
-run_shell_command({"command":"git diff HEAD -- README.md \u0026\u0026 git status --short"})
-grep_search({"isRegexp":true,"query":"web search|web_search|tavily|chrome|web","includePattern":"**/*.{ts,md,json,jsonc}","maxResults":100})
-read_file({"path":".vscode/settings.json","start_line":1,"end_line":200})
-read_file({"path":"package-lock.json","start_line":1,"end_line":120})
-run_shell_command({"command":"git status --porcelain=v1 \u0026\u0026 git diff -- package-lock...
-run_shell_command({"command":"git log --oneline -- README.md \u0026\u0026 git log -p -- README.md | head -n 250"})
-run_shell_command({"command":"node -e 'const p=require(\"./package-lock.json\"); console.log(...
-run_shell_command({"command":"tmp=$(mktemp -d); printf 'export default { baseURL: \"x\", apiK...
-write_file({"content":...
-run_shell_command({"command":"git diff -- README.md \u0026\u0026 git status --short"})
-read_file({"path":"README.md","start_line":1,"end_line":220})
-grep_search({"isRegexp":false,"query":"search the web|fetch web|webSearch|web-search","includePattern":"README.md","maxResults":20})
-run_shell_command({"command":"git diff --check \u0026\u0026 git status --short"})
-</pre></details>
-
-**Observations:**
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the missing feature and made coherent adjustments to `README.md`.
-
----
-
-### Ollama: batiai/qwen3.6-35b:iq4 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."}
-read_file({"end_line":50,"path":"package.json"}
-read_file({"path":"README.md","end_line":50}
-file_search({"query":"src/**/*.{ts,js,json,md}"}
-read_file({"path":"src/cli.ts"}
-read_file({"path":"src/run.ts"}
-read_file({"path":"src/session.ts"}
-read_file({"path":"src/settings.ts"}
-read_file({"path":"src/thinking.ts"}
-read_file({"path":"src/io.ts"}
-read_file({"path":"src/utils.ts"}
-read_file({"path":"src/tools/index.ts"}
-read_file({"path":"src/tools/file-search.tool.ts"}
-read_file({"path":"src/tools/grep-search.tool.ts"}
-read_file({"path":"src/tools/list-directory.tool.ts"}
-read_file({"path":"src/tools/read-file.tool.ts"}
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"}
-read_file({"path":"src/tools/run-shell-command.tool.ts"}
-read_file({"path":"src/tools/utils.ts"}
-read_file({"path":"src/tools/write-file.tool.ts"}
-list_directory({"path":"docs"}
-file_search({"query":"tests/**/*.{ts,js,md}"}
-read_file({"path":".gitignore"}
-read_file({"path":"tsconfig.json"}
-read_file({"path":"biome.json"}
-read_file({"path":"docs/ollama.md"}
-write_file({"content":...
-read_file({"path":"README.md"}
-</pre></details>
-
-**Observations:**
-
-It scanned the files correctly but did not notice the issue.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: glm-4.7-flash:q4_K_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/tools/index.ts"})
-list_directory({"path":"tools"})
-file_search({"query":"*.ts"})
-list_directory({"path":"tools"})
-grep_search({"query":"export.*function.*tool","includePattern":"*.ts"})
-grep_search({"query":"export.*function.*tool","includePattern":"*.ts","isRegexp":false})
-bash_ls_cmd({"ls -la":""})
-run_shell_command({"command":"ls -la"})
-run_shell_command({"command":"find src -name \"*tool*.ts\""})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/settings.ts"})
-file_search({"query":"*.ts"})
-read_file({"path":"src/utils.ts"})
-run_shell_command({"command":"find . -name \"AGENTS.md\" -o -name \"provider.ts\""})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It scanned the files correctly but did not notice the missing feature.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: laguna-xs-2.1:q4_K_M ![](https://img.shields.io/badge/PASS-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-list_directory({"path":"src"})
-read_file({"path":"package.json"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/cli.ts"})
-list_directory({"path":"docs"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-list_directory({"path":"tests"})
-read_file({"path":"tests/tools.test.ts"})
-read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"biome.json"})
-read_file({"path":".gitignore"})
-read_file({"path":"LICENSE"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"src/thinking.ts"})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-run_shell_command({"command":"cd /workspace \u0026\u0026 npm test"})
-run_shell_command({"command":"npm test"})
-run_shell_command({"command":"npm install"})
-run_shell_command({"command":"npm test"})
-run_shell_command({"command":"npm run typecheck"})
-run_shell_command({"command":"npm run lint"})
-read_file({"path":"README.md"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-list_directory({"path":"."})
-read_file({"end_line":50,"path":"README.md","start_line":1})
-read_file({"end_line":50,"path":"README.md","start_line":1})
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It read all project files, did not notice the missing feature, completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/InternScience/Agents-A1-Q4_K_M-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-list_directory({"path":"docs"})
-read_file({"path":"cli.ts"})
-read_file({"path":"io.ts"})
-read_file({"path":"tools/test"})
-list_directory({"path":"./src"})
-list_directory({"path":"./tests"})
-list_directory({"path":"./docs"})
-read_file({"path":"./src/cli.ts"})
-read_file({"path":"./src/io.ts"})
-read_file({"path":"./src/tools/"})
-list_directory({"path":"./src/tools"})
-read_file({"path":"./src/tools/index.ts"})
-read_file({"path":"./src/tools/file-search.tool.ts"})
-read_file({"path":"./src/tools/grep-search.tool.ts"})
-read_file({"path":"./README.md"})
-read_file({"path":"./src/run.ts"})
-read_file({"path":"./src/thinking.ts"})
-read_file({"path":"./src/tools/list-directory.tool.ts"})
-read_file({"path":"./src/tools/read-file.tool.ts"})
-read_file({"path":"./src/tools/write-file.tool.ts"})
-read_file({"path":"./src/tools/replace-string-in-file.tool.ts"})
-replace_string_in_file({"path":"./README.md","old_text":...
-read_file({"path":"./README.md"})
-</pre></details>
-
-**Observations:**
-
-Interestingly, it performed worse than its little brother. Was it the quantization? Was it random? Only God knows.
-
-Anyway, it acted just like Qwen 3.5 35B-A3B, the fine-tuning doesn't seem to make much of a difference in this test.
-
-It scanned the files correctly but did not notice the issue.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/LiquidAI/LFM2.5-24B-A2B-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-run_shell_command({"command":"grep -rn \"TODO\\|FIXME\\|XXX\\|NOTE\" . 2\u003e/dev/null | head -50"})
-read_file({"path":"package.json"})
-list_directory({"path":"tests"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"docs/ollama.md"})
-run_shell_command({"command":"cd /workspace \u0026\u0026 git status 2\u003e/dev/null || echo \"not a git repo\""})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"AGENTS.md"})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It did not scan the project correctly, completely rewrote `README.md` and missed the goal.
-
----
-
-# 8B-dense class models
-
-### oMLX: mlx-community/K2-Horizon-7B-oQ6e ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path": "."})
-read_file({"path": "package.json"})
-read_file({"path": "README.md"})
-list_directory({"path": "src"})
-list_directory({"path": "tests"})
-list_directory({"path": "src/tools"})
-list_directory({"path": "docs"})
-read_file({"path": "src/cli.ts"})
-read_file({"path": "src/run.ts"})
-read_file({"path": "src/io.ts"})
-read_file({"path": "src/tools/index.ts"})
-read_file({"path": "src/settings.ts"})
-read_file({"path": "src/session.ts"})
-read_file({"path": "docs/ollama.md"})
-read_file({"path": "src/tools/read-file.tool.ts"})
-read_file({"path": "src/utils.ts"})
-read_file({"path": "src/tools/write-file.tool.ts"})
-read_file({"path": "src/tools/replace-string-in-file.tool.ts"})
-read_file({"path": "src/tools/run-shell-command.tool.ts"})
-read_file({"path": "src/tools/file-search.tool.ts"})
-read_file({"path": "src/tools/grep-search.tool.ts"})
-read_file({"path": "src/tools/list-directory.tool.ts"})
-grep_search({"query": "webSearch|web_search|fetchPage|searchWeb", "isRegexp": true})
-read_file({"path": "src/thinking.ts"})
-read_file({"path": "tests/session.test.ts"})
-run_shell_command({"command": "grep -rn \"webSearch\\|web_search\\|fetchPageContent\" ...
-run_shell_command({"command": "git log --oneline | head -20; echo \"---\"; git status ...
-run_shell_command({"command": "git show cca9238 --stat; echo \"===\"; git show cca9238...
-replace_string_in_file({"path": "README.md", "old_text": ...
-replace_string_in_file({"path": "README.md", "old_text": ...
-replace_string_in_file({"path": "README.md", "old_text": ...
-read_file({"path": "README.md"})
-grep_search({"query": "web|search", "isRegexp": true, "includePattern": "README.md"})
-</pre></details>
-
-**Observations:**
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the issue and made precise adjustments instead of rewriting the entire file.
-
-It also used the `replace_string_in_file` tool correctly. Small models often struggle with this tool or avoid it entirely.
-
----
-
-### Ollama: ornith-1.5:9b ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-read_file({"path":"biome.json"})
-read_file({"path":"tsconfig.json"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-list_directory({"path":"docs"})
-list_directory({"path":".vscode"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/utils.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"tests/tools.test.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-run_shell_command({"command":"cd /testbed 2\u003e/dev/null || cd . ; git log --oneline -20 2\u003e/dev/null; echo \"---TAGS---\"; git tag 2\u003e/dev/null; echo \"---VERSION---\"; node -e \"console.log(require('./package.json').version)\""})
-read_file({"path":".vscode/settings.json"})
-read_file({"path":".gitignore"})
-run_shell_command({"command":...
-run_shell_command({"command":...
-run_shell_command({"command":...
-run_shell_command({"command":...
-run_shell_command({"command":...
-run_shell_command({"command":...
-run_shell_command({"command":...
-grep_search({"query":"web[sS]earch|tavily|WebSearch|webSearch","isRegexp":true})
-run_shell_command({"command":...
-write_file({"path":"README.md","content":...
-run_shell_command({"command":...
-run_shell_command({"command":...
-</pre></details>
-
-**Observations:**
-
-I had to interrupt the agent because it was in a very annoying "Actually, let me reconsider" loop.
-
-At this point it had already scanned the project, checked last git commits, and noticed the missing feature.
-
-I told it to "stop reconsidering and finish the job", and the agent finally made the update with precise adjustments.
-
-I am gonna count it as correct.
-
----
-
-### Ollama: gemma4:12b-it-qat ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"README.md"})
-list_directory({"path":"docs"})
-read_file({"path":"docs/ollama.md"})
-write_file({"content":...
-</pre></details>
-
-**Observations:**
-
-It mostly corrected `README.md`, but did not remove every reference to web search.
-
----
-
-### Ollama: qwen3.5:9b-q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"docs/ollama.md"})
-list_directory({"path":"tools"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/utils.ts"})
-list_directory({"path":"tests"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"LICENSE"})
-list_directory({"path":"tests"})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-</pre></details>
-  
-**Observations:**
-
-It scanned the files correctly but did not notice the issue.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: bonsai-2:9b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-list_directory({"path":"src"})
-read_file({"path":"src/cli.ts"})
-list_directory({"path":"docs"})
-read_file({"path":"README.md"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/settings.ts"})
-list_directory({"path":"./AGENTS.md"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/tools/index.ts"})
-write_file({"path":"README.md","content":...
-</pre></details>
-
-**Observations:**
-
-It scanned the files correctly but did not notice the issue.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/mistralai/Ministral-3-8B-Instruct-2512-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-list_directory({"path":"docs"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-web_search({"query":"what is ollama and how would you write a modern Node js project README.md"})
-read_file({"path":"README.md","start_line":1,"end_line":50})
-</pre></details>
-
-**Observations:**
-
-The agent did not scan the project correctly and couldn't even use a tool to update the file.
-
----
-
-### Ollama: ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-The agent only read `README.md` and `package.json`, spent thousands of tokens in reasoning, and in the end, when it was about to call the update tool, it stopped.
-
----
-
-# 2B-dense & 8B-MoE class models
-
-### Ollama: qwen3.5:2b ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":""})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-list_directory({"path":"src/"})
-grep_search({"query":"AGENTS","isRegexp":true})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"/src/settings.ts"})
-read_file({"path":"settings.ts"})
-grep_search({"query":"settings.ts","includePattern":"src/**/settings.ts","maxResults":1})
-run_shell_command({"command":"find . -name \"settings.ts\" 2\u003e/dev/null"})
-run_shell_command({"command":"cat src/settings.ts 2\u003e/dev/null || echo \"File not found\""})
-run_shell_command({"command":"cat src/run.ts 2\u003e/dev/null | head -100"})
-run_shell_command({"command":"cat src/io.ts 2\u003e/dev/null | head -150"})
-run_shell_command({"command":"ls -la src/tools/"})
-run_shell_command({"command":"cat src/tools/index.ts 2\u003e/dev/null"})
-run_shell_command({"command":"find . -name \"AGENTS*\" -o -name \".localai/*\" ...
-run_shell_command({"command":"ls -la /.localai 2\u003e/dev/null || echo \"Directory ...
-run_shell_command({"command":"cat node_modules/@types/node/package.json | grep -A5 ...
-write_file({"path":"README.md","content":...
-grep_search({"query":"# localai$|\\#.*feature$|\\#.*setup$|\\#.*install$|## ...
-run_shell_command({"command":"ls -la src/bin/ 2\u003e/dev/null \u0026\u0026 head ...
-run_shell_command({"command":"find . -name \"*localai*\" 2\u003e/dev/null | grep ...
-read_file({"path":"package.json"})
-run_shell_command({"command":"cat README.md"})
-read_file({"path":"README.md","start_line":30})
-</pre></details>
-
-**Observations:**
-
-The model struggled to use the tools correctly, then gave up and relied only on the shell tool.
-
-It scanned the files correctly but did not notice the issue.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/inclusionAI/Ling-3.0-tiny-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"biome.json"})
-read_file({"path":"LICENSE"})
-read_file({"path":".gitignore"})
-read_file({"path":"src/index.ts"})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-list_directory({"path":"tests"})
-file_search({"query":"*.md"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/tools.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-read_file({"path":"tests/tools.test.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"docs/ollama.md"})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It made adjustments to `README.md` but did not notice that web search had been removed.
-
----
-
-### oMLX: SirSahOl/K2-Horizon-0.9B-chat-mlx-8bit ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path": "."})
-read_file({"path": "README.md"})
-read_file({"path": "package.json"})
-read_file({"path": "tsconfig.json"})
-read_file({"path": "biome.json"})
-read_file({"path": "AGENTS.md"})
-read_file({"path": "docs/ollama.md"})
-list_directory({"path": "src"})
-read_file({"path": "tests"})
-list_directory({"path": "tests"})
-read_file({"path": "src/cli.ts"})
-read_file({"path": "src/settings.ts"})
-read_file({"path": "src/io.ts"})
-read_file({"path": "src/session.ts"})
-file_search({"query": "AGENTS.md"})
-write_file({"path": "README.md", "content": ...
-file_search({"query": "AGENTS.md", "includePattern": "*.md"})
-web_search({"query": "AGENTS.md"})
-write_file({"path": "README.md", "content": ...
-read_file({"path": "README.md"})
-write_file({"path": "README.md", "content": ...
-write_file({"path": "README.md", "content": ...
-write_file({"path": "README.md", "content": ...
-</pre></details>
-
-**Observations:**
-
-A 0.9B model's ability to maintain coherence during a long agent session is impressive.
-
-However, it did not scan the project correctly and missed the goal.
-
----
-
-### Ollama: gemma4:e2b-it-qat ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"end_line":500,"path":"README.md","start_line":1})
-list_directory({"path":"src/"})
-list_directory({"path":"tests/"})
-write_file({"content":...
-</pre></details>
-
-**Observations:**
-
-It only read `README.md` and listed some files, then rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/LiquidAI/LFM2.5-8B-A1B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md","start_line":1,"end_line":100})
-read_file({"path":"package.json","start_line":1,"end_line":50})
-list_directory({"path":"src"})
-read_file({"path":"src/cli.ts","start_line":1,"end_line":100})
-read_file({"path":"settings.ts","start_line":1,"end_line":100})
-read_file({"path":"src/settings.ts","start_line":1,"end_line":100})
-read_file({"path":"src/settings.ts","start_line":1,"end_line":100})
-replace_string_in_file({"path":"README.md","old_text":...
-</pre></details>
-
-**Observations:**
-
-It made it to the end, but every step was incorrect.
-
-It did not read the important files. It used the tools incorrectly. The `README.md` adjustment added duplicated sections.
-
----
-
-### Ollama: hf.co/bartowski/MiniCPM5-2B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-</pre></details>
-
-**Observations:**
-
-The agent read only `package.json` and `README.md`, then decided that everything was up to date.
-
----
-
-### Ollama: hf.co/JetBrains/Mellum2-12B-A2.5B-Thinking-GGUF-Q4_K_M:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json","start_line":1,"end_line":100})
-read_file({"start_line":1,"end_line":100,"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-The agent read only `package.json` and `README.md`, then decided that everything was up to date.
-
----
-
-### Ollama: hf.co/JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-The agent read only `package.json` and `README.md`.
-
-After thousands of tokens spent in a reasoning loop, it finally called a tool to overwrite `README.md`.
-
-The only change? A single trailing newline was removed. I then stopped the agent.
-
----
-
-# Aggressive quantizations
-
-### Ollama: batiai/qwen3.8-27b:iq3 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/utils.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"docs/ollama.md"})
-grep_search({"query":"webSearch|web-search|tavily|web_search|webSearch|chrome|chromePath|search the web|fetch web"})
-run_shell_command({"command":"cd /Users/pipiwu/aiwork/mindpal/.claude/projects/-Users-pipiwu-aiwork-mainmindpal/m...
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; pwd; echo \"---\"; grep -rn \"web\\|Web\\|tavily\\|...
-run_shell_command({"command":"grep -rn \"web\\|Web\\|tavily\\|Tavily\\|chrome\\|browser\\|fetch\" src/ tests/ doc...
-read_file({"path":"src/tools/file-search.tool.ts","start_line":1,"end_line":40})
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git log --oneline -15 2\u003e/dev/null; echo \"=== ...
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; git show d50a3c6 --stat 2\u003e/dev/null; echo \"==...
-run_shell_command({"command":"cd \"$(pwd)\" 2\u003e/dev/null; grep -rn \"web\\|search the\\|web-search\\|tavily\\|fetch\" README.md"})
-replace_string_in_file({"path":"README.md","old_text":...
-replace_string_in_file({"path":"README.md","old_text":...
-replace_string_in_file({"path":"README.md","old_text":...
-</pre></details>
-
-**Observations:**
-
-This model runs very slowly on my machine, but I really wanted to see how it would perform with 3-bit quantization.
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the missing feature and made precise adjustments to `README.md` instead of rewriting the entire file.
-
-The only issue was a hallucinated working directory in a Bash command, but overall, the output was flawless.
-
----
-
-### Ollama: hf.co/AtomicChat/Ornith-1.5-35B-A3B-GGUF:IQ3_XXS ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/utils.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/tools/utils.ts"})
 read_file({"path":"src/tools/file-search.tool.ts"})
 read_file({"path":"src/tools/grep-search.tool.ts"})
 read_file({"path":"src/tools/list-directory.tool.ts"})
@@ -1374,394 +117,283 @@ read_file({"path":"src/tools/read-file.tool.ts"})
 read_file({"path":"src/tools/write-file.tool.ts"})
 read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
 read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"biome.json"})
-read_file({"path":".gitignore"})
-read_file({"path":"tests/settings.test.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/tools.test.ts"})
-run_shell_command({"command":"cd \"$(git rev-parse --show-toplevel 2\u003e/dev/null || ec...
-run_shell_command({"command":"echo \"=== HEADERS in README ===\"; grep -n '^#' README.md;...
-write_file({"content":..."path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It scanned the project correctly and checked git commits
-
-It noticed the missing feature and rewrote `README.md` coherently.
-
----
-
-### Ollama: hf.co/batiai/Qwen3.8-27B-GGUF:Q2_K_S ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-file_search({"query":"README*"})
-read_file({"path":"README.md","start_line":1,"end_line":200})
-read_file({"path":"package.json","start_line":1,"end_line":100})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts","start_line":1,"end_line":200})
-list_directory({"path":"src/tools"})
-list_directory({"path":"tests"})
-read_file({"path":"src/utils.ts","start_line":1,"end_line":150})
-read_file({"path":"src/session.ts","start_line":1,"end_line":120})
-run_shell_command({"command":"git log --oneline -20"})
-read_file({"path":"src/run.ts","start_line":1,"end_line":120})
-read_file({"path":"src/tools/index.ts","start_line":1,"end_line":100})
-read_file({"path":"docs/ollama.md","start_line":1,"end_line":100})
-grep_search({"query":"web|search|tavily","isRegexp":true,"includePattern":"src/**","maxResults":30})
-read_file({"path":"src/settings.ts","start_line":1,"end_line":100})
-read_file({"path":"src/tools/utils.ts","start_line":1,"end_line":120})
-read_file({"path":"src/run.ts","start_line":120,"end_line":220})
-grep_search({"query":"webSearch|web_search|web-search","isRegexp":true,"includePattern":"src/**","maxResults":20})
-run_shell_command({"command":"cat docs/ollama.md | head -5; echo ---; cat .gitignore; echo ---; ls -la"})
-read_file({"path":"src/io.ts","start_line":1,"end_line":150})
-read_file({"path":"src/thinking.ts","start_line":1,"end_line":80})
-run_shell_command({"command":"git log --oneline -1; git show --stat d50a3c6 | head -20; git status --short"})
-run_shell_command({"command":"grep -rn \"webSearch\\|web-search\" src/ || echo \"no web search references in src/\""})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md","start_line":1,"end_line":60})
-read_file({"path":"src/tools/list-directory.tool.ts","start_line":1,"end_line":30})
-</pre></details>
-
-**Observations:**
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the missing feature and rewrote `README.md` with precise adjustments.
-
----
-
-### Ollama: bonsai-2:27b ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"README.md"})
-read_file({"path":"package.json"})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-list_directory({"path":"tests"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/run.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/thinking.ts"})
-grep_search({"query":"web|tavily|fetch|browser|chrome","isRegexp":false,"maxResults":50})
-grep_search({"query":"web_search|webSearch|tavily|chrome|browser","isRegexp":true,"maxResults":50})
-grep_search({"query":"web-search|puppeteer","isRegexp":true,"includePattern":"package-lock.json","maxResults":30})
-read_file({"path":"src/io.ts"})
-grep_search({"query":"import|require","isRegexp":false,"includePattern":"src/**","maxResults":100})
-grep_search({"query":"import.*from","isRegexp":true,"includePattern":"src/*","maxResults":80})
-run_shell_command({"command":"cd \"$(dirname ~ 2\u003e/dev/null || true)\" 2\u003e/dev/null; git -C . log...
-grep_search({"query":"dotenv|fast-glob","isRegexp":true,"maxResults":30})
-run_shell_command({"command":"git log --oneline -15 2\u003e\u00261; echo \"---STATUS---\"; git status 2...
-run_shell_command({"command":"git show d50a3c6 --stat; echo \"=== README diff ===\"; git show d50a3c6 -- README.md"})
-run_shell_command({"command":"git show d50a3c6 -- package.json src/tools/index.ts"})
-write_file({"path":"README.md","content":...
-run_shell_command({"command":"ls node_modules 2\u003e/dev/null | head; echo \"--- node/npm versions ---\";...
-run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 npm install --package-lock-only 2\u003e\u00261 | ...
-run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 grep -c \"web-search\\|puppeteer\" package-lock.j...
-run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 echo \"=== README ===\" \u0026\u0026 cat README.m...
-run_shell_command({"command":"cd \"$(pwd)\" \u0026\u0026 git add README.md package-lock.json \u0026\u0026 ...
-</pre></details>
-
-**Observations:**
-
-The agent correctly scanned the project and even checked the commit history.
-
-During the run, I got a little impatient and stopped the agent at the beginning of an “Actually, let me reconsider” loop, telling it to “stop reconsidering and finish the task.”
-
-It identified the missing feature and made precise adjustments to `README.md`.
-
-It also updated `package-lock.json` and committed the changes, which I wasn't happy about since that was outside the scope of the task. Still, I'll count it as correct.
-
-This model is a specialized quantization of Qwen3.8 27B that retains most of its intelligence while using a fraction of the memory. Very impressive.
-
-### oMLX: prism-ml/Ternary-Bonsai-2-27B-mlx-2bit ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path": "."})
-read_file({"path": "README.md"})
-read_file({"path": "package.json"})
-list_directory({"path": "src"})
-list_directory({"path": "docs"})
-list_directory({"path": "tests"})
-read_file({"path": "src/cli.ts"})
-read_file({"path": "src/settings.ts"})
-list_directory({"path": "src/tools"})
-read_file({"path": "src/run.ts"})
-read_file({"path": "src/session.ts"})
-read_file({"path": "src/utils.ts"})
-read_file({"path": "src/thinking.ts"})
-read_file({"path": "src/io.ts"})
-read_file({"path": "src/tools/index.ts"})
-read_file({"path": "tsconfig.json"})
-read_file({"path": "docs/ollama.md"})
-run_shell_command({"command": "cd /workspace 2>/dev/null || pwd; git log --oneline -20 ...
-read_file({"path": "LICENSE"})
-read_file({"path": "biome.json"})
-grep_search({"query": "web.?search|webSearch|web_search|Tavily|tavily|chromePath", ...
-read_file({"path": "src/tools/run-shell-command.tool.ts"})
-read_file({"path": "src/tools/utils.ts"})
-read_file({"path": "package-lock.json", "start_line": 1, "end_line": 80})
-read_file({"path": "src/tools/file-search.tool.ts"})
-read_file({"path": "src/tools/grep-search.tool.ts"})
-list_directory({"path": ".vscode"})
-read_file({"path": "src/tools/list-directory.tool.ts"})
-read_file({"path": "src/tools/write-file.tool.ts"})
-run_shell_command({"command": "wc -l src/*.ts src/tools/*.ts tests/*.ts docs/ollama.md ...
-read_file({"path": ".vscode/settings.json"})
-read_file({"path": "tests/tools.test.ts"})
-read_file({"path": "src/tools/read-file.tool.ts"})
-read_file({"path": "src/tools/replace-string-in-file.tool.ts"})
-grep_search({"isRegexp": true, "query": "dotenv|\\.env"})
-run_shell_command({"command": "ls node_modules/@lamartinecabral 2>/dev/null; npm test ...
-run_shell_command({"command": "ls node_modules 2>/dev/null | head -50; echo \"count: ...
-run_shell_command({"command": "pwd; ls -la | head -20; npm test 2>&1 | head -40"})
-run_shell_command({"command": "npm install 2>&1 | tail -15"})
-run_shell_command({"command": "grep -c \"web-search\" package-lock.json; grep ...
-write_file({"path": "README.md", "content":...
-</pre></details>
-
-**Observations:**
-
-The agent thoroughly scanned the project and even checked the commit history.
-
-It noticed the missing feature and made coherent adjustments to `README.md`.
-
----
-
-### Ollama: hf.co/AtomicChat/Flint-GGUF:IQ2_XXS ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-read_file({"path":"."})
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"biome.json"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-list_directory({"path":"docs"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"src/tools"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/tools/index.ts"})
 read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/thinking.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-read_file({"path":"tests/tools.test.ts"})
-run_shell_command({"command":"git log --oneline -20 \u0026\u0026 git status --short | head -30"})
-read_file({"path":".gitignore"})
-read_file({"path":".vscode"})
-list_directory({"path":".vscode"})
-read_file({"path":".vscode/settings.json"})
-grep_search({"query":"webSearch|web-search|web_search|web fetch|web search","isRegexp":true,"maxResults":30})
-grep_search({"query":"provider\\.ts|getProvider|baseURL|apiKey","isRegexp":true,"maxResults":30})
-read_file({"path":"src/tools/write-file.tool.ts"})
-replace_string_in_file({"path":"src/tools/replace-string-in-file.tool.ts","old_text":...
-list_directory({"path":"."})
-read_file({"path":"docs/ollama.md"})
-write_file({"path":"README.md","content":...
-read_file({"path":"README.md"})
-replace_string_in_file({"path":"README.md","old_text":...
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It was very interesting to see a 2-bit quantized MoE model succeed at this test.
-
-It scanned the project correctly, but only identified the missing feature after checking the Git history.
-
-It made some incorrect tool calls along the way, but ultimately produced the correct `README.md`.
-
----
-
-### Ollama: hf.co/AtomicChat/Ornith-1.5-35B-A3B-GGUF:IQ2_S ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-read_file({"path":"tsconfig.json"})
-read_file({"path":"biome.json"})
-read_file({"path":".gitignore"})
-list_directory({"path":"src"})
-list_directory({"path":"docs"})
-list_directory({"path":"tests"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"docs/ollama.md"})
-read_file({"path":"src/run.ts"})
-read_file({"path":"src/session.ts"})
-read_file({"path":"src/utils.ts"})
-read_file({"path":"src/settings.ts"})
-read_file({"path":"src/io.ts"})
-read_file({"path":"src/thinking.ts"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/cli.ts","start_line":1})
-read_file({"path":"src/tools/index.ts"})
-read_file({"path":"src/tools/utils.ts"})
-read_file({"path":"src/tools/list-directory.tool.ts"})
-read_file({"path":"src/tools/read-file.tool.ts"})
-read_file({"path":"src/tools/write-file.tool.ts"})
-read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
-read_file({"path":"src/tools/file-search.tool.ts"})
-read_file({"path":"src/tools/grep-search.tool.ts"})
-read_file({"path":"src/tools/run-shell-command.tool.ts"})
-read_file({"path":"tests/helpers.test.ts"})
-read_file({"path":"tests/session.test.ts"})
-read_file({"path":"tests/settings.test.ts"})
-read_file({"path":"tests/tools.test.ts"})
-write_file({"content":..., "path":"README.md"})
-read_file({"path":"README.md"})
-</pre></details>
-
-**Observations:**
-
-It did notice the missing feature but the updated `README.md` had no fix about it.
-
-### Ollama: hf.co/prism-ml/Bonsai-27B-gguf:Q1_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json"})
-read_file({"path":"README.md"})
-list_directory({"path":"docs"})
-list_directory({"path":"src"})
-list_directory({"path":"tests"})
-read_file({"path":"src/cli.ts"})
-read_file({"path":"docs/ollama.md"})
 read_file({"path":"biome.json"})
 file_search({"query":"AGENTS.md"})
-read_file({"path":"src/tools.ts"})
-grep_search({"query":"AGENTS.md","isRegexp":false,"maxResults":5})
+run_shell_command({"command":"git log --oneline -20 && echo \"---STATUS---\" && git status"})
+grep_search({"query":"web.search|web_search|tavily|ollama|web-search","isRegexp":true,"maxResults":30})
+file_search({"query":"CONTRIBUTING*"})
+file_search({"query":"AGENTS*"})
+run_shell_command({"command":"git log --all --oneline --grep=\"web\" -i | head -20"})
+run_shell_command({"command":"git log --oneline --all -- src/tools/ | head -20"})
+run_shell_command({"command":"git show --stat $(git log --all --format=%H | head -1) 2>/dev/null | head -30; echo \"---\"; git log --oneline -1 -- README.md"})
+run_shell_command({"command":"git branch -a && echo \"---CURRENT---\" && git log --oneline -3"})
+run_shell_command({"command":"git log --all --oneline --grep=\"web-search\" -i | head -30"})
+run_shell_command({"command":"git branch -a && echo \"---ALL REFS---\" && git show-ref | head -30 && echo \"---REMOTES---\" && git remote -v"})
+run_shell_command({"command":"git log --oneline main | wc -l && echo \"---HEAD---\" && git rev-parse HEAD"})
+run_shell_command({"command":"git merge-base --is-ancestor 17d9a4a HEAD && echo \"17d9a4a is ancestor of HEAD\" || echo \"17d9a4a NOT ancestor of HEAD\"; git merge-base --is-ancestor e0c0a0d HEAD && echo \"e0c0a0d is ancestor of HEAD\" || echo \"e0c0a0d NOT ancestor of HEAD\""})
+run_shell_command({"command":"git log --all --oneline | grep -i \"web-search\\|web_search\\|web search\" | head -30"})
+run_shell_command({"command":"git log --oneline --all -- src/tools/web_search* src/tools/webFetch* src/tools/fetch_page_content* 2>/dev/null | head -20"})
+run_shell_command({"command":"git log --oneline --diff-filter=D -- src/tools/ | head -20"})
+run_shell_command({"command":"git log --oneline --all -- src/tools/ | grep -iE \"remove|delete|drop|revert|reset|simplify\" | head -20"})
+run_shell_command({"command":"git show --stat 56c417f | head -40"})
+run_shell_command({"command":"git log --oneline --diff-filter=D --all -- src/tools/web-search.tool.ts src/tools/web_search.tool.ts 2>/dev/null | head -10"})
+run_shell_command({"command":"git log --all --oneline -- src/tools/index.ts | head -30"})
+run_shell_command({"command":"ls node_modules/ | grep -i \"web\\|search\\|puppeteer\\|extract\" || echo \"No web search packages in node_modules\""})
+run_shell_command({"command":"cat package.json | grep -i \"web\\|search\" || echo \"No web/search deps in package.json\""})
+run_shell_command({"command":"ls src/tools/"})
+run_shell_command({"command":"ls -la src/cli.ts && echo \"---\" && git show 7a98e89 --stat | grep -i \"web\\|search\" | head -10"})
+run_shell_command({"command":"git show 7a98e89 -- src/tools/index.ts | head -40"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+run_shell_command({"command":"npm run typecheck 2>&1 | tail -5"})
+run_shell_command({"command":"npm test 2>&1 | tail -15"})
+</pre></details>
+
+**Total tokens:** 24625
+
+**Settings:** reasoning high, temperature 1.0, top_p 0.95
+
+**Observations:**
+
+The agent correctly analyzed the project, identified the missing feature, and traced the Git history until it found the exact commit that removed it.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Adds a new "Tools" section. (**Acceptable**)
+- Minor adjustments in other sections. (**Acceptable**)
+
+---
+
+## 30B-sparse class
+
+### llama.cpp: AtomicChat/gemma-4-26B-A4B-it-GGUF:IQ4_XS ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
 list_directory({"path":"src/tools"})
-grep_search({"query":"AGENTS.md","isRegexp":false,"maxResults":5,"includePattern":"node_modules/**"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"README.md"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/utils.ts"})
+write_file({"content":...
+</pre></details>
+
+**Total tokens:** 15162
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 64
+
+**Observations:**
+
+The agent correctly analyzed the project.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Minor adjustments. (**Acceptable**)
+
+---
+
+### llama.cpp: AtomicChat/Ornith-1.5-35B-A3B-GGUF:IQ3_XXS ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/tools.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/settings.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":".gitignore"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/session.test.ts"})
 read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"LICENSE"})
+run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -20"})
+run_shell_command({"command":"cd /app/localai && git log --oneline -10 2>&1"})
+run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -10; echo \"---LINT---\"; npm run lint 2>&1 | tail -15"})
+grep_search({"query":"web|tavily|fetch|web-search","isRegexp":true,"includePattern":"src/**"})
+grep_search({"query":"web-search|lamartinecabral","isRegexp":true})
+write_file({"content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Total tokens:** 28018
+
+**Settings:** reasoning enabled, temp = 0.6, top-p = 0.95, top-k = 20
+
+**Observations:**
+
+The agent correctly analyzed the project.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Adds a new "Tools" section. (**Acceptable**)
+- Improvements in other sections. (**Acceptable**)
+
+---
+
+### llama.cpp: AtomicChat/Flint-GGUF:IQ2_XXS ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+read_file({"path":"."})
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":"src"})
+read_file({"path":"docs"})
+read_file({"path":"tests"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/tools"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":".vscode"})
+read_file({"path":"tests"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"tests"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"tests"})
+read_file({"path":"docs"})
+read_file({"path":"tests"})
+read_file({"path":".gitignore"})
+read_file({"path":"LICENSE"})
+run_shell_command({"command":"find . -type f -not -path './node_modules/*' -not -path './.git/*' -not -path './.vscode/*' -not -path './.DS_Store' | sort"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":".vscode"})
+read_file({"path":".vscode"})
+run_shell_command({"command":"ls -la /workspace 2>/dev/null || ls -la .; echo \"---\"; git ls-files | head -50"})
+read_file({"path":".vscode/settings.json"})
+run_shell_command({"command":"git log --oneline -20; echo \"---\"; git status --short"})
+run_shell_command({"command":"git log --oneline --all -- README.md | head -20; echo \"---\"; git show --stat HEAD --name-only | head -30; echo \"---\"; git log --all --oneline -- '*CONTRIBUTING*' '*contributing*' | head -10"})
+run_shell_command({"command":"node --version; echo \"---\"; npx tsx --version 2>/dev/null | head -2; echo \"---\"; node src/cli.ts --help 2>&1 | head -60"})
+run_shell_command({"command":"git show 4e3ccfe -- README.md | head -120; echo \"=====\"; git show 7a98e89 -- README.md | head -120"})
+grep_search({"query":"CHROME_PATH|webSearch|web_search|websearch","isRegexp":false})
+grep_search({"query":"webSearch|CHROME_PATH|web-search|webSearchSettings","isRegexp":false})
+grep_search({"query":"CHROME_PATH|webSearch|web-search|chromePath","isRegexp":true})
+run_shell_command({"command":"grep -rn \"CHROME_PATH\\|chromePath\\|webSearch\" src/ docs/ --include=\"*\" | head -40"})
+run_shell_command({"command":"grep -rn \"web\" src/ --include=\"*.ts\" -i | head -30; echo \"=====\"; grep -rn \"CHROME\" src/ docs/ -i | head -10"})
+run_shell_command({"command":"grep -rni \"web\" src --include=\"ts\" | head -30"})
+run_shell_command({"command":"cat src/utils.ts | head -20; echo \"EXIT=$?\""})
+run_shell_command({"command":"grep -rni \"web\" src | wc -l; grep -rni \"web\" src | head -30"})
+run_shell_command({"command":"grep -rni \"search\" src | head -40"})
+fetch_page_content({"url":"https://github.com/lamartinecabral/web-search"})
+run_shell_command({"command":"git log --oneline -15 -- src/cli.ts; echo \"=====\"; git diff HEAD --stat | tail -5"})
+run_shell_command({"command":"git log -p --follow -- src/cli.ts | grep -n \"assertModel\" | head -40"})
+run_shell_command({"command":"git log -S \"options.model ?? settings.model\" --oneline -- src/cli.ts"})
+run_shell_command({"command":"git show f6bf97b -- src/cli.ts | head -100"})
+run_shell_command({"command":"git log -S \"webSearch\" --oneline | head -20"})
+run_shell_command({"command":"git show 17d7a4a --stat | head -30; echo \"=====\"; git show 17d7a4a -- src | head -150"})
+run_shell_command({"command":"git log -S \"webSearch\" --oneline --all | head; echo \"=====\"; git grep -n \"webSearch\" $(git rev-list --all | head -50) -- src 2>/dev/null | head -20"})
+run_shell_command({"command":"git log --oneline --all --diff-filter=D -- src/tools/web-search.tool.ts | head; echo \"=====\"; git log --oneline -20 -- src/tools/index.ts"})
+run_shell_command({"command":"git show 7a98e89 --stat | head -60"})
+run_shell_command({"command":"git show 7a98e89 -- README.md docs/ollama.md src/utils.ts src/tools/index.ts src/cli.ts src/session.ts src/settings.ts tests/tools.test.ts"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+run_shell_command({"command":"grep -in \"web\\|tavily\\|tubily\\|lawt\\|ollama\" README.md; echo \"GREP_EXIT=$?\"; echo \"=====\"; grep -c '^```' README.md; echo \"=====\"; grep -c '^## ' README.md; echo \"=====\"; grep -c '^- ' README.md"})
+read_file({"path":"README.md"})
+run_shell_command({"command":"git diff --stat; echo \"=====\"; git status --short"})
+</pre></details>
+
+**Total tokens:** 64370
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20
+
+**Observations:**
+
+The agent correctly analyzed the project, got suspicious about the missing feature and traced the Git history until it found the exact commit that removed it.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Adds a new "Tools" section. (**Acceptable**)
+- Minor adjustments in other sections. (**Acceptable**)
+
+---
+
+## 2B-dense & 8B-sparse classes
+
+### llama.cpp: IFM/K2-Horizon-0.9B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"AGENTS.md"})
+read_file({"path":"docs/index.md"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"docs/index.md"})
+list_directory({"path":"docs"})
+read_file({"path":"docs/ollama.md"})
 write_file({"path":"README.md","content":...
 read_file({"path":"README.md"})
 </pre></details>
 
-**Observations:**
+**Total tokens:** 10799
 
-It is very impressive to see a 1-bit quantized model run a session and make it to the end coherently.
-
-But it did not notice the missing feature, completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: batiai/gemma4-26b:iq3 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-list_directory({"path":"."})
-read_file({"path":"package.json","start_line":1})
-read_file({"path":"README.md","start_line":1})
-list_directory({"path":"src"})
-list_directory({"path":"src/tools"})
-read_file({"path":"src/cli.ts","start_line":1})
-list_directory({"path":"docs"})
-read_file({"path":"docs/ollama.md","start_line":1})
-write_file({"content":"...
-write_file({"content":"...
-</pre></details>
+**Settings:** reasoning high, temperature 0.6, top_p 0.95
 
 **Observations:**
 
-It was interesting to see a 3-bit quantized model in action.
-
-It was able to maintain coherence throughout the run; the only issue was a duplicated tool call at the end.
-
-It scanned the files correctly but did not notice the missing feature.
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/mradermacher/GLM-4.7-Flash-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
-
-<details><summary><b>Tool calls:</b></summary><pre>
-Since this run was just an extra Q3 run I decided to not include the tool calls log.
-</pre></details>
-
-**Observations:**
-
-Another 3-bit quantized model in action. It made it to the end but did not notice the missing feature. 
-
-It completely rewrote `README.md` and missed the goal.
-
----
-
-### Ollama: hf.co/unsloth/Qwen3.8-27B-GGUF:UD-Q2_K_XL ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-After a very long session where the model analyzed the project correctly, it suddenly stopped.
-
-This model succeded with the 2-bit quantization version from batiai. I'm not sure what is the difference to unsloth.
-
----
-
-### Ollama: hf.co/mradermacher/North-Mini-Code-1.0-i1-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
-
----
-
-### Ollama: hf.co/mradermacher/Laguna-XS-2.1-i1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
-
-**Observations:**
-
-In the end, when the agent was about to make the update tool call, it stopped.
-
-I tried to interact to make it complete the task but it simply could not make final tool call.
+The agent did not notice the missing feature, added several new sections to `README.md` and missed the goal.
 
 ---
 
 # Cheap cloud models
 
-Since the focus is on locally running models, cloud model results are provided for reference only. Therefore, runs using cloud models do not include tool-calling logs.
-
 ### [Hugging Face's Inference Providers](https://huggingface.co/docs/inference-providers)
 
-- **IFM/K2-Horizon-7B:featherless-ai** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **IFM/K2-Horizon-3.7B:featherless-ai** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **IFM/K2-Horizon-MoVA-36B-A4B:featherless-ai** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **meta-models/Muse-Glimmer-30B** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **Qwen/Qwen3.8-27B** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **zai-org/GLM-4.7-Flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - local run failed
-- **InternScience/Agents-A1-4B:featherless-ai** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
-- **prism-ml/Ternary-Bonsai-27B-gguf** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
-- **prism-ml/Ternary-Bonsai-27B-AWQ-4bit** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **ibm-granite/granite-4.2-30b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **Qwen/Qwen3.5-9B** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
@@ -1773,12 +405,6 @@ Since the focus is on locally running models, cloud model results are provided f
 
 ### [Ollama's cloud](https://docs.ollama.com/cloud)
 
-- **minimax-m3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **nemotron-3-super** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **beam** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
-- **gpt-oss:120b** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **gpt-oss:20b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
 - **nemotron-3-nano:30b** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
@@ -1786,31 +412,6 @@ Since the focus is on locally running models, cloud model results are provided f
 
 ### [Openrouter](https://openrouter.ai/)
 
-- **anthropic/claude-haiku-5.5** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **deepseek/deepseek-v3.2** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **deepseek/deepseek-v4.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **google/gemma-4-26b-a4b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **google/gemma-4-31b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **inclusionai/ling-3.0-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **nex-agi/nex-n2.5-pro** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **openai/gpt-5.4-mini** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **openai/gpt-5.6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **poolside/laguna-xs-2.1** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - local run failed
-- **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **recursive/flint-v1.0:free** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **xiaomi/mimo-v2.6-pro** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **z-ai/glm-5.3-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **openai/gpt-5-mini** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
-- **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
-- **qwen/qwen3.6-27b** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
-  - It mostly corrected `README.md`, but did not remove every reference to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
