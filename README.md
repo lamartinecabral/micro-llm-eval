@@ -63,6 +63,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -162,6 +163,44 @@ The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
 - Adds a new "Tools" section. (**Acceptable**)
 - Minor adjustments in other sections. (**Acceptable**)
+
+---
+
+## 8B-dense class
+
+### llama.cpp: ggml-org/gemma-4-12B-it-GGUF:Q4_0 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"README.md"})
+list_directory({"path":"src/tools/"})
+list_directory({"path":"docs/"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/tools/utils.ts"})
+write_file({"content":...
+</pre></details>
+
+**Total tokens:** 16866
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 64
+
+**Observations:**
+
+The agent correctly analyzed the project, noticed the missing feature, and made precise adjustments.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
 
 ---
 
