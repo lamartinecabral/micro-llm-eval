@@ -83,6 +83,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Ornith 1.5 9B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ornith 1.5 35B A3B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 32B                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -98,6 +99,57 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 ---
 
 ## 4B-dense class
+
+### llama.cpp: IFM/K2-Horizon-3.7B-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"biome.json"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/io.ts"})
+list_directory({"path":"tests"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/thinking.ts"})
+list_directory({"path":".git"})
+grep_search({"query":"webSearch|web_search|search","isRegexp":true})
+run_shell_command({"command":"git log --oneline -20 && git status"})
+grep_search({"query":"web|fetch|url|HTTP","isRegexp":true,"includePattern":"src/**"})
+run_shell_command({"command":"npm test --ignore-scripts 2>&1 | tail -20; npm run typecheck 2>&1 | tail -5"})
+replace_string_in_file({"path":"README.md","old_text":...
+replace_string_in_file({"path":"README.md","old_text":...
+replace_string_in_file({"path":"README.md","old_text":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Total tokens:** 19339
+
+This model preserves reasoning across turns.
+
+**Settings:** reasoning high, temp = 1.0, top-p = 0.95, presence-penalty = 1.5
+
+**Observations:**
+
+The agent correctly analyzed the project, noticed the target issue, and made precise adjustments to remove the references using the `replace_string_in_file` tool.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+
+---
 
 ### llama.cpp: IFM/K2-Horizon-3.7B-GGUF:Q8_0 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 
@@ -389,6 +441,58 @@ The agent correctly analyzed the project, identified the missing feature, and tr
 The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
 - Adds a new "Tools" section. (**Acceptable**)
+
+---
+
+### llama.cpp: ornith-ai/Ornith-1.5-9B-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":"LICENSE"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/tools.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":".gitignore"})
+list_directory({"path":".vscode"})
+run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -40"})
+run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -20 && echo \"=== LINT ...
+run_shell_command({"command":"cd /app/localai && git log --oneline -10 2>&1; echo \"=== STATUS ===\"; ...
+write_file({"path":"README.md","content"...
+replace_string_in_file({"path":"README.md","old_text":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Total tokens:** 25117
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20, min-p = 0.0, presence-penalty = 1.5, repeat-penalty = 1.0
+
+**Observations:**
+
+The agent did not notice the target issue. Updated `README.md` by adding a new "Features" section.
 
 ---
 
@@ -711,7 +815,7 @@ read_file({"path":"README.md"})
 
 This model preserves reasoning across turns.
 
-**Settings:** reasoning high, temp = 1.0, top-p = 0.95, top-k = 20
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20
 
 **Observations:**
 
