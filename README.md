@@ -348,25 +348,25 @@ read_file({"path":"src/tools/write-file.tool.ts"})
 read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
 read_file({"path":"src/tools/run-shell-command.tool.ts"})
 read_file({"path":"src/tools/utils.ts"})
-run_shell_command({"command":"cd /app/localai && cat .vscode/settings.json biome.json tsconfig.json .gitignore && ls docs/ && cat LICENSE | head -5"})
+run_shell_command({"command":"cd /app/localai && cat .vscode/settings.json biome.json tsconfig.json .gitignore &...
 read_file({"path":"tests/tools.test.ts"})
 read_file({"path":"tests/session.test.ts"})
 read_file({"path":"tests/helpers.test.ts"})
 read_file({"path":"tests/settings.test.ts"})
-run_shell_command({"command":"cd /app/localai && git show 4e3ccfe --stat && echo \"===README in that commit===\" && git show 4e3ccfe:README.md"})
+run_shell_command({"command":"cd /app/localai && git show 4e3ccfe --stat && echo \"===README in that commit===\"...
 grep_search({"query":"webSearch|web-search|searchWeb|tavily|chromePath|web_search|searchWeb","isRegexp":true,"maxResults":50})
-run_shell_command({"command":"cd /app/localai && git log --all --oneline | head -30 && echo \"===FILES in history===\" && git log --all --diff-filter=A --name-only --oneline | grep -iE \"web|fetch\" | head -20"})
-run_shell_command({"command":"cd /app/localai && git log --all --oneline --diff-filter=D -- src/tools/web-search src/tools/web-search.tool.ts src/tools/fetch-url.tool.ts docs/web-search.md | head -10 && echo \"===check working tree===\" && ls src/tools/ && echo \"===check when README was last touched===\" && git log --oneline -3 -- README.md docs/"})
+run_shell_command({"command":"cd /app/localai && git log --all --oneline | head -30 && echo \"===FILES in histor...
+run_shell_command({"command":"cd /app/localai && git log --all --oneline --diff-filter=D -- src/tools/web-search...
 run_shell_command({"command":"cd /app/localai && git show 17d9a4a --stat | head -60"})
 run_shell_command({"command":"cd /app/localai && git show 7a98e89:README.md | head -60"})
-run_shell_command({"command":"cd /app/localai && git show 17d9a4a:src/tools/web-search.tool.ts && echo \"===index.ts at 17d9a4a===\" && git show 17d9a4a:src/tools/index.ts"})
-run_shell_command({"command":"cd /app/localai && git log --all --oneline -- src/tools/web-search.tool.ts src/tools/web-search/ src/tools/fetch-url.tool.ts | cat && echo \"===current tree check===\" && git ls-tree HEAD --name-only src/tools/ && echo \"===was it in HEAD?===\" && git show HEAD:src/tools/index.ts | grep -E \"web|fetch\" ; echo \"---\" && git show 7a98e89 --stat | grep -E \"web|fetch|tool\" | head -20"})
+run_shell_command({"command":"cd /app/localai && git show 17d9a4a:src/tools/web-search.tool.ts && echo \"===inde...
+run_shell_command({"command":"cd /app/localai && git log --all --oneline -- src/tools/web-search.tool.ts src/too...
 run_shell_command({"command":"cd /app/localai && git show 7a98e89 -- src/tools/index.ts tests/tools.test.ts | cat"})
-run_shell_command({"command":"cd /app/localai && git log --all --oneline -- README.md | tail -5 && echo \"===first README===\" && git show $(git log --all --format=%H -- README.md | tail -1):README.md 2>/dev/null | head -60"})
+run_shell_command({"command":"cd /app/localai && git log --all --oneline -- README.md | tail -5 && echo \"===fir...
 grep_search({"query":"webSearch|web_search|fetch_page_content|tavily|localai/provider","isRegexp":true,"includePattern":"*.ts"})
-run_shell_command({"command":"cd /app/localai && node --test 2>&1 | tail -5 && echo \"===typecheck===\" && npx -y typescript@6.0.3 tsc --noEmit 2>&1 | tail -3 && echo \"===lint===\" && npx -y @biomejs/biome@1.9.4 check src tests 2>&1 | tail -3"})
+run_shell_command({"command":"cd /app/localai && node --test 2>&1 | tail -5 && echo \"===typecheck===\" && npx -...
 run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -5; echo \"===lint===\"; npm run lint 2>&1 | tail -8"})
-write_file({"path":"README.md","content":"# localai\n\n**Local AI With Tools** is a terminal assistant that chats with an OpenAI-compatible model and can use tools to work with files, run shell commands, and search the local workspace.\n\n## Requirements\n\n- Node.js 24 or newer\n- Ollama running locally, or another OpenAI-compatible provider\n\n## Run\n\n```bash\nnpm install\nnpm run install:localai\nlocalai --model <model>\n```\n\nUse `--think <effort>` to set reasoning effort, or `--resume` to continue the session for the current working directory. Options can also be passed as `-m`, `-t`, and `-r`. The selected model and reasoning effort are saved in `~/.localai/settings.json`.\n\n## Using the assistant\n\nEnter a prompt at the terminal. For a multi-line prompt, put `\"\"\"` on a line by itself before and after the text. Available commands are `/exit` or `/quit` to leave, `/export` to save the conversation as JSON, and `/model` to list available models.\n\nThe assistant can browse and edit files in the current workspace, run shell commands, and search the local workspace. Optional instructions load from `./AGENTS.md` or `~/.localai/AGENTS.md`. Sessions are saved under `~/.localai/sessions/` by working directory. See [docs/ollama.md](docs/ollama.md) for Ollama usage tips.\n\n## Tools\n\nThe assistant has the following built-in tools:\n\n| Tool | Description |\n|------|-------------|\n| `list_directory` | List the contents of a directory. If the name ends in `/`, it's a folder, otherwise a file. |\n| `read_file` | Read the contents of a file. You must specify the line range you're interested in. Line numbers are 1-indexed. |\n| `write_file` | Write a file in the workspace. The directory is created if it does not exist, and an existing file is overwritten. |\n| `replace_string_in_file` | Replace a specific string in a file with a new string. |\n| `file_search` | Search for files in the workspace by glob pattern. |\n| `grep_search` | Do a fast text search in the workspace. Use an exact string or regex. |\n| `run_shell_command` | Execute shell commands. |\n\n## Providers\n\nUse `~/.localai/provider.ts` to configure a different OpenAI-compatible model provider:\n\n```ts\nexport default {\n  // Optional: use a non-default model provider\n  baseURL: \"https://api.example.com/v1\",\n  apiKey: \"your-api-key\",\n};\n```\n\n## Development\n\n```bash\nnpm test\nnpm run typecheck\nnpm run lint\n```\n"})
+write_file({"path":"README.md","content":...
 read_file({"path":"README.md"})
 run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -4"})
 </pre></details>
