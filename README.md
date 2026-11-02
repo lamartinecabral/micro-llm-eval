@@ -77,6 +77,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Laguna XS 2.1 33B A3B         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | LFM3 1.7B                     | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
