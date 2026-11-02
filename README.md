@@ -60,6 +60,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 
 | Model name                    | Verdict                                                    |
 | ----------------------------- | ---------------------------------------------------------- |
+| Agents A1 4B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -73,6 +74,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -164,6 +166,51 @@ The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
 - Adds a new "Tools" section. (**Acceptable**)
 - Minor adjustments in other sections. (**Acceptable**)
+
+---
+
+### llama.cpp: InternScience/Agents-A1-4B-Q8_0-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+read_file({"path":"docs/ollama.md"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+file_search({"query":"**/provider.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+run_shell_command({"command":"ls -la . | grep -E '\\.(md|ts)$'"})
+run_shell_command({"command":"ls -la . | grep -i agents"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/tools/utils.ts"})
+write_file({"path":"README.md","content":...
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+write_file({"path":"README.md","content":...
+read_file({"path":".gitignore"})
+list_directory({"path":"tests"})
+run_shell_command({"command":"ls -la . | grep -E '\\.(md|ts|json)$'"})
+read_file({"path":"biome.json"})
+grep_search({"query":"provider\\.ts","isRegexp":false})
+read_file({"path":"src/utils.ts"})
+</pre></details>
+
+**Total tokens:** 16587
+
+**Settings:** reasoning enabled, temp = 0.85, top-p = 0.95, top-k = 20, min-p = 0.0, presence-penalty = 1.1, repeat-penalty = 1.0
+
+**Observations:**
+
+The agent scanned the project correctly but could not notice the target issue. Completely rewrote `README.md` and missed the goal.
 
 ---
 
@@ -416,6 +463,49 @@ The updated `README.md`:
 
 ## 2B-dense & 8B-sparse classes
 
+### llama.cpp: inclusionAI/Ling-3.0-tiny-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":"LICENSE"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/"})
+list_directory({"path":"src/tools"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"docs/ollama.md"})
+run_shell_command({"command":"cat .gitignore"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Total tokens:** 16466
+
+**Settings:** reasoning high, temp = 1.0, top-p = 0.95, top-k = 20
+
+**Observations:**
+
+The agent scanned the project correctly but did not notice the target issue.
+
+The updated `README.md`:
+- Kept all mentions related to the removed feature. (**Incorrect**)
+- Adds a new "Tools" section. (**Acceptable**)
+- Minor adjustments in other sections. (**Acceptable**)
+
+---
+
 ### llama.cpp: IFM/K2-Horizon-0.9B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -445,6 +535,24 @@ read_file({"path":"README.md"})
 **Observations:**
 
 The agent did not notice the missing feature, added several new sections to `README.md` and missed the goal.
+
+---
+
+### llama.cpp: ggml-org/gemma-4-E2B-it-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file{"end_line":100,"path":"README.md","start_line":1}
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Total tokens:** 3303
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 64
+
+**Observations:**
+
+The agent only read `README.md` then refactored the content.
 
 ---
 
