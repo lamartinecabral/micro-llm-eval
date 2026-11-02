@@ -75,6 +75,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -83,6 +84,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Qwen 3 30B A3B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 32B                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3 Coder Next             | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 4B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 9B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 27B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.6 35B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -215,6 +217,55 @@ The agent scanned the project correctly but could not notice the target issue. C
 
 ---
 
+### llama.cpp AtomicChat/Qwen3.5-4B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+read_file({"path":"tsconfig.json"})
+list_directory({"path":"src"})
+read_file({"path":"src/cli.ts"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/thinking.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/utils.ts"})
+list_directory({"path":"src/tools/list-directory.tool.ts"})
+list_directory({"path":"docs"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"docs/ollama.md"})
+list_directory({"path":"tests"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+write_file({"path":"README.md",...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Total tokens:** 22544
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20, min-p = 0.0, presence-penalty = 1.5, repeat-penalty = 1.0
+
+**Observations:**
+
+The agent scanned the project correctly but could not notice the target issue. Completely rewrote `README.md` and missed the goal.
+
+---
+
 ### llama.cpp: ggml-org/gemma-4-E4B-it-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -268,6 +319,69 @@ The agent correctly analyzed the project, noticed the missing feature, and made 
 
 The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
+
+---
+
+### llama.cpp: IFM/K2-Horizon-7B-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+run_shell_command({"command":"pwd && ls -la"})
+file_search({"query":"**/*"})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+run_shell_command({"command":"find src tests docs -type f | sort"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"docs/ollama.md"})
+run_shell_command({"command":"cd /app/localai && git log --oneline -15 && echo \"---STATUS---\" && git status"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/tools/utils.ts"})
+run_shell_command({"command":"cd /app/localai && cat .vscode/settings.json biome.json tsconfig.json .gitignore && ls docs/ && cat LICENSE | head -5"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+run_shell_command({"command":"cd /app/localai && git show 4e3ccfe --stat && echo \"===README in that commit===\" && git show 4e3ccfe:README.md"})
+grep_search({"query":"webSearch|web-search|searchWeb|tavily|chromePath|web_search|searchWeb","isRegexp":true,"maxResults":50})
+run_shell_command({"command":"cd /app/localai && git log --all --oneline | head -30 && echo \"===FILES in history===\" && git log --all --diff-filter=A --name-only --oneline | grep -iE \"web|fetch\" | head -20"})
+run_shell_command({"command":"cd /app/localai && git log --all --oneline --diff-filter=D -- src/tools/web-search src/tools/web-search.tool.ts src/tools/fetch-url.tool.ts docs/web-search.md | head -10 && echo \"===check working tree===\" && ls src/tools/ && echo \"===check when README was last touched===\" && git log --oneline -3 -- README.md docs/"})
+run_shell_command({"command":"cd /app/localai && git show 17d9a4a --stat | head -60"})
+run_shell_command({"command":"cd /app/localai && git show 7a98e89:README.md | head -60"})
+run_shell_command({"command":"cd /app/localai && git show 17d9a4a:src/tools/web-search.tool.ts && echo \"===index.ts at 17d9a4a===\" && git show 17d9a4a:src/tools/index.ts"})
+run_shell_command({"command":"cd /app/localai && git log --all --oneline -- src/tools/web-search.tool.ts src/tools/web-search/ src/tools/fetch-url.tool.ts | cat && echo \"===current tree check===\" && git ls-tree HEAD --name-only src/tools/ && echo \"===was it in HEAD?===\" && git show HEAD:src/tools/index.ts | grep -E \"web|fetch\" ; echo \"---\" && git show 7a98e89 --stat | grep -E \"web|fetch|tool\" | head -20"})
+run_shell_command({"command":"cd /app/localai && git show 7a98e89 -- src/tools/index.ts tests/tools.test.ts | cat"})
+run_shell_command({"command":"cd /app/localai && git log --all --oneline -- README.md | tail -5 && echo \"===first README===\" && git show $(git log --all --format=%H -- README.md | tail -1):README.md 2>/dev/null | head -60"})
+grep_search({"query":"webSearch|web_search|fetch_page_content|tavily|localai/provider","isRegexp":true,"includePattern":"*.ts"})
+run_shell_command({"command":"cd /app/localai && node --test 2>&1 | tail -5 && echo \"===typecheck===\" && npx -y typescript@6.0.3 tsc --noEmit 2>&1 | tail -3 && echo \"===lint===\" && npx -y @biomejs/biome@1.9.4 check src tests 2>&1 | tail -3"})
+run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -5; echo \"===lint===\"; npm run lint 2>&1 | tail -8"})
+write_file({"path":"README.md","content":"# localai\n\n**Local AI With Tools** is a terminal assistant that chats with an OpenAI-compatible model and can use tools to work with files, run shell commands, and search the local workspace.\n\n## Requirements\n\n- Node.js 24 or newer\n- Ollama running locally, or another OpenAI-compatible provider\n\n## Run\n\n```bash\nnpm install\nnpm run install:localai\nlocalai --model <model>\n```\n\nUse `--think <effort>` to set reasoning effort, or `--resume` to continue the session for the current working directory. Options can also be passed as `-m`, `-t`, and `-r`. The selected model and reasoning effort are saved in `~/.localai/settings.json`.\n\n## Using the assistant\n\nEnter a prompt at the terminal. For a multi-line prompt, put `\"\"\"` on a line by itself before and after the text. Available commands are `/exit` or `/quit` to leave, `/export` to save the conversation as JSON, and `/model` to list available models.\n\nThe assistant can browse and edit files in the current workspace, run shell commands, and search the local workspace. Optional instructions load from `./AGENTS.md` or `~/.localai/AGENTS.md`. Sessions are saved under `~/.localai/sessions/` by working directory. See [docs/ollama.md](docs/ollama.md) for Ollama usage tips.\n\n## Tools\n\nThe assistant has the following built-in tools:\n\n| Tool | Description |\n|------|-------------|\n| `list_directory` | List the contents of a directory. If the name ends in `/`, it's a folder, otherwise a file. |\n| `read_file` | Read the contents of a file. You must specify the line range you're interested in. Line numbers are 1-indexed. |\n| `write_file` | Write a file in the workspace. The directory is created if it does not exist, and an existing file is overwritten. |\n| `replace_string_in_file` | Replace a specific string in a file with a new string. |\n| `file_search` | Search for files in the workspace by glob pattern. |\n| `grep_search` | Do a fast text search in the workspace. Use an exact string or regex. |\n| `run_shell_command` | Execute shell commands. |\n\n## Providers\n\nUse `~/.localai/provider.ts` to configure a different OpenAI-compatible model provider:\n\n```ts\nexport default {\n  // Optional: use a non-default model provider\n  baseURL: \"https://api.example.com/v1\",\n  apiKey: \"your-api-key\",\n};\n```\n\n## Development\n\n```bash\nnpm test\nnpm run typecheck\nnpm run lint\n```\n"})
+read_file({"path":"README.md"})
+run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -4"})
+</pre></details>
+
+**Total tokens:** 39837
+
+**Settings:** reasoning high, temp = 1.0, top-p = 0.95
+
+**Observations:**
+
+The agent correctly analyzed the project, identified the missing feature, and traced the Git history until it found the exact commit that removed it.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Adds a new "Tools" section. (**Acceptable**)
 
 ---
 
