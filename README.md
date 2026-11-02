@@ -162,6 +162,8 @@ run_shell_command({"command":"npm test 2>&1 | tail -15"})
 
 **Total tokens:** 24625
 
+This model preserves reasoning across turns.
+
 **Settings:** reasoning high, temp = 1.0, top-p = 0.95
 
 **Observations:**
@@ -216,9 +218,9 @@ read_file({"path":"src/utils.ts"})
 
 **Observations:**
 
-The agent scanned the project correctly but could not notice the target issue. Completely rewrote `README.md` and missed the goal.
-
 ---
+
+The agent scanned the project correctly but could not notice the target issue. Completely rewrote `README.md` and missed the goal.
 
 ### llama.cpp AtomicChat/Qwen3.5-4B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
@@ -377,6 +379,8 @@ run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -4"})
 **Total tokens:** 39837
 
 **Settings:** reasoning high, temp = 1.0, top-p = 0.95
+
+This model preserves reasoning across turns.
 
 **Observations:**
 
@@ -568,6 +572,8 @@ run_shell_command({"command":"git diff --stat; echo \"=====\"; git status --shor
 
 **Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20
 
+This model preserves reasoning across turns.
+
 **Observations:**
 
 The agent correctly analyzed the project, got suspicious about the missing feature and traced the Git history until it found the exact commit that removed it.
@@ -663,6 +669,8 @@ run_shell_command({"command":"cd /app/localai && npm run typecheck"})
 
 **Settings:** reasoning high, temp = 1.0, top-k = 20, top-p = 1.0
 
+This model preserves reasoning across turns.
+
 **Observations:**
 
 The agent scanned the project correctly but did not notice the target issue.
@@ -703,6 +711,8 @@ read_file({"path":"README.md"})
 
 **Settings:** reasoning high, temp = 1.0, top-p = 0.95, top-k = 20
 
+This model preserves reasoning across turns.
+
 **Observations:**
 
 The agent scanned the project correctly but did not notice the target issue.
@@ -740,6 +750,8 @@ read_file({"path":"README.md"})
 
 **Settings:** reasoning high, temp = 0.6, top-p = 0.95
 
+This model preserves reasoning across turns.
+
 **Observations:**
 
 The agent did not notice the missing feature, added several new sections to `README.md` and missed the goal.
@@ -764,7 +776,7 @@ The agent only read `README.md` then refactored the content.
 
 ---
 
-### llama.cpp:  ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+### llama.cpp: LiquidAI/LFM3-1.7B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
 
 <details><summary><b>Tool calls:</b></summary><pre>
 list_directory({"path":"."})
@@ -779,6 +791,8 @@ write_file({"path":"README.md","content":...
 **Total tokens:** 6552
 
 **Settings:** reasoning enabled, temp = 0.1, repeat-penalty = 1.1, top-k = 50
+
+This model preserves reasoning across turns.
 
 **Observations:**
 
