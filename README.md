@@ -68,6 +68,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GLM 4.7 Flash                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -76,6 +77,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| LFM3 1.7B                     | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -576,6 +578,96 @@ The updated `README.md`:
 
 ---
 
+### llama.cpp: bartowski/zai-org_GLM-4.7-Flash-GGUF:IQ3_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+list_directory({"path":"docs"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"~/.localai/AGENTS.md"})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Total tokens:** 13617
+
+**Settings:** reasoning high, temp = 1.0, top-p = 0.95
+
+**Observations:**
+
+The agent scanned the project correctly but did not notice the target issue.
+
+---
+
+### llama.cpp: bartowski/Laguna-XS-2.1-GGUF:IQ3_XXS ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"src/tools"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in_file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"LICENSE"})
+list_directory({"path":".vscode"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+run_shell_command({"command":"cd /app/localai && npm test"})
+run_shell_command({"command":"cd /app/localai && npm run typecheck"})
+</pre></details>
+
+**Total tokens:** 21919
+
+**Settings:** reasoning high, temp = 1.0, top-k = 20, top-p = 1.0
+
+**Observations:**
+
+The agent scanned the project correctly but did not notice the target issue.
+
+---
+
 ## 2B-dense & 8B-sparse classes
 
 ### llama.cpp: inclusionAI/Ling-3.0-tiny-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
@@ -668,6 +760,28 @@ write_file({"path":"README.md","content":...
 **Observations:**
 
 The agent only read `README.md` then refactored the content.
+
+---
+
+### llama.cpp:  ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/run.ts"})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Total tokens:** 6552
+
+**Settings:** reasoning enabled, temp = 0.1, repeat-penalty = 1.1, top-k = 50
+
+**Observations:**
+
+The agent only read a few files then make some adjustments to `README.md` with a new "Source Files" section.
 
 ---
 
