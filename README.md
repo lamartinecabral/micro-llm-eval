@@ -378,9 +378,9 @@ run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -4"})
 
 **Total tokens:** 39837
 
-**Settings:** reasoning high, temp = 1.0, top-p = 0.95
-
 This model preserves reasoning across turns.
+
+**Settings:** reasoning high, temp = 1.0, top-p = 0.95
 
 **Observations:**
 
@@ -570,9 +570,9 @@ run_shell_command({"command":"git diff --stat; echo \"=====\"; git status --shor
 
 **Total tokens:** 64370
 
-**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20
-
 This model preserves reasoning across turns.
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20
 
 **Observations:**
 
@@ -667,9 +667,9 @@ run_shell_command({"command":"cd /app/localai && npm run typecheck"})
 
 **Total tokens:** 21919
 
-**Settings:** reasoning high, temp = 1.0, top-k = 20, top-p = 1.0
-
 This model preserves reasoning across turns.
+
+**Settings:** reasoning high, temp = 1.0, top-k = 20, top-p = 1.0
 
 **Observations:**
 
@@ -709,9 +709,9 @@ read_file({"path":"README.md"})
 
 **Total tokens:** 16466
 
-**Settings:** reasoning high, temp = 1.0, top-p = 0.95, top-k = 20
-
 This model preserves reasoning across turns.
+
+**Settings:** reasoning high, temp = 1.0, top-p = 0.95, top-k = 20
 
 **Observations:**
 
@@ -748,9 +748,9 @@ read_file({"path":"README.md"})
 
 **Total tokens:** 10799
 
-**Settings:** reasoning high, temp = 0.6, top-p = 0.95
-
 This model preserves reasoning across turns.
+
+**Settings:** reasoning high, temp = 0.6, top-p = 0.95
 
 **Observations:**
 
@@ -790,9 +790,9 @@ write_file({"path":"README.md","content":...
 
 **Total tokens:** 6552
 
-**Settings:** reasoning enabled, temp = 0.1, repeat-penalty = 1.1, top-k = 50
-
 This model preserves reasoning across turns.
+
+**Settings:** reasoning enabled, temp = 0.1, repeat-penalty = 1.1, top-k = 50
 
 **Observations:**
 
