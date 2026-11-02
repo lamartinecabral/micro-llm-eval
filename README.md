@@ -133,23 +133,23 @@ file_search({"query":"CONTRIBUTING*"})
 file_search({"query":"AGENTS*"})
 run_shell_command({"command":"git log --all --oneline --grep=\"web\" -i | head -20"})
 run_shell_command({"command":"git log --oneline --all -- src/tools/ | head -20"})
-run_shell_command({"command":"git show --stat $(git log --all --format=%H | head -1) 2>/dev/null | head -30; echo \"---\"; git log --oneline -1 -- README.md"})
+run_shell_command({"command":"git show --stat $(git log --all --format=%H | head -1) 2>/dev/null | head -30; echo ...
 run_shell_command({"command":"git branch -a && echo \"---CURRENT---\" && git log --oneline -3"})
 run_shell_command({"command":"git log --all --oneline --grep=\"web-search\" -i | head -30"})
-run_shell_command({"command":"git branch -a && echo \"---ALL REFS---\" && git show-ref | head -30 && echo \"---REMOTES---\" && git remote -v"})
+run_shell_command({"command":"git branch -a && echo \"---ALL REFS---\" && git show-ref | head -30 && echo \"---REM...
 run_shell_command({"command":"git log --oneline main | wc -l && echo \"---HEAD---\" && git rev-parse HEAD"})
-run_shell_command({"command":"git merge-base --is-ancestor 17d9a4a HEAD && echo \"17d9a4a is ancestor of HEAD\" || echo \"17d9a4a NOT ancestor of HEAD\"; git merge-base --is-ancestor e0c0a0d HEAD && echo \"e0c0a0d is ancestor of HEAD\" || echo \"e0c0a0d NOT ancestor of HEAD\""})
-run_shell_command({"command":"git log --all --oneline | grep -i \"web-search\\|web_search\\|web search\" | head -30"})
-run_shell_command({"command":"git log --oneline --all -- src/tools/web_search* src/tools/webFetch* src/tools/fetch_page_content* 2>/dev/null | head -20"})
+run_shell_command({"command":"git merge-base --is-ancestor 17d9a4a HEAD && echo \"17d9a4a is ancestor of HEAD\" ||...
+run_shell_command({"command":"git log --all --oneline | grep -i \"web-search\\|web_search\\|web search\" | head -3...
+run_shell_command({"command":"git log --oneline --all -- src/tools/web_search* src/tools/webFetch* src/tools/fetch...
 run_shell_command({"command":"git log --oneline --diff-filter=D -- src/tools/ | head -20"})
-run_shell_command({"command":"git log --oneline --all -- src/tools/ | grep -iE \"remove|delete|drop|revert|reset|simplify\" | head -20"})
+run_shell_command({"command":"git log --oneline --all -- src/tools/ | grep -iE \"remove|delete|drop|revert|reset|s...
 run_shell_command({"command":"git show --stat 56c417f | head -40"})
-run_shell_command({"command":"git log --oneline --diff-filter=D --all -- src/tools/web-search.tool.ts src/tools/web_search.tool.ts 2>/dev/null | head -10"})
+run_shell_command({"command":"git log --oneline --diff-filter=D --all -- src/tools/web-search.tool.ts src/tools/we...
 run_shell_command({"command":"git log --all --oneline -- src/tools/index.ts | head -30"})
-run_shell_command({"command":"ls node_modules/ | grep -i \"web\\|search\\|puppeteer\\|extract\" || echo \"No web search packages in node_modules\""})
-run_shell_command({"command":"cat package.json | grep -i \"web\\|search\" || echo \"No web/search deps in package.json\""})
+run_shell_command({"command":"ls node_modules/ | grep -i \"web\\|search\\|puppeteer\\|extract\" || echo \"No web s...
+run_shell_command({"command":"cat package.json | grep -i \"web\\|search\" || echo \"No web/search deps in package....
 run_shell_command({"command":"ls src/tools/"})
-run_shell_command({"command":"ls -la src/cli.ts && echo \"---\" && git show 7a98e89 --stat | grep -i \"web\\|search\" | head -10"})
+run_shell_command({"command":"ls -la src/cli.ts && echo \"---\" && git show 7a98e89 --stat | grep -i \"web\\|searc...
 run_shell_command({"command":"git show 7a98e89 -- src/tools/index.ts | head -40"})
 write_file({"path":"README.md","content":...
 read_file({"path":"README.md"})
@@ -365,7 +365,7 @@ run_shell_command({"command":"cd /app/localai && git show 7a98e89 -- src/tools/i
 run_shell_command({"command":"cd /app/localai && git log --all --oneline -- README.md | tail -5 && echo \"===fir...
 grep_search({"query":"webSearch|web_search|fetch_page_content|tavily|localai/provider","isRegexp":true,"includePattern":"*.ts"})
 run_shell_command({"command":"cd /app/localai && node --test 2>&1 | tail -5 && echo \"===typecheck===\" && npx -...
-run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -5; echo \"===lint===\"; npm run lint 2>&1 | tail -8"})
+run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -5; echo \"===lint===\"; npm run ...
 write_file({"path":"README.md","content":...
 read_file({"path":"README.md"})
 run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -4"})
@@ -461,7 +461,7 @@ read_file({"path":"tests/helpers.test.ts"})
 read_file({"path":"LICENSE"})
 run_shell_command({"command":"cd /app/localai && npm test 2>&1 | tail -20"})
 run_shell_command({"command":"cd /app/localai && git log --oneline -10 2>&1"})
-run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -10; echo \"---LINT---\"; npm run lint 2>&1 | tail -15"})
+run_shell_command({"command":"cd /app/localai && npm run typecheck 2>&1 | tail -10; echo \"---LINT---\"; npm ...
 grep_search({"query":"web|tavily|fetch|web-search","isRegexp":true,"includePattern":"src/**"})
 grep_search({"query":"web-search|lamartinecabral","isRegexp":true})
 write_file({"content":...
@@ -520,7 +520,7 @@ read_file({"path":"docs"})
 read_file({"path":"tests"})
 read_file({"path":".gitignore"})
 read_file({"path":"LICENSE"})
-run_shell_command({"command":"find . -type f -not -path './node_modules/*' -not -path './.git/*' -not -path './.vscode/*' -not -path './.DS_Store' | sort"})
+run_shell_command({"command":"find . -type f -not -path './node_modules/*' -not -path './.git/*' -not -path './...
 read_file({"path":"docs/ollama.md"})
 read_file({"path":"tests/tools.test.ts"})
 read_file({"path":"tests/session.test.ts"})
@@ -531,14 +531,14 @@ read_file({"path":".vscode"})
 run_shell_command({"command":"ls -la /workspace 2>/dev/null || ls -la .; echo \"---\"; git ls-files | head -50"})
 read_file({"path":".vscode/settings.json"})
 run_shell_command({"command":"git log --oneline -20; echo \"---\"; git status --short"})
-run_shell_command({"command":"git log --oneline --all -- README.md | head -20; echo \"---\"; git show --stat HEAD --name-only | head -30; echo \"---\"; git log --all --oneline -- '*CONTRIBUTING*' '*contributing*' | head -10"})
-run_shell_command({"command":"node --version; echo \"---\"; npx tsx --version 2>/dev/null | head -2; echo \"---\"; node src/cli.ts --help 2>&1 | head -60"})
-run_shell_command({"command":"git show 4e3ccfe -- README.md | head -120; echo \"=====\"; git show 7a98e89 -- README.md | head -120"})
+run_shell_command({"command":"git log --oneline --all -- README.md | head -20; echo \"---\"; git show --stat HE...
+run_shell_command({"command":"node --version; echo \"---\"; npx tsx --version 2>/dev/null | head -2; echo \"---...
+run_shell_command({"command":"git show 4e3ccfe -- README.md | head -120; echo \"=====\"; git show 7a98e89 -- RE...
 grep_search({"query":"CHROME_PATH|webSearch|web_search|websearch","isRegexp":false})
 grep_search({"query":"webSearch|CHROME_PATH|web-search|webSearchSettings","isRegexp":false})
 grep_search({"query":"CHROME_PATH|webSearch|web-search|chromePath","isRegexp":true})
 run_shell_command({"command":"grep -rn \"CHROME_PATH\\|chromePath\\|webSearch\" src/ docs/ --include=\"*\" | head -40"})
-run_shell_command({"command":"grep -rn \"web\" src/ --include=\"*.ts\" -i | head -30; echo \"=====\"; grep -rn \"CHROME\" src/ docs/ -i | head -10"})
+run_shell_command({"command":"grep -rn \"web\" src/ --include=\"*.ts\" -i | head -30; echo \"=====\"; grep -rn ...
 run_shell_command({"command":"grep -rni \"web\" src --include=\"ts\" | head -30"})
 run_shell_command({"command":"cat src/utils.ts | head -20; echo \"EXIT=$?\""})
 run_shell_command({"command":"grep -rni \"web\" src | wc -l; grep -rni \"web\" src | head -30"})
@@ -550,13 +550,13 @@ run_shell_command({"command":"git log -S \"options.model ?? settings.model\" --o
 run_shell_command({"command":"git show f6bf97b -- src/cli.ts | head -100"})
 run_shell_command({"command":"git log -S \"webSearch\" --oneline | head -20"})
 run_shell_command({"command":"git show 17d7a4a --stat | head -30; echo \"=====\"; git show 17d7a4a -- src | head -150"})
-run_shell_command({"command":"git log -S \"webSearch\" --oneline --all | head; echo \"=====\"; git grep -n \"webSearch\" $(git rev-list --all | head -50) -- src 2>/dev/null | head -20"})
-run_shell_command({"command":"git log --oneline --all --diff-filter=D -- src/tools/web-search.tool.ts | head; echo \"=====\"; git log --oneline -20 -- src/tools/index.ts"})
+run_shell_command({"command":"git log -S \"webSearch\" --oneline --all | head; echo \"=====\"; git grep -n \"we...
+run_shell_command({"command":"git log --oneline --all --diff-filter=D -- src/tools/web-search.tool.ts | head; e...
 run_shell_command({"command":"git show 7a98e89 --stat | head -60"})
-run_shell_command({"command":"git show 7a98e89 -- README.md docs/ollama.md src/utils.ts src/tools/index.ts src/cli.ts src/session.ts src/settings.ts tests/tools.test.ts"})
+run_shell_command({"command":"git show 7a98e89 -- README.md docs/ollama.md src/utils.ts src/tools/index.ts src/...
 write_file({"path":"README.md","content":...
 read_file({"path":"README.md"})
-run_shell_command({"command":"grep -in \"web\\|tavily\\|tubily\\|lawt\\|ollama\" README.md; echo \"GREP_EXIT=$?\"; echo \"=====\"; grep -c '^```' README.md; echo \"=====\"; grep -c '^## ' README.md; echo \"=====\"; grep -c '^- ' README.md"})
+run_shell_command({"command":"grep -in \"web\\|tavily\\|tubily\\|lawt\\|ollama\" README.md; echo \"GREP_EXIT=$?...
 read_file({"path":"README.md"})
 run_shell_command({"command":"git diff --stat; echo \"=====\"; git status --short"})
 </pre></details>
