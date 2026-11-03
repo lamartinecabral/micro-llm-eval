@@ -83,6 +83,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| North Mini Code 1.0           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ornith 1.5 9B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ornith 1.5 35B A3B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -687,6 +688,45 @@ The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
 - Adds a new "Tools" section. (**Acceptable**)
 - Minor adjustments in other sections. (**Acceptable**)
+
+---
+
+### Ollama: north-mini-code-1.0:q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"./README.md"})
+read_file({"path":"./package.json"})
+list_directory({"path":"./src"})
+read_file({"path":"./src/cli.ts"})
+read_file({"path":"./src/session.ts"})
+list_directory({"path":"./docs"})
+read_file({"path":"./docs/ollama.md"})
+list_directory({"path":"./tests"})
+file_search({"query":"**/provider.ts"})
+file_search({"query":"**/provider*"})
+grep_search({"query":"provider","isRegexp":false,"includePattern":"**/*.ts","maxResults":20})
+read_file({"path":"./src/utils.ts"})
+list_directory({"path":"./src/tools"})
+read_file({"path":"./src/tools/index.ts"})
+read_file({"path":"./src/tools/read-file.tool.ts"})
+read_file({"path":"./src/run.ts"})
+read_file({"path":"./src/settings.ts"})
+write_file({"path":"./README.md","content":...
+read_file({"path":"./README.md","start_line":1,"end_line":50})
+file_search({"query":"**/web-search/**"})
+grep_search({"query":"web.search|websearch|web_search","isRegexp":false,"maxResults":10})
+grep_search({"query":"web.*search|websearch|cloud.*search","isRegexp":false,"maxResults":10,"includePattern":"**/*.md"})
+list_directory({"path":"./src/tools"})
+file_search({"query":"**/*.md"})
+write_file({"path":"./README.md","content":...
+read_file({"path":"./README.md"})
+read_file({"path":"./package.json"})
+</pre></details>
+
+**Observations:**
+
+It scanned the project correctly, noticed the missing feature and made coherent adjustments to `README.md`.
 
 ---
 
