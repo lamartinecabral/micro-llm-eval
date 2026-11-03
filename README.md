@@ -61,8 +61,11 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Model name                    | Verdict                                                    |
 | ----------------------------- | ---------------------------------------------------------- |
 | Agents A1 4B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
+| Bonsai 2 Ternary 4B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| G9v3 3B                       | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -70,10 +73,14 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GLM 4.7 Flash                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GPT-5 Mini                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GPT-5.4 Nano                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Jan Code 4B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -81,6 +88,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | LFM3 1.7B                     | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | North Mini Code 1.0           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -96,6 +104,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Qwen 3.7 Flash                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 
 ---
@@ -343,6 +352,120 @@ The agent only read `package.json` and `README.md` then decided no updates are n
 
 ---
 
+### Ollama: hf.co/bartowski/ai9stars_G9v3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+read_file({"path":"src/tools/cli.ts"})
+read_file({"path":"src/tools/run.ts"})
+read_file({"path":"src/tools/settings.ts"})
+list_directory({"path":"tools"})
+run_shell_command({"command":"ls -la"})
+run_shell_command({"command":"find src -type f 2\u003e/dev/null"})
+run_shell_command({"command":"cat package.json"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"README.md"})
+file_search({"query":"AGENTS.md provider.ts"})
+list_directory({"path":"docs"})
+file_search({"query":"package.json"})
+read_file({"path":"docs/ollama.md"})
+write_file({"path":"README.md","content":...
+write_file({"content":...
+read_file({"path":"README.md"})
+read_file({"path":"src/utils.ts"})
+run_shell_command({"command":"rm README.md \u0026\u0026 git add README.md...
+write_file({"path":"README.md","content":...
+grep_search({"query":"provider.ts","isRegexp":true})
+list_directory({"path":"src"})
+file_search({"query":"provider.ts"})
+grep_search({"isRegexp":true,"query":"AGENTS.md"})
+write_file({"content":...
+</pre></details>
+
+**Observations:**
+
+It struggled to use the file tools, did not scan the project correctly, removed a section from `README.md`, and missed the goal.
+
+---
+
+### Ollama: bonsai-2:4b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+list_directory({"path":"docs"})
+read_file({"path":"docs/ollama.md"})
+list_directory({"path":"src"})
+read_file({"path":"package.json"})
+list_directory({"path":"~/.localai"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/session.ts"})
+run_shell_command({"command":"find . -name \"*.md\" -type f | grep -v node_modules|head -20"})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Observations:**
+
+It did not scan the project correctly and completely rewrote `README.md`.
+
+---
+
+### Ollama: nemotron-3-nano:4b ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md","start_line":1,"end_line":20})
+list_directory({"path":"docs/"})
+list_directory({"path":"src/"})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Observations:**
+
+It read only part of `README.md` and listed some files, then rewrote `README.md` with incoherent content.
+
+---
+
+### Ollama: hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
+
+**Observations:**
+
+I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file.
+
+---
+
+### Ollama: granite4.2:3b ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
+
+**Observations:**
+
+I had to interrupt the agent because it began hallucinating and looping in its reasoning about a nonexistent typo.
+
+---
+
+### Ollama: hf.co/ggml-org/SmolLM3-3B-GGUF:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
+
+**Observations:**
+
+I had to interrupt the agent because it began hallucinating about a Python project before making any tool calls.
+
+---
+
+### Ollama: hf.co/janhq/Jan-code-4b-gguf:Q8_0 ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
+
+**Observations:**
+
+It only returned `{"name": "list_directory", "arguments": {"path": "."}}\n</tool_call>` inside a reasoning block.
+
+Completely useless.
+
+---
+
 ## 8B-dense class
 
 ### llama.cpp: ggml-org/gemma-4-12B-it-GGUF:Q4_0 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
@@ -495,6 +618,14 @@ read_file({"path":"README.md"})
 **Observations:**
 
 The agent did not notice the target issue. Updated `README.md` by adding a new "Features" section.
+
+---
+
+### Ollama: ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M ![](https://img.shields.io/badge/FAIL-CRASHED-purple)
+
+**Observations:**
+
+The agent only read `README.md` and `package.json`, spent thousands of tokens in reasoning, and in the end, when it was about to call the update tool, it stopped.
 
 ---
 
@@ -1005,6 +1136,7 @@ The agent only read a few files then make some adjustments to `README.md` with a
 
 ### [Openrouter](https://openrouter.ai/)
 
+- **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
@@ -1014,6 +1146,8 @@ The agent only read a few files then make some adjustments to `README.md` with a
 - **nvidia/nemotron-3.5-super-vl** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **openai/gpt-5-nano** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
+- **openai/gpt-5-mini** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **qwen/qwen3-30b-a3b-instruct-2507** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
