@@ -93,6 +93,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Qwen 3.5 27B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.6 35B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.7 Flash                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 
@@ -778,6 +779,44 @@ This model preserves reasoning across turns.
 **Observations:**
 
 The agent scanned the project correctly but did not notice the target issue.
+
+---
+
+## 30B-dense class
+
+### llama.cpp: batiai/Qwen3.8-27B-GGUF:Q2_K_S ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+file_search({"query":"README.md"})
+read_file({"path":"package.json","start_line":1,"end_line":200})
+read_file({"path":"README.md","start_line":1,"end_line":200})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+list_directory({"path":"tests"})
+read_file({"path":"src/cli.ts","start_line":1,"end_line":300})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/tools/index.ts","start_line":1,"end_line":200})
+read_file({"path":"src/run.ts","start_line":1,"end_line":200})
+read_file({"path":"src/utils.ts","start_line":1,"end_line":200})
+read_file({"path":"src/settings.ts","start_line":1,"end_line":200})
+read_file({"path":"docs/ollama.md","start_line":1,"end_line":200})
+read_file({"path":"src/session.ts","start_line":1,"end_line":200})
+read_file({"path":"src/io.ts","start_line":1,"end_line":200})
+read_file({"path":"src/tools/list-directory.tool.ts","start_line":1,"end_line":40})
+read_file({"path":"src/tools/grep-search.tool.ts","start_line":1,"end_line":40})
+write_file({"path":"README.md","content":...
+</pre></details>
+
+**Total tokens:** 14195
+
+**Settings:** reasoning low, temp = 1.0, top-p = 0.95, top-k = 20
+
+**Observations:**
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Adds a new "Tools" section. (**Acceptable**)
 
 ---
 
