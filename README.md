@@ -85,7 +85,8 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | K2 Horizon 3.7B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | K2 Horizon 7B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Laguna XS 2.1 33B A3B         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
-| LFM 2.5 2.6B                  | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
+| LFM2.5 2.6B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
+| LFM2.5 24B A2B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | LFM3 1.7B                     | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -952,6 +953,42 @@ This model preserves reasoning across turns.
 **Observations:**
 
 The agent scanned the project correctly but did not notice the target issue.
+
+---
+
+### llama.cpp: LiquidAI/LFM2.5-24B-A2B-GGUF:Q4_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+list_directory({"path":"tests"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+write_file({"path":"README.md","content":...
+read_file({"path":"README.md"})
+</pre></details>
+
+**Total tokens:** 11974
+
+This model preserves reasoning across turns.
+
+**Settings:** reasoning enabled, temp = 0.1, top-k = 50, repeat-penalty = 1.05
+
+**Observations:**
+
+The agent did not notice the target issue and refactored `README.md` with a couple of wrong details.
 
 ---
 
