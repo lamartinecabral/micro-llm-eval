@@ -89,6 +89,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | LFM3 1.7B                     | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Mellum2.1 12B A2.5B Thinking  | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -951,6 +952,26 @@ This model preserves reasoning across turns.
 **Observations:**
 
 The agent scanned the project correctly but did not notice the target issue.
+
+---
+
+### llama.cpp: JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path": "."})
+read_file({"path": "README.md", "start_line": 1, "end_line": 100})
+read_file({"path": "package.json", "start_line": 1, "end_line": 50})
+list_directory({"path": "docs"})
+write_file({"path": "README.md", "content":...
+</pre></details>
+
+**Total tokens:** 12588
+
+**Settings:** reasoning enabled, temp = 0.6, top-p = 0.95, top-k = 20
+
+**Observations:**
+
+It only read `README.md` and `package.json`, then added a "License" section to `README.md`.
 
 ---
 
