@@ -91,6 +91,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mellum2.1 12B A2.5B Thinking  | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Nanbeige 4.3 33B              | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -1040,6 +1041,8 @@ write_file({"path":"README.md","content":...
 
 **Total tokens:** 14195
 
+This model preserves reasoning across turns.
+
 **Settings:** reasoning low, temp = 1.0, top-p = 0.95, top-k = 20
 
 **Observations:**
@@ -1047,6 +1050,72 @@ write_file({"path":"README.md","content":...
 The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
 - Adds a new "Tools" section. (**Acceptable**)
+
+---
+
+### llama.cpp: bartowski/Nanbeige_Nanbeige4.3-33B-GGUF:IQ2_XXS ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+file_search({"query":"**/*"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"README.md"})
+read_file({"path":"package.json"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/tools/utils.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"tsconfig.json"})
+read_file({"path":"biome.json"})
+read_file({"path":".gitignore"})
+read_file({"path":"LICENSE"})
+read_file({"path":".vscode/settings.json"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/write-file.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+read_file({"path":"tests/helpers.test.ts"})
+read_file({"path":"tests/session.test.ts"})
+read_file({"path":"tests/settings.test.ts"})
+read_file({"path":"tests/tools.test.ts"})
+run_shell_command({"command":"git log --oneline -10 && git status --short && npm run typecheck 2>&1 | head -20"})
+run_shell_command({"command":"npm test 2>&1 | tail -20"})
+run_shell_command({"command":"grep -rn \"AGENTS\" --include=\"*.ts\" src/ | head -20; ls src/tools/"})
+run_shell_command({"command":"git remote -v; git log --oneline -3; cat .git/config"})
+grep_search({"query":"timeout|TOOL_OUTPUT_LIMIT|truncate\\(","isRegexp":true,"includePattern":"src/**"})
+grep_search({"query":"webSearch|tavily|chromePath|search","isRegexp":true,"includePattern":"src/**"})
+write_file({"content":...,"path":"README.md"})
+run_shell_command({"command":"npm run lint 2>&1 | tail -5; wc -l README.md"})
+read_file({"path":"README.md","start_line":1})
+</pre></details>
+
+**Total tokens:** 32899
+
+This model preserves reasoning across turns.
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95
+
+**Observations:**
+
+The agent noticed the target issue and refactored `README.md`. It removed most mentions but in "Providers" section it only included "Note that web search is configured but not yet exposed as a tool."
+
+The agent:
+- Notices the target issue. (**Correct**)
+- Removes the mentions in introduction and usage. (**Correct**)
+- In providers configuration, it kept the mention and added "Note that web search is configured but not yet exposed as a tool." (**Incorrect**)
+- Added multiple new sections. (**Acceptable**)
 
 ---
 
