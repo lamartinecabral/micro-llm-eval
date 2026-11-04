@@ -71,11 +71,13 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Gemma 4 31B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GLM 4.7 Flash                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-5 Mini                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-5.4 Nano                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GPT-OSS 120B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -93,6 +95,8 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Mellum2.1 12B A2.5B Thinking  | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nanbeige 4.3 33B              | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Nemotron 3 Super 120B A12B    | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | North Mini Code 1.0           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -1257,7 +1261,12 @@ The agent only read a few files then make some adjustments to `README.md` with a
 
 ### [Ollama's cloud](https://docs.ollama.com/cloud)
 
+- **gemma4:31b** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **nemotron-3-super** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+  - It noticed the missing feature but did not remove all mentions.
 - **gpt-oss:20b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It rewrote `README.md` without removing the references to web search.
+- **gpt-oss:120b** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
 - **nemotron-3-nano:30b** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
   - It did not scan the project correctly, and rewrote `README.md` without noticing the missing feature.
