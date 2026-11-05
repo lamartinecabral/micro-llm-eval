@@ -64,9 +64,11 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Bonsai 2 Ternary 4B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | G9v3 3B                       | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Gemini 3.5 Flash Lite         | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Gemma 4 E2B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemma 4 E4B                   | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemma 4 12B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -1281,7 +1283,10 @@ The agent only read a few files then make some adjustments to `README.md` with a
 
 ### [Openrouter](https://openrouter.ai/)
 
+- **anthropic/claude-haiku-5.5** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
+  - It rewrote `README.md` without removing all references to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It did notice the missing feature but the updated `README.md` had no fix about it.
 - **google/gemini-3.1-flash-lite** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
