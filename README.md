@@ -961,6 +961,14 @@ The agent scanned the project correctly but did not notice the target issue.
 
 ---
 
+### llama.cpp: poolside/Laguna-XS-2.1-GGUF:Q4_K_M ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+
+**Observations:**
+
+The run was very similar to the one using 3-bit quantization.
+
+---
+
 ### llama.cpp: LiquidAI/LFM2.5-24B-A2B-GGUF:Q4_0 ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
 
 <details><summary><b>Tool calls:</b></summary><pre>
@@ -1301,6 +1309,8 @@ The agent only read a few files then make some adjustments to `README.md` with a
 - **thinkingmachines/inkling** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **upstage/solar-pro4** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It made adjustments to `README.md` but did not notice that web search had been removed.
+- **z-ai/glm-4.7-flash** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **bytedance-seed/seed-2.0-mini** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
   - It did not scanned the project correctly, made minor adjustments to `README.md` and missed the goal.
