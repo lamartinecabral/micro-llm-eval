@@ -102,6 +102,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Nemotron 3.5 Lightning        | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3.5 Super VL         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | North Mini Code 1.0           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| MiMo V2.6 Distill Qwen 9B     | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Ornith 1.5 9B                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Ornith 1.5 35B A3B            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Qwen 3 30B A3B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -511,6 +512,69 @@ The agent correctly analyzed the project, noticed the missing feature, and made 
 
 The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
+
+---
+
+### llama.cpp: bartowski/MiMo-V2.6-Distill-Qwen-9B-GGUF:Q4_K_M ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"tests"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"src/run.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"docs/ollama.md"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/tools/run-shell-command.tool.ts"})
+run_shell_command({"command":"git log --oneline -10 && git status"})
+list_directory({"path":".vscode"})
+read_file({"path":"src/tools/utils.ts"})
+run_shell_command({"command":"npm test 2>&1 | tail -30"})
+read_file({"path":"src/tools/grep-search.tool.ts"})
+read_file({"path":"src/tools/file-search.tool.ts"})
+grep_search({"query":"webSearch|web_search","isRegexp":true})
+read_file({"path":".vscode/settings.json"})
+read_file({"path":"tsconfig.json"})
+run_shell_command({"command":"node src/cli.ts --help"})
+read_file({"path":"src/tools/read-file.tool.ts"})
+read_file({"path":"src/tools/list-directory.tool.ts"})
+read_file({"path":"src/tools/replace-string-in-file.tool.ts"})
+replace_string_in_file({"path":"src/cli.ts","old_text":...
+write_file({"path":"README.md","content":...
+replace_string_in_file({"path":"README.md","old_text":...
+run_shell_command({"command":"npm run typecheck 2>&1 | tail -5 && npm run lint 2>&1 | tail -5"})
+replace_string_in_file({"path":"README.md","old_text":...
+read_file({"path":"src/tools/write-file.tool.ts"})
+replace_string_in_file({"path":"README.md","old_text":...
+read_file({"path":"README.md"})
+run_shell_command({"command":"npm test 2>&1 | tail -6 && node src/cli.ts --help"})
+</pre></details>
+
+**Total tokens:** 24183
+
+This model preserves reasoning across turns.
+
+**Settings:** reasoning enabled, temp = 1.0, top-p = 0.95, top-k = 20, min-p = 0.0, presence-penalty = 1.5, repeat-penalty = 1.0
+
+**Observations:**
+
+The agent correctly analyzed the project, identified the missing feature, and updated `README.md` coherently.
+
+It also made a minor acceptable adjustment to `src/cli.ts`.
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Adds a note about a possible inclusion of web search (**Acceptable**)
+- Adds multiple new sections. (**Acceptable**)
 
 ---
 
