@@ -63,6 +63,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Agents A1 4B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Apriel 1.6 15B Thinker        | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Bonsai 2 Ternary 4B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Bonsai 2 Ternary 27B          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -1128,6 +1129,57 @@ This model preserves reasoning across turns.
 The updated `README.md`:
 - Removes all mentions related to the removed feature. (**Correct**)
 - Adds a new "Tools" section. (**Acceptable**)
+
+---
+
+### llama.cpp: prism-ml/Ternary-Bonsai-2-27B-gguf:Q2_0 ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+
+<details><summary><b>Tool calls:</b></summary><pre>
+list_directory({"path":"."})
+read_file({"path":"package.json"})
+read_file({"path":"README.md"})
+list_directory({"path":"src"})
+list_directory({"path":"docs"})
+read_file({"path":"src/cli.ts"})
+list_directory({"path":"src/tools"})
+read_file({"path":"src/run.ts"})
+read_file({"path":"src/session.ts"})
+read_file({"path":"src/utils.ts"})
+read_file({"path":"src/settings.ts"})
+read_file({"path":"src/tools/index.ts"})
+read_file({"path":"src/thinking.ts"})
+read_file({"path":"src/io.ts"})
+read_file({"path":"docs/ollama.md"})
+list_directory({"path":"tests"})
+run_shell_command({"command":"cd \"$(pwd)\" && git log --oneline -20 2>/dev/null | head -30; echo \"---\"; git status --short 2>/dev/null | head"})
+grep_search({"query":"webSearch|tavily|ollama\\.run|fetch|search","isRegexp":true,"includePattern":"src/**"})
+run_shell_command({"command":"cd \"$(pwd)\" && git log --oneline -30 -- src/; echo ===; git log --oneline --all -- src/tools/ | head -20"})
+read_file({"path":"src/tools/utils.ts"})
+run_shell_command({"command":"cd \"$(pwd)\" && git log --oneline --all -- src/tools/index.ts | head -20; echo \"===\"; git log --oneline --all --grep=\"web\" | head -20"})
+run_shell_command({"command":"cd \"$(pwd)\" && git branch -a; echo ===; git merge-base --is-ancestor 17d9a4a HEAD 2>&1; echo \"ancestor check: $?\""})
+grep_search({"isRegexp":true,"query":"web_search|webSearch|web-search|fetch_page|fetchPageContent"})
+run_shell_command({"command":"cd \"$(pwd)\" && git show 17d9a4a --stat; echo ===; git show d0c83e2 --stat"})
+run_shell_command({"command":"cd \"$(pwd)\" && git log --oneline -1 HEAD; git log --oneline --all --diff-filter=D -- src/tools/web-search.tool.ts | head -5; echo \"=== log of HEAD for package.json ===\"; git log --oneline -5 HEAD -- package.json; echo \"=== check if web-search dep in package.json at HEAD ===\"; git show HEAD:package.json | grep -i web; echo \"exit: $?\""})
+run_shell_command({"command":"cd \"$(pwd)\" && git show 7a98e89 --stat | head -30"})
+run_shell_command({"command":"cd \"$(pwd)\" && git show 7a98e89:README.md"})
+run_shell_command({"command":"cd \"$(pwd)\" && git show 4e3ccfe -- README.md | head -80"})
+run_shell_command({"command":"cd \"$(pwd)\" && git show 7a98e89 -- src/utils.ts src/tools/index.ts; git show 4e3ccfe --stat | tail -3; git log -1 --format=%ad --date=short --date=relative 7a98e89 4e3ccfe HEAD"})
+run_shell_command({"command":"cd \"$(pwd)\" && grep -n -i \"web\\|lawt\\|tavily\\|ollama\" README.md"})
+write_file({"content":"# localai\n\n**Local AI With Tools** is a terminal assistant that chats with an OpenAI-compatible model and can use tools to work with files and run shell commands.\n\n## Requirements\n\n- Node.js 24 or newer\n- Ollama running locally, or another OpenAI-compatible provider\n\nThe default provider is Ollama at `http://localhost:11434/v1`.\n\n## Run\n\n```bash\nnpm install\nnpm run install:localai\nlocalai --model <model>\n```\n\nIf no model is given (or the given model is not available), `localai` lists the models available from the provider and exits.\n\nUse `--think <effort>` to set reasoning effort (use `--think null` to disable it), or `--resume` to continue the session for the current working directory. Options can also be passed as `-m`, `-t`, and `-r`. The selected model and reasoning effort are saved in `~/.localai/settings.json`.\n\n## Using the assistant\n\nEnter a prompt at the terminal. For a multi-line prompt, put `\"\"\"` on a line by itself before and after the text. Available commands are `/exit` or `/quit` to leave, `/export` to save the conversation as JSON, and `/model` to list available models.\n\nThe assistant can browse and edit files in the current workspace and run shell commands. Optional instructions load from `./AGENTS.md` or `~/.localai/AGENTS.md`. Sessions are saved under `~/.localai/sessions/` by working directory. See [docs/ollama.md](docs/ollama.md) for Ollama usage tips.\n\n## Providers\n\nUse `~/.localai/provider.ts` to configure a different OpenAI-compatible model provider:\n\n```ts\nexport default {\n  baseURL: \"https://api.example.com/v1\",\n  apiKey: \"your-api-key\",\n};\n```\n\nThe provider must implement the OpenAI chat completions API. If the provider file is missing or incomplete, `localai` falls back to the Ollama defaults.\n\n## Development\n\n```bash\nnpm test\nnpm run typecheck\nnpm run lint\n```\n","path":"README.md"})
+read_file({"path":"README.md"})
+</pre></details>
+
+**Total tokens:** 30715
+
+This model preserves reasoning across turns.
+
+**Settings:** reasoning low, temp = 1.0, top-p = 0.95, top-k = 20
+
+**Observations:**
+
+The updated `README.md`:
+- Removes all mentions related to the removed feature. (**Correct**)
+- Minor adjustments in other sections. (**Acceptable**)
 
 ---
 
