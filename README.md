@@ -1173,7 +1173,7 @@ read_file({"path":"README.md"})
 
 This model preserves reasoning across turns.
 
-**Settings:** reasoning low, temp = 1.0, top-p = 0.95, top-k = 20
+**Settings:** reasoning medium, temp = 1.0, top-p = 0.95, top-k = 20
 
 **Observations:**
 
