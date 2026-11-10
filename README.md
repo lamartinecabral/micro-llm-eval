@@ -1416,6 +1416,8 @@ The agent only read a few files then make some adjustments to `README.md` with a
   - 10 requests, 114K total tokens; cached tokens are counted again on subsequent requests.
 - **deepseek/deepseek-v4.1-flash-1017** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - 10 requests, 121K total tokens; cached tokens are counted again on subsequent requests.
+- **google/gemma-4-31b-it** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 17 requests, 104K total tokens; cached tokens are counted again on subsequent requests.
 - **inclusionai/ling-3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - 11 requests, 194K total tokens; cached tokens are counted again on subsequent requests.
 - **meta/muse-ember** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
