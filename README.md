@@ -1413,33 +1413,33 @@ The agent only read a few files then make some adjustments to `README.md` with a
 ### [Openrouter](https://openrouter.ai/)
 
 - **anthropic/claude-haiku-5.5** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 114K total tokens used; cached tokens are counted again on subsequent requests.
+  - 10 requests, 114K total tokens; cached tokens are counted again on subsequent requests.
 - **deepseek/deepseek-v4.1-flash-1017** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 121K total tokens used; cached tokens are counted again on subsequent requests.
+  - 10 requests, 121K total tokens; cached tokens are counted again on subsequent requests.
 - **inclusionai/ling-3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 194K total tokens used; cached tokens are counted again on subsequent requests.
+  - 11 requests, 194K total tokens; cached tokens are counted again on subsequent requests.
 - **meta/muse-ember** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 146K total tokens used; cached tokens are counted again on subsequent requests.
+  - 13 requests, 146K total tokens; cached tokens are counted again on subsequent requests.
 - **meta/muse-glimmer-30b** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 223K total tokens used; cached tokens are counted again on subsequent requests.
+  - 21 requests, 223K total tokens; cached tokens are counted again on subsequent requests.
 - **minimax/minimax-m3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 153K total tokens used; cached tokens are counted again on subsequent requests.
+  - 11 requests, 153K total tokens; cached tokens are counted again on subsequent requests.
 - **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 253K total tokens used; cached tokens are counted again on subsequent requests.
+  - 18 requests, 253K total tokens; cached tokens are counted again on subsequent requests.
 - **openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 65.9K total tokens used; cached tokens are counted again on subsequent requests.
+  - 8 requests, 65.9K total tokens; cached tokens are counted again on subsequent requests.
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 374K total tokens used; cached tokens are counted again on subsequent requests.
+  - 24 requests, 374K total tokens; cached tokens are counted again on subsequent requests.
 - **ricursiveai/ripple-65b-preview** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 493K total tokens used; cached tokens are counted again on subsequent requests.
+  - 19 requests, 493K total tokens; cached tokens are counted again on subsequent requests.
 - **stepfun/step-3.5-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 333K total tokens used; cached tokens are counted again on subsequent requests.
+  - 34 requests, 333K total tokens; cached tokens are counted again on subsequent requests.
 - **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 81.2K total tokens used; cached tokens are counted again on subsequent requests.
+  - 9 requests, 81.2K total tokens; cached tokens are counted again on subsequent requests.
 - **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 224K total tokens used; cached tokens are counted again on subsequent requests.
+  - 17 requests, 224K total tokens; cached tokens are counted again on subsequent requests.
 - **z-ai/glm-5.3-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-  - 55K total tokens used; cached tokens are counted again on subsequent requests.
+  - 12 requests, 55K total tokens; cached tokens are counted again on subsequent requests.
 - **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It rewrote `README.md` without removing all references to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
