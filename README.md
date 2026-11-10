@@ -1424,9 +1424,9 @@ The agent only read a few files then make some adjustments to `README.md` with a
   - 223K total tokens used; cached tokens are counted again on subsequent requests.
 - **minimax/minimax-m3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - 153K total tokens used; cached tokens are counted again on subsequent requests.
-- **openai/openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - 253K total tokens used; cached tokens are counted again on subsequent requests.
-- **openai/openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - 65.9K total tokens used; cached tokens are counted again on subsequent requests.
 - **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
   - 374K total tokens used; cached tokens are counted again on subsequent requests.
