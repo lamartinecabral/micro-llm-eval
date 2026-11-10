@@ -96,6 +96,8 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mellum2.1 12B A2.5B Thinking  | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Muse Ember                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Muse Glimmer 30B              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nanbeige 4.3 33B              | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
 | Nemotron 3 Nano 4B            | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Nemotron 3 Nano 30B           | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
@@ -1401,6 +1403,8 @@ The agent only read a few files then make some adjustments to `README.md` with a
 ### [Openrouter](https://openrouter.ai/)
 
 - **anthropic/claude-haiku-5.5** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **meta/muse-ember** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+- **meta/muse-glimmer-30b** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
 - **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It rewrote `README.md` without removing all references to web search.
