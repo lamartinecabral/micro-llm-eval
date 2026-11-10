@@ -66,6 +66,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Bonsai 2 Ternary 27B          | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Claude Haiku 4.5              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Claude Haiku 5.5              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Deepseek v4.1 Flash 1017      | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Flint 40B A2B                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | G9v3 3B                       | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Gemini 3.1 Flash Lite         | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -76,14 +77,17 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Gemma 4 26B A4B               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Gemma 4 31B                   | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GLM 4.7 Flash                 | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| GLM 5.3 Flash                 | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-5 Nano                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-5 Mini                    | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-5.4 Nano                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| GPT-6 Luna                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | GPT-OSS 20B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | GPT-OSS 120B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Granite 4.2 3B                | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Granite 4.2 8B                | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Granite 4.2 30B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Hy3                           | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Inkling                       | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Jan Code 4B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | K2 Horizon 0.9B               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
@@ -94,8 +98,11 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | LFM2.5 24B A2B                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | LFM3 1.7B                     | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | Ling 3.0 Tiny 8B A1B          | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Ling 3.1 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Mistral Small 4               | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Mellum2.1 12B A2.5B Thinking  | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
+| Mimo v2.6 Flash               | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| MiniMax M3.1 Flash            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Muse Ember                    | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Muse Glimmer 30B              | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Nanbeige 4.3 33B              | ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)      |
@@ -117,9 +124,12 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Qwen 3.6 35B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.7 Flash                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Qwen 3.8 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
+| Ripple 65B Preview            | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 | Seed 2.0 Mini                 | ![](https://img.shields.io/badge/FAIL-EXECUTION-red)       |
 | SmolLM 3 3B                   | ![](https://img.shields.io/badge/FAIL-CRASHED-purple)      |
 | Solar Pro 4                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Step 3.5 Flash                | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
 
 ---
 
@@ -1403,9 +1413,33 @@ The agent only read a few files then make some adjustments to `README.md` with a
 ### [Openrouter](https://openrouter.ai/)
 
 - **anthropic/claude-haiku-5.5** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 114K total tokens used; cached tokens are counted again on subsequent requests.
+- **deepseek/deepseek-v4.1-flash-1017** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 121K total tokens used; cached tokens are counted again on subsequent requests.
+- **inclusionai/ling-3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 194K total tokens used; cached tokens are counted again on subsequent requests.
 - **meta/muse-ember** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 146K total tokens used; cached tokens are counted again on subsequent requests.
 - **meta/muse-glimmer-30b** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
-- **openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 223K total tokens used; cached tokens are counted again on subsequent requests.
+- **minimax/minimax-m3.1-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 153K total tokens used; cached tokens are counted again on subsequent requests.
+- **openai/openai/gpt-5.4-nano** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 253K total tokens used; cached tokens are counted again on subsequent requests.
+- **openai/openai/gpt-6-luna** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 65.9K total tokens used; cached tokens are counted again on subsequent requests.
+- **qwen/qwen3.8-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 374K total tokens used; cached tokens are counted again on subsequent requests.
+- **ricursiveai/ripple-65b-preview** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 493K total tokens used; cached tokens are counted again on subsequent requests.
+- **stepfun/step-3.5-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 333K total tokens used; cached tokens are counted again on subsequent requests.
+- **tencent/hy3** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 81.2K total tokens used; cached tokens are counted again on subsequent requests.
+- **xiaomi/mimo-v2.6-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 224K total tokens used; cached tokens are counted again on subsequent requests.
+- **z-ai/glm-5.3-flash** ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen)
+  - 55K total tokens used; cached tokens are counted again on subsequent requests.
 - **google/gemini-3.5-flash-lite** ![](https://img.shields.io/badge/PASS-PARTIAL-yellow)
   - It rewrote `README.md` without removing all references to web search.
 - **anthropic/claude-haiku-4.5** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
