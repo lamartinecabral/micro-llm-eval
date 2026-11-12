@@ -1,0 +1,12 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "ggml-org/gemma-4-E4B-it-GGUF:Q8_0",
+  "name": "Gemma 4 E4B",
+  "category": "4B dense",
+  "verdict": "fail-execution",
+  "tool_calls": "list_directory({\"path\":\"./\"})\nread_file({\"path\":\"package.json\",\"start_line\":1})\nread_file({\"path\":\"README.md\",\"start_line\":1})",
+  "total_tokens": 3297,
+  "reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95, top-k = 64",
+  "observations": "The agent only read `package.json` and `README.md` then decided no updates are necessary."
+}
