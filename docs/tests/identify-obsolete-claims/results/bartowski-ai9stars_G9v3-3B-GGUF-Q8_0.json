@@ -1,0 +1,9 @@
+{
+  "inference_engine": "Ollama",
+  "model_id": "hf.co/bartowski/ai9stars_G9v3-3B-GGUF:Q8_0",
+  "name": "G9v3 3B",
+  "category": "4B dense",
+  "verdict": "fail-execution",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\"})\nlist_directory({\"path\":\"src\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"src/tools/cli.ts\"})\nread_file({\"path\":\"src/tools/run.ts\"})\nread_file({\"path\":\"src/tools/settings.ts\"})\nlist_directory({\"path\":\"tools\"})\nrun_shell_command({\"command\":\"ls -la\"})\nrun_shell_command({\"command\":\"find src -type f 2>/dev/null\"})\nrun_shell_command({\"command\":\"cat package.json\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"README.md\"})\nfile_search({\"query\":\"AGENTS.md provider.ts\"})\nlist_directory({\"path\":\"docs\"})\nfile_search({\"query\":\"package.json\"})\nread_file({\"path\":\"docs/ollama.md\"})\nwrite_file({\"path\":\"README.md\",\"content\":...\nwrite_file({\"content\":...\nread_file({\"path\":\"README.md\"})\nread_file({\"path\":\"src/utils.ts\"})\nrun_shell_command({\"command\":\"rm README.md && git add README.md...\nwrite_file({\"path\":\"README.md\",\"content\":...\ngrep_search({\"query\":\"provider.ts\",\"isRegexp\":true})\nlist_directory({\"path\":\"src\"})\nfile_search({\"query\":\"provider.ts\"})\ngrep_search({\"isRegexp\":true,\"query\":\"AGENTS.md\"})\nwrite_file({\"content\":...",
+  "observations": "It struggled to use the file tools, did not scan the project correctly, removed a section from `README.md`, and missed the goal."
+}
