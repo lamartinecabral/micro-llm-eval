@@ -1,0 +1,13 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "IFM/K2-Horizon-3.7B-GGUF:Q4_K_M",
+  "name": "K2 Horizon 3.7B",
+  "category": "4B dense",
+  "verdict": "pass-correct",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"package.json\"})\nread_file({\"path\":\"README.md\"})\nlist_directory({\"path\":\"src\"})\nlist_directory({\"path\":\"tests\"})\nlist_directory({\"path\":\"docs\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"biome.json\"})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"src/session.ts\"})\nread_file({\"path\":\"src/utils.ts\"})\nread_file({\"path\":\"src/io.ts\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"tests/helpers.test.ts\"})\nread_file({\"path\":\"tests/session.test.ts\"})\nread_file({\"path\":\"tests/settings.test.ts\"})\nread_file({\"path\":\"tests/tools.test.ts\"})\nread_file({\"path\":\"src/tools/index.ts\"})\nread_file({\"path\":\"src/thinking.ts\"})\nlist_directory({\"path\":\".git\"})\ngrep_search({\"query\":\"webSearch|web_search|search\",\"isRegexp\":true})\nrun_shell_command({\"command\":\"git log --oneline -20 && git status\"})\ngrep_search({\"query\":\"web|fetch|url|HTTP\",\"isRegexp\":true,\"includePattern\":\"src/**\"})\nrun_shell_command({\"command\":\"npm test --ignore-scripts 2>&1 | tail -20; npm run typecheck 2>&1 | tail -5\"})\nreplace_string_in_file({\"path\":\"README.md\",\"old_text\":...\nreplace_string_in_file({\"path\":\"README.md\",\"old_text\":...\nreplace_string_in_file({\"path\":\"README.md\",\"old_text\":...\nread_file({\"path\":\"README.md\"})",
+  "total_tokens": 19339,
+  "reasoning": "high",
+  "supports_preserve_reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95, presence-penalty = 1.5",
+  "observations": "The agent correctly analyzed the project, noticed the target issue, and made precise adjustments to remove the references using the `replace_string_in_file` tool.\n\nThe updated `README.md`:\n- Removes all mentions related to the removed feature. (**Correct**)"
+}
