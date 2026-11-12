@@ -1,0 +1,9 @@
+{
+  "inference_engine": "Ollama",
+  "model_id": "nemotron-3-nano:4b",
+  "name": "Nemotron 3 Nano 4B",
+  "category": "4B dense",
+  "verdict": "fail-execution",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\",\"start_line\":1,\"end_line\":20})\nlist_directory({\"path\":\"docs/\"})\nlist_directory({\"path\":\"src/\"})\nwrite_file({\"path\":\"README.md\",\"content\":...",
+  "observations": "It read only part of `README.md` and listed some files, then rewrote `README.md` with incoherent content."
+}
