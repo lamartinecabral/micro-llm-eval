@@ -1,0 +1,12 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "AtomicChat/Qwen3.5-4B-GGUF:Q8_0",
+  "name": "Qwen 3.5 4B",
+  "category": "4B dense",
+  "verdict": "fail-incorrect",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"package.json\"})\nread_file({\"path\":\"README.md\"})\nread_file({\"path\":\"tsconfig.json\"})\nlist_directory({\"path\":\"src\"})\nread_file({\"path\":\"src/cli.ts\"})\nlist_directory({\"path\":\"docs\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"src/session.ts\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/thinking.ts\"})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/tools/index.ts\"})\nread_file({\"path\":\"src/utils.ts\"})\nlist_directory({\"path\":\"src/tools/list-directory.tool.ts\"})\nlist_directory({\"path\":\"docs\"})\nread_file({\"path\":\"src/tools/file-search.tool.ts\"})\nread_file({\"path\":\"src/tools/grep-search.tool.ts\"})\nread_file({\"path\":\"src/tools/read-file.tool.ts\"})\nread_file({\"path\":\"src/tools/run-shell-command.tool.ts\"})\nread_file({\"path\":\"src/tools/list-directory.tool.ts\"})\nread_file({\"path\":\"src/tools/write-file.tool.ts\"})\nread_file({\"path\":\"src/tools/replace-string-in-file.tool.ts\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"src/tools/utils.ts\"})\nread_file({\"path\":\"tests/helpers.test.ts\"})\nread_file({\"path\":\"tests/session.test.ts\"})\nread_file({\"path\":\"tests/settings.test.ts\"})\nread_file({\"path\":\"tests/tools.test.ts\"})\nwrite_file({\"path\":\"README.md\",...\nread_file({\"path\":\"README.md\"})",
+  "total_tokens": 22544,
+  "reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95, top-k = 20, min-p = 0.0, presence-penalty = 1.5, repeat-penalty = 1.0",
+  "observations": "The agent scanned the project correctly but could not notice the target issue. Completely rewrote `README.md` and missed the goal."
+}
