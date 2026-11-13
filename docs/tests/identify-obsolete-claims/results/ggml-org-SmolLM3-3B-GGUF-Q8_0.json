@@ -1,0 +1,8 @@
+{
+  "inference_engine": "Ollama",
+  "model_id": "hf.co/ggml-org/SmolLM3-3B-GGUF:Q8_0",
+  "name": "SmolLM 3 3B",
+  "category": "4B dense",
+  "verdict": "fail-crashed",
+  "observations": "I had to interrupt the agent because it began hallucinating about a Python project before making any tool calls."
+}
