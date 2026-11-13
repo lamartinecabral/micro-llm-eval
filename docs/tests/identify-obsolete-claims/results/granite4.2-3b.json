@@ -1,0 +1,8 @@
+{
+  "inference_engine": "Ollama",
+  "model_id": "granite4.2:3b",
+  "name": "Granite 4.2 3B",
+  "category": "4B dense",
+  "verdict": "fail-crashed",
+  "observations": "I had to interrupt the agent because it began hallucinating and looping in its reasoning about a nonexistent typo."
+}
