@@ -1,0 +1,12 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "ornith-ai/Ornith-1.5-9B-GGUF:Q4_K_M",
+  "name": "Ornith 1.5 9B",
+  "category": "8B dense",
+  "verdict": "fail-incorrect",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"package.json\"})\nread_file({\"path\":\"README.md\"})\nlist_directory({\"path\":\"src\"})\nlist_directory({\"path\":\"tests\"})\nlist_directory({\"path\":\"docs\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"tsconfig.json\"})\nread_file({\"path\":\"biome.json\"})\nread_file({\"path\":\"LICENSE\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/session.ts\"})\nread_file({\"path\":\"src/tools.ts\"})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"src/utils.ts\"})\nread_file({\"path\":\"src/thinking.ts\"})\nread_file({\"path\":\"src/tools/index.ts\"})\nread_file({\"path\":\"src/tools/utils.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"src/tools/file-search.tool.ts\"})\nread_file({\"path\":\"src/tools/grep-search.tool.ts\"})\nread_file({\"path\":\"src/tools/list-directory.tool.ts\"})\nread_file({\"path\":\"src/tools/read-file.tool.ts\"})\nread_file({\"path\":\"src/tools/replace-string-in-file.tool.ts\"})\nread_file({\"path\":\"src/tools/run-shell-command.tool.ts\"})\nread_file({\"path\":\"src/tools/write-file.tool.ts\"})\nread_file({\"path\":\"tests/tools.test.ts\"})\nread_file({\"path\":\".gitignore\"})\nlist_directory({\"path\":\".vscode\"})\nrun_shell_command({\"command\":\"cd /app/localai && npm test 2>&1 | tail -40\"})\nrun_shell_command({\"command\":\"cd /app/localai && npm run typecheck 2>&1 | tail -20 && echo \"=== LINT ...\nrun_shell_command({\"command\":\"cd /app/localai && git log --oneline -10 2>&1; echo \"=== STATUS ===\"; ...\nwrite_file({\"path\":\"README.md\",\"content\"...\nreplace_string_in_file({\"path\":\"README.md\",\"old_text\":...\nread_file({\"path\":\"README.md\"})",
+  "total_tokens": 25117,
+  "reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95, top-k = 20, min-p = 0.0, presence-penalty = 1.5, repeat-penalty = 1.0",
+  "observations": "The agent did not notice the target issue. Updated `README.md` by adding a new \"Features\" section."
+}
