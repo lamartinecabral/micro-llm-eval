@@ -1,0 +1,8 @@
+{
+  "inference_engine": "Ollama",
+  "model_id": "hf.co/LiquidAI/LFM2.5-2.6B-GGUF:Q8_0",
+  "name": "LFM2.5 2.6B",
+  "category": "4B dense",
+  "verdict": "fail-crashed",
+  "observations": "I had to interrupt the agent because it became confused about tool use, repeatedly calling `read_file` instead of using a tool to update the file."
+}
