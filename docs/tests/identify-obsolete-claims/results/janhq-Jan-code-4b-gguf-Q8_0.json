@@ -1,0 +1,8 @@
+{
+  "inference_engine": "Ollama",
+  "model_id": "hf.co/janhq/Jan-code-4b-gguf:Q8_0",
+  "name": "Jan Code 4B",
+  "category": "4B dense",
+  "verdict": "fail-crashed",
+  "observations": "It only returned `{\"name\": \"list_directory\", \"arguments\": {\"path\": \".\"}}\n</tool_call>` inside a reasoning block.\n\nCompletely useless."
+}
