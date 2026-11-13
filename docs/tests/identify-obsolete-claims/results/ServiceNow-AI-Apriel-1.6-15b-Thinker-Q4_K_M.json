@@ -1,0 +1,8 @@
+{
+  "inference_engine": "Ollama",
+  "model_id": "ServiceNow-AI/Apriel-1.6-15b-Thinker:Q4_K_M",
+  "name": "Apriel 1.6 15B Thinker",
+  "category": "8B dense",
+  "verdict": "fail-crashed",
+  "observations": "The agent only read `README.md` and `package.json`, spent thousands of tokens in reasoning, and in the end, when it was about to call the update tool, it stopped."
+}
