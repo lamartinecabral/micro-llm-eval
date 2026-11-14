@@ -2,7 +2,7 @@
   "inference_engine": "llama.cpp",
   "model_id": "IFM/K2-Horizon-0.9B-GGUF:Q8_0",
   "name": "K2 Horizon 0.9B",
-  "category": "2B dense",
+  "category": "1B dense",
   "verdict": "fail-incorrect",
   "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\"})\nread_file({\"path\":\"package.json\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"AGENTS.md\"})\nread_file({\"path\":\"docs/index.md\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"src/session.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"docs/index.md\"})\nlist_directory({\"path\":\"docs\"})\nread_file({\"path\":\"docs/ollama.md\"})\nwrite_file({\"path\":\"README.md\",\"content\":...\nread_file({\"path\":\"README.md\"})",
   "total_tokens": 10799,

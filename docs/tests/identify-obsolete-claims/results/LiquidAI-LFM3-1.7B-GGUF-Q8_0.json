@@ -2,7 +2,7 @@
   "inference_engine": "llama.cpp",
   "model_id": "LiquidAI/LFM3-1.7B-GGUF:Q8_0",
   "name": "LFM3 1.7B",
-  "category": "2B dense",
+  "category": "1B dense",
   "verdict": "fail-execution",
   "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\"})\nlist_directory({\"path\":\"src\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nwrite_file({\"path\":\"README.md\",\"content\":...",
   "total_tokens": 6552,
