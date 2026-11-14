@@ -1,0 +1,12 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "bartowski/zai-org_GLM-4.7-Flash-GGUF:IQ3_M",
+  "name": "GLM 4.7 Flash 30B A3B",
+  "category": "30B sparse",
+  "verdict": "fail-incorrect",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\"})\nread_file({\"path\":\"package.json\"})\nlist_directory({\"path\":\"src\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/session.ts\"})\nread_file({\"path\":\"src/settings.ts\"})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/tools/index.ts\"})\nread_file({\"path\":\"src/tools/file-search.tool.ts\"})\nlist_directory({\"path\":\"docs\"})\nread_file({\"path\":\"src/tools/run-shell-command.tool.ts\"})\nread_file({\"path\":\"src/tools/write-file.tool.ts\"})\nread_file({\"path\":\"src/tools/read-file.tool.ts\"})\nread_file({\"path\":\"src/tools/replace-string-in-file.tool.ts\"})\nread_file({\"path\":\"src/tools/grep-search.tool.ts\"})\nread_file({\"path\":\"src/tools/list-directory.tool.ts\"})\nread_file({\"path\":\"src/thinking.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"src/utils.ts\"})\nread_file({\"path\":\"~/.localai/AGENTS.md\"})\nwrite_file({\"path\":\"README.md\",\"content\":...",
+  "total_tokens": 13617,
+  "reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95",
+  "observations": "The agent scanned the project correctly but did not notice the target issue."
+}
