@@ -1,0 +1,12 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "AtomicChat/gemma-4-26B-A4B-it-GGUF:IQ4_XS",
+  "name": "Gemma 4 26B A4B",
+  "category": "30B sparse",
+  "verdict": "pass-correct",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"package.json\"})\nlist_directory({\"path\":\"src\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/tools/index.ts\"})\nread_file({\"path\":\"README.md\"})\nread_file({\"path\":\"src/tools/file-search.tool.ts\"})\nread_file({\"path\":\"src/tools/grep-search.tool.ts\"})\nread_file({\"path\":\"src/tools/run-shell-command.tool.ts\"})\nlist_directory({\"path\":\"docs\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"src/utils.ts\"})\nread_file({\"path\":\"src/tools/utils.ts\"})\nwrite_file({\"content\":...",
+  "total_tokens": 15162,
+  "reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95, top-k = 64",
+  "observations": "The agent correctly analyzed the project.\n\nThe updated `README.md`:\n- Removes all mentions related to the removed feature. (**Correct**)\n- Minor adjustments. (**Acceptable**)"
+}
