@@ -1,0 +1,8 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "poolside/Laguna-XS-2.1-GGUF:Q4_K_M",
+  "name": "Laguna XS 2.1 33B A3B",
+  "category": "30B sparse",
+  "verdict": "fail-incorrect",
+  "observations": "The run was very similar to the one using 3-bit quantization."
+}
