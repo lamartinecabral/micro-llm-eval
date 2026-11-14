@@ -1,0 +1,13 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "LiquidAI/LFM3-1.7B-GGUF:Q8_0",
+  "name": "LFM3 1.7B",
+  "category": "2B dense",
+  "verdict": "fail-execution",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\"})\nlist_directory({\"path\":\"src\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nwrite_file({\"path\":\"README.md\",\"content\":...",
+  "total_tokens": 6552,
+  "reasoning": true,
+  "supports_preserve_reasoning": true,
+  "sampling_parameters": "temp = 0.1, repeat-penalty = 1.1, top-k = 50",
+  "observations": "The agent only read a few files then make some adjustments to `README.md` with a new \"Source Files\" section."
+}
