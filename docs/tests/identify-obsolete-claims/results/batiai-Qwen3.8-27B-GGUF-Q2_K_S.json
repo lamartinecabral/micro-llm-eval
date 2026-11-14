@@ -1,0 +1,13 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "batiai/Qwen3.8-27B-GGUF:Q2_K_S",
+  "name": "Qwen 3.8 27B",
+  "category": "30B dense",
+  "verdict": "pass-correct",
+  "tool_calls": "list_directory({\"path\":\".\"})\nfile_search({\"query\":\"README.md\"})\nread_file({\"path\":\"package.json\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"README.md\",\"start_line\":1,\"end_line\":200})\nlist_directory({\"path\":\"src\"})\nlist_directory({\"path\":\"docs\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"src/cli.ts\",\"start_line\":1,\"end_line\":300})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/tools/index.ts\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"src/run.ts\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"src/utils.ts\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"src/settings.ts\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"docs/ollama.md\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"src/session.ts\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"src/io.ts\",\"start_line\":1,\"end_line\":200})\nread_file({\"path\":\"src/tools/list-directory.tool.ts\",\"start_line\":1,\"end_line\":40})\nread_file({\"path\":\"src/tools/grep-search.tool.ts\",\"start_line\":1,\"end_line\":40})\nwrite_file({\"path\":\"README.md\",\"content\":...",
+  "total_tokens": 14195,
+  "reasoning": "low",
+  "supports_preserve_reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95, top-k = 20",
+  "observations": "The updated `README.md`:\n- Removes all mentions related to the removed feature. (**Correct**)\n- Adds a new \"Tools\" section. (**Acceptable**)"
+}
