@@ -121,6 +121,7 @@ The goal is to build a practical picture of how small LLMs perform repository-le
 | Qwen 3.5 4B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 9B                   | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.5 27B                  | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
+| Qwen 3.5 122B A10B            | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.6 35B A3B              | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.7 Flash                | ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)    |
 | Qwen 3.8 27B                  | ![](https://img.shields.io/badge/PASS-CORRECT-brightgreen) |
@@ -1393,6 +1394,8 @@ The agent only read a few files then make some adjustments to `README.md` with a
   - It made adjustments to `README.md` but did not notice that web search had been removed.
 - **Qwen/Qwen3.5-9B** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
+- **Qwen/Qwen3.5-122B-A10B:novita** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
+  - It did not notice the target issue.
 - **Qwen/Qwen3.6-35B-A3B** ![](https://img.shields.io/badge/FAIL-INCORRECT-orange)
   - It rewrote `README.md` without removing the references to web search.
 - **ibm-granite/granite-4.2-8b** ![](https://img.shields.io/badge/FAIL-EXECUTION-red)
