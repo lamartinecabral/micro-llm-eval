@@ -1,0 +1,12 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "bartowski/Laguna-XS-2.1-GGUF:IQ3_XXS",
+  "name": "Laguna XS 2.1 33B A3B",
+  "category": "30B sparse",
+  "verdict": "fail-incorrect",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"package.json\"})\nread_file({\"path\":\"README.md\"})\nlist_directory({\"path\":\"src\"})\nlist_directory({\"path\":\"src/tools\"})\nlist_directory({\"path\":\"docs\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/session.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/tools/index.ts\"})\nread_file({\"path\":\"src/tools/file-search.tool.ts\"})\nread_file({\"path\":\"src/tools/grep-search.tool.ts\"})\nread_file({\"path\":\"src/tools/list-directory.tool.ts\"})\nread_file({\"path\":\"src/tools/read-file.tool.ts\"})\nread_file({\"path\":\"src/tools/write-file.tool.ts\"})\nread_file({\"path\":\"src/tools/replace-string-in_file.tool.ts\"})\nread_file({\"path\":\"src/tools/replace-string-in-file.tool.ts\"})\nread_file({\"path\":\"src/tools/run-shell-command.tool.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"tests/helpers.test.ts\"})\nread_file({\"path\":\"tests/tools.test.ts\"})\nread_file({\"path\":\"tsconfig.json\"})\nread_file({\"path\":\"biome.json\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"src/utils.ts\"})\nread_file({\"path\":\"src/tools/utils.ts\"})\nread_file({\"path\":\"src/thinking.ts\"})\nread_file({\"path\":\"LICENSE\"})\nlist_directory({\"path\":\".vscode\"})\nread_file({\"path\":\"tests/session.test.ts\"})\nread_file({\"path\":\"tests/settings.test.ts\"})\nwrite_file({\"path\":\"README.md\",\"content\":...\nread_file({\"path\":\"README.md\"})\nrun_shell_command({\"command\":\"cd /app/localai && npm test\"})\nrun_shell_command({\"command\":\"cd /app/localai && npm run typecheck\"})",
+  "total_tokens": 21919,
+  "reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-k = 20, top-p = 1.0",
+  "observations": "The agent scanned the project correctly but did not notice the target issue."
+}
