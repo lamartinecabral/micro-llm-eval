@@ -1,0 +1,13 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "prism-ml/Ternary-Bonsai-2-27B-gguf:Q2_0",
+  "name": "Bonsai 2 Ternary 27B",
+  "category": "30B dense",
+  "verdict": "pass-correct",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\"})\nread_file({\"path\":\"package.json\"})\nlist_directory({\"path\":\"src\"})\nlist_directory({\"path\":\"tests\"})\nlist_directory({\"path\":\"docs\"})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/session.ts\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"src/thinking.ts\"})\nread_file({\"path\":\"src/utils.ts\"})\nread_file({\"path\":\"src/tools/index.ts\"})\nread_file({\"path\":\"src/tools/utils.ts\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"tsconfig.json\"})\nread_file({\"path\":\".gitignore\"})\ngrep_search({\"query\":\"webSearch|web-search|tavily|web_search\",\"isRegexp\":true,\"includePattern\":\"src/**/*.ts\"})\ngrep_search({\"query\":\"web\",\"isRegexp\":false,\"includePattern\":\"src/**/*.ts\",\"maxResults\":50})\nread_file({\"path\":\"tests/tools.test.ts\"})\nread_file({\"path\":\"tests/session.test.ts\"})\nread_file({\"path\":\"tests/settings.test.ts\"})\nrun_shell_command({\"command\":\"cd \"$(git rev-parse --show-toplevel)\" && git log --oneline -25\"})\nrun_shell_command({\"command\":\"cd \"$(git rev-parse --show-toplevel)\" && git log --oneline --all -i --grep='web'...\nrun_shell_command({\"command\":\"cd \"$(git rev-parse --show-toplevel)\" && echo \"=== Does web-search dep exist in...\nrun_shell_command({\"command\":\"cd \"$(git rev-parse --show-toplevel)\" && echo \"=== README diff at 7a98e89 ===\"...\nfile_search({\"query\":\"**/CONTRIBUTING.md\"})\nread_file({\"path\":\"tests/helpers.test.ts\"})\nreplace_string_in_file({\"path\":\"README.md\",\"old_text\":...\nreplace_string_in_file({\"path\":\"README.md\",\"old_text\":...\nreplace_string_in_file({\"new_text\":...\"path\":\"README.md\"})\nread_file({\"path\":\"README.md\"})",
+  "total_tokens": 29161,
+  "reasoning": "low",
+  "supports_preserve_reasoning": true,
+  "sampling_parameters": "temp = 1.0, top-p = 0.95, top-k = 20",
+  "observations": "The updated `README.md`:\n- Removes all mentions related to the removed feature. (**Correct**)"
+}
