@@ -1,0 +1,12 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "JetBrains/Mellum2.1-12B-A2.5B-Thinking-GGUF:Q4_K_M",
+  "name": "Mellum2.1 12B A2.5B Thinking",
+  "category": "8B sparse",
+  "verdict": "fail-execution",
+  "tool_calls": "list_directory({\"path\": \".\"})\nread_file({\"path\": \"README.md\", \"start_line\": 1, \"end_line\": 100})\nread_file({\"path\": \"package.json\", \"start_line\": 1, \"end_line\": 50})\nlist_directory({\"path\": \"docs\"})\nwrite_file({\"path\": \"README.md\", \"content\":...",
+  "total_tokens": 12588,
+  "reasoning": true,
+  "sampling_parameters": "temp = 0.6, top-p = 0.95, top-k = 20",
+  "observations": "It only read `README.md` and `package.json`, then added a \"License\" section to `README.md`."
+}
