@@ -1,0 +1,13 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "LiquidAI/LFM2.5-24B-A2B-GGUF:Q4_0",
+  "name": "LFM2.5 24B A2B",
+  "category": "30B sparse",
+  "verdict": "fail-incorrect",
+  "tool_calls": "list_directory({\"path\":\".\"})\nread_file({\"path\":\"README.md\"})\nread_file({\"path\":\"package.json\"})\nlist_directory({\"path\":\"src\"})\nlist_directory({\"path\":\"docs\"})\nread_file({\"path\":\"docs/ollama.md\"})\nread_file({\"path\":\"src/cli.ts\"})\nread_file({\"path\":\"src/run.ts\"})\nread_file({\"path\":\"src/session.ts\"})\nlist_directory({\"path\":\"src/tools\"})\nread_file({\"path\":\"src/io.ts\"})\nread_file({\"path\":\"src/settings.ts\"})\nread_file({\"path\":\"src/thinking.ts\"})\nread_file({\"path\":\"src/utils.ts\"})\nlist_directory({\"path\":\"tests\"})\nread_file({\"path\":\"tests/session.test.ts\"})\nread_file({\"path\":\"tests/settings.test.ts\"})\nwrite_file({\"path\":\"README.md\",\"content\":...\nread_file({\"path\":\"README.md\"})",
+  "total_tokens": 11974,
+  "reasoning": true,
+  "supports_preserve_reasoning": true,
+  "sampling_parameters": "temp = 0.1, top-k = 50, repeat-penalty = 1.05",
+  "observations": "The agent did not notice the target issue and refactored `README.md` with a couple of wrong details."
+}
