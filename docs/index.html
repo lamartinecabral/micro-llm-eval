@@ -1,0 +1,35 @@
+<html>
+<head>
+  <script type="importmap">
+    {
+      "imports": {
+        "lucide-react": "https://cdn.jsdelivr.net/npm/lucide-react@1.73.0/+esm",
+        "marked-react": "https://cdn.jsdelivr.net/npm/marked-react@4.0.0/+esm",
+        "react": "https://cdn.jsdelivr.net/npm/react@19.3.1/+esm",
+        "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@19.3.1/client/+esm",
+        "zod": "https://cdn.jsdelivr.net/npm/zod@4.6.7/+esm"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    (async () => {
+      const url = "./babel-worker.js";
+      const scope = "./";
+      await navigator.serviceWorker.register(url, { scope });
+      await navigator.serviceWorker.ready;
+
+      // hard reloads explicitly disengage the Service Worker controller by browser design.
+      // in this case a normal reload gives control back to the Service Worker.
+      if (!navigator.serviceWorker.controller) return location.reload();
+
+      const script = document.createElement("script");
+      script.type = "module";
+      script.src = "./index.tsx";
+      document.head.appendChild(script);
+    })();
+  </script>
+</body>
+</html>
