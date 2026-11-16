@@ -1,0 +1,309 @@
+[
+  {
+    "provider": "Hugging Face Inference Providers",
+    "model_id": "ibm-granite/granite-4.2-30b",
+    "name": "Granite 4.2 30B",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Hugging Face Inference Providers",
+    "model_id": "Qwen/Qwen3.5-9B",
+    "name": "Qwen 3.5 9B",
+    "verdict": "fail-incorrect",
+    "observations": "It rewrote `README.md` without removing the references to web search."
+  },
+  {
+    "provider": "Hugging Face Inference Providers",
+    "model_id": "Qwen/Qwen3.5-122B-A10B:novita",
+    "name": "Qwen 3.5 122B A10B",
+    "verdict": "fail-incorrect",
+    "observations": "It did not notice the target issue."
+  },
+  {
+    "provider": "Hugging Face Inference Providers",
+    "model_id": "Qwen/Qwen3.6-35B-A3B",
+    "name": "Qwen 3.6 35B A3B",
+    "verdict": "fail-incorrect",
+    "observations": "It rewrote `README.md` without removing the references to web search."
+  },
+  {
+    "provider": "Hugging Face Inference Providers",
+    "model_id": "ibm-granite/granite-4.2-8b",
+    "name": "Granite 4.2 8B",
+    "verdict": "fail-execution",
+    "observations": "It read only `README.md` and `package.json`, then made adjustments to `README.md`."
+  },
+  {
+    "provider": "Ollama cloud",
+    "model_id": "gemma4:31b",
+    "name": "Gemma 4 31B",
+    "verdict": "pass-correct"
+  },
+  {
+    "provider": "Ollama cloud",
+    "model_id": "nemotron-3-super",
+    "name": "Nemotron 3 Super 120B A12B",
+    "verdict": "pass-partial",
+    "observations": "It noticed the missing feature but did not remove all mentions."
+  },
+  {
+    "provider": "Ollama cloud",
+    "model_id": "gpt-oss:20b",
+    "name": "GPT OSS 20B",
+    "verdict": "fail-incorrect",
+    "observations": "It rewrote `README.md` without removing the references to web search."
+  },
+  {
+    "provider": "Ollama cloud",
+    "model_id": "gpt-oss:120b",
+    "name": "GPT OSS 120B",
+    "verdict": "fail-incorrect",
+    "observations": "It rewrote `README.md` without removing the references to web search."
+  },
+  {
+    "provider": "Ollama cloud",
+    "model_id": "nemotron-3-nano:30b",
+    "name": "Nemotron 3 Nano 30B",
+    "verdict": "fail-execution",
+    "observations": "It did not scan the project correctly, and rewrote `README.md` without noticing the missing feature."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "z-ai/glm-5.3-flash",
+    "name": "GLM 5.3 Flash",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.00355, "total_output_tokens": 1620, "request_count": 12 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "openai/gpt-6-luna",
+    "name": "GPT-6 Luna",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.00371, "total_output_tokens": 2390, "request_count": 8 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "inclusionai/ling-3.1-flash",
+    "name": "Ling 3.1 Flash",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.00403, "total_output_tokens": 9300, "request_count": 11 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "deepseek/deepseek-v4.1-flash-1017",
+    "name": "Deepseek v4.1 Flash 1017",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.00546, "total_output_tokens": 4790, "request_count": 10 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "meta/muse-ember",
+    "name": "Muse Ember",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.00569, "total_output_tokens": 5140, "request_count": 13 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "minimax/minimax-m3.1-flash",
+    "name": "MiniMax M3.1 Flash",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.00686, "total_output_tokens": 2960, "request_count": 11 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "tencent/hy3",
+    "name": "Hy3",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.00977, "total_output_tokens": 5950, "request_count": 9 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "xiaomi/mimo-v2.6-flash",
+    "name": "Mimo v2.6 Flash",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.012, "total_output_tokens": 7130, "request_count": 17 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "qwen/qwen3.8-flash",
+    "name": "Qwen 3.8 Flash",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.0133, "total_output_tokens": 8020, "request_count": 24 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "anthropic/claude-haiku-5.5",
+    "name": "Claude Haiku 5.5",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.014, "total_output_tokens": 6560, "request_count": 10 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "openai/gpt-5.4-nano",
+    "name": "GPT-5.4 Nano",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.0154, "total_output_tokens": 3900, "request_count": 18 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "meta/muse-glimmer-30b",
+    "name": "Muse Glimmer 30B",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.0184, "total_output_tokens": 3680, "request_count": 21 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "ricursiveai/ripple-65b-preview",
+    "name": "Ripple 65B Preview",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.0206, "total_output_tokens": 17200, "request_count": 19 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "google/gemma-4-31b-it",
+    "name": "Gemma 4 31B",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.0214, "total_output_tokens": 3510, "request_count": 17 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "stepfun/step-3.5-flash",
+    "name": "Step 3.5 Flash",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.0345, "total_output_tokens": 6020, "request_count": 34 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "google/gemini-3.5-flash-lite",
+    "name": "Gemini 3.5 Flash Lite",
+    "verdict": "pass-partial",
+    "observations": "It rewrote `README.md` without removing all references to web search."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "tencent/hy4-flash",
+    "name": "Hy4 flash",
+    "verdict": "pass-partial",
+    "observations": "It removed stale claims but added a mention to the removed feature."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "anthropic/claude-haiku-4.5",
+    "name": "Claude Haiku 4.5",
+    "verdict": "fail-incorrect",
+    "observations": "It did notice the missing feature but the updated `README.md` had no fix about it."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "google/gemini-3.1-flash-lite",
+    "name": "Gemini 3.1 Flash Lite",
+    "verdict": "fail-incorrect",
+    "observations": "It struggled to use the tools correctly and made adjustments to `README.md` without noticing the missing feature."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "inclusionai/ling-3.0-flash",
+    "name": "Ling 3.0 Flash",
+    "verdict": "fail-incorrect",
+    "observations": "It did not notice the target issue."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "mistralai/mistral-small-2603",
+    "name": "Mistral Small 4",
+    "verdict": "fail-incorrect",
+    "observations": "It rewrote `README.md` without removing the references to web search."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "nvidia/nemotron-3.5-super-vl",
+    "name": "Nemotron 3.5 Super VL",
+    "verdict": "fail-incorrect",
+    "observations": "It did notice the missing feature but the updated `README.md` had no fix about it."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "openai/gpt-5-nano",
+    "name": "GPT-5 Nano",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "openai/gpt-5-mini",
+    "name": "GPT-5 Mini",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "qwen/qwen3-30b-a3b-instruct-2507",
+    "name": "Qwen 3 30B A3B",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "qwen/qwen3-32b",
+    "name": "Qwen 3 32B",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "qwen/qwen3-coder-next",
+    "name": "Qwen 3 Coder Next",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "qwen/qwen3.5-27b",
+    "name": "Qwen 3.5 27B",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "qwen/qwen3.6-35b-a3b",
+    "name": "Qwen 3.6 35B A3B",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "qwen/qwen3.7-flash",
+    "name": "Qwen 3.7 Flash",
+    "verdict": "fail-incorrect",
+    "observations": "It rewrote `README.md` without removing the references to web search."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "thinkingmachines/inkling",
+    "name": "Inkling",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "upstage/solar-pro4",
+    "name": "Solar Pro 4",
+    "verdict": "fail-incorrect",
+    "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "bytedance-seed/seed-2.0-mini",
+    "name": "Seed 2.0 Mini",
+    "verdict": "fail-execution",
+    "observations": "It did not scan the project correctly, made minor adjustments to `README.md` and missed the goal."
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "nvidia/nemotron-3.5-lightning",
+    "name": "Nemotron 3.5 Lightning",
+    "verdict": "fail-execution",
+    "observations": "It only tried to format `README.md`."
+  }
+]
