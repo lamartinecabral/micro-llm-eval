@@ -1,7 +1,3 @@
-import React from "react";
-
-const Style = () => {
-  const css = `
 td,
 th {
   border: 0.5px solid black;
@@ -29,8 +25,3 @@ pre {
   background-color: hsla(0, 0%, 50%, 0.1);
   overflow-x: scroll;
 }
-`;
-  return <style>{css}</style>;
-};
-
-export default Style;

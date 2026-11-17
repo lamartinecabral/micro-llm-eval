@@ -1,7 +1,6 @@
 import React, { Suspense, use } from "react";
 import Markdown from "marked-react";
 import { getData } from "./tests/identify-obsolete-claims/benchmark.ts";
-import Style from "./Style.tsx";
 
 type Results = Awaited<ReturnType<typeof getData>>[1];
 
@@ -135,12 +134,9 @@ const Evaluation = () => {
 
 const App = () => {
   return (
-    <>
-      <Style />
-      <Suspense fallback="loading...">
-        <Evaluation />
-      </Suspense>
-    </>
+    <Suspense fallback="loading...">
+      <Evaluation />
+    </Suspense>
   );
 };
 
