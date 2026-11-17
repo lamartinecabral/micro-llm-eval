@@ -40,11 +40,12 @@ const parseResults = (
     .sort((a, b) => {
       const compV = compVerdict(a.verdict, b.verdict);
       if (compV) return compV;
-      if (a.total_tokens && b.total_tokens)
-        return a.total_tokens - b.total_tokens;
-      if (a.tool_calls && b.tool_calls)
+      if (a.total_tokens || b.total_tokens)
+        return (a.total_tokens ?? 1e9) - (b.total_tokens ?? 1e9);
+      if (a.tool_calls || b.tool_calls)
         return (
-          a.tool_calls.split("\n").length - b.tool_calls.split("\n").length
+          (a.tool_calls?.split("\n").length ?? 1e9) -
+          (b.tool_calls?.split("\n").length ?? 1e9)
         );
       return a.name.localeCompare(b.name);
     });
