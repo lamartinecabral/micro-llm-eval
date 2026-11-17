@@ -69,7 +69,7 @@ const Result = ({
           <pre>{res.tool_calls}</pre>
         </details>
       )}
-      {!!res.tool_calls && (
+      {!!res.total_tokens && (
         <Markdown>{`**Total tokens:** ${res.total_tokens}`}</Markdown>
       )}
       {!!res.supports_preserve_reasoning && (
