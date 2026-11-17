@@ -11,7 +11,7 @@ const Summary = (props: { results: Results; badges: string[] }) => {
     .slice()
     .sort(
       (a, b) =>
-        a.name.localeCompare(b.name) ||
+        a.name.toLowerCase().localeCompare(b.name.toLowerCase()) ||
         verdictIndex(a.verdict) - verdictIndex(b.verdict),
     )
     .filter((a, i, arr) => arr.findIndex((b) => b.name === a.name) === i)
@@ -115,7 +115,7 @@ const ClassResults = ({
           (a.tool_calls?.split("\n").length ?? 1e9) -
           (b.tool_calls?.split("\n").length ?? 1e9)
         );
-      return a.name.localeCompare(b.name);
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
     });
   return (
     <>
