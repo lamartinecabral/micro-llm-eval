@@ -35,11 +35,7 @@ const resultSchema = z
 const cloudResultSchema = z.array(
   z
     .object({
-      provider: z.enum([
-        "Openrouter",
-        "Ollama cloud",
-        "Hugging Face Inference Providers",
-      ]),
+      provider: z.enum(["Openrouter", "Ollama cloud", "Hugging Face"]),
       observations: z.string().optional(),
       usage: z
         .object({

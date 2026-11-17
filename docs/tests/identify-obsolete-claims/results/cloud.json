@@ -1,34 +1,34 @@
 [
   {
-    "provider": "Hugging Face Inference Providers",
+    "provider": "Hugging Face",
     "model_id": "ibm-granite/granite-4.2-30b",
     "name": "Granite 4.2 30B",
     "verdict": "fail-incorrect",
     "observations": "It made adjustments to `README.md` but did not notice that web search had been removed."
   },
   {
-    "provider": "Hugging Face Inference Providers",
+    "provider": "Hugging Face",
     "model_id": "Qwen/Qwen3.5-9B",
     "name": "Qwen 3.5 9B",
     "verdict": "fail-incorrect",
     "observations": "It rewrote `README.md` without removing the references to web search."
   },
   {
-    "provider": "Hugging Face Inference Providers",
+    "provider": "Hugging Face",
     "model_id": "Qwen/Qwen3.5-122B-A10B:novita",
     "name": "Qwen 3.5 122B A10B",
     "verdict": "fail-incorrect",
     "observations": "It did not notice the target issue."
   },
   {
-    "provider": "Hugging Face Inference Providers",
+    "provider": "Hugging Face",
     "model_id": "Qwen/Qwen3.6-35B-A3B",
     "name": "Qwen 3.6 35B A3B",
     "verdict": "fail-incorrect",
     "observations": "It rewrote `README.md` without removing the references to web search."
   },
   {
-    "provider": "Hugging Face Inference Providers",
+    "provider": "Hugging Face",
     "model_id": "ibm-granite/granite-4.2-8b",
     "name": "Granite 4.2 8B",
     "verdict": "fail-execution",
