@@ -1,17 +1,8 @@
 import z from "zod";
 
-const resultSchema = z.object({
-  inference_engine: z.enum(["llama.cpp", "Ollama"]),
+const basicResultSchema = z.object({
   model_id: z.string(),
   name: z.string(),
-  category: z.enum([
-    "1B dense",
-    "4B dense",
-    "8B dense",
-    "30B dense",
-    "8B sparse",
-    "30B sparse",
-  ]),
   verdict: z.enum([
     "pass-correct",
     "pass-partial",
@@ -19,13 +10,27 @@ const resultSchema = z.object({
     "fail-execution",
     "fail-crashed",
   ]),
+});
+
+const resultSchema = z
+  .object({
+    inference_engine: z.enum(["llama.cpp", "Ollama"]),
+    category: z.enum([
+      "1B dense",
+      "4B dense",
+      "8B dense",
+      "30B dense",
+      "8B sparse",
+      "30B sparse",
+  ]),
   tool_calls: z.string().optional(),
   total_tokens: z.number().optional(),
   reasoning: z.boolean().or(z.string()).optional(),
   supports_preserve_reasoning: z.boolean().optional(),
   sampling_parameters: z.string().optional(),
   observations: z.string().optional(),
-});
+  })
+  .extend(basicResultSchema.shape);
 
 const resultFiles = [
   "AtomicChat-Flint-GGUF-IQ2_XXS.json",
