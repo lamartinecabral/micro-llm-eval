@@ -22,15 +22,35 @@ const resultSchema = z
       "30B dense",
       "8B sparse",
       "30B sparse",
-  ]),
-  tool_calls: z.string().optional(),
-  total_tokens: z.number().optional(),
-  reasoning: z.boolean().or(z.string()).optional(),
-  supports_preserve_reasoning: z.boolean().optional(),
-  sampling_parameters: z.string().optional(),
-  observations: z.string().optional(),
+    ]),
+    tool_calls: z.string().optional(),
+    total_tokens: z.number().optional(),
+    reasoning: z.boolean().or(z.string()).optional(),
+    supports_preserve_reasoning: z.boolean().optional(),
+    sampling_parameters: z.string().optional(),
+    observations: z.string().optional(),
   })
   .extend(basicResultSchema.shape);
+
+const cloudResultSchema = z.array(
+  z
+    .object({
+      provider: z.enum([
+        "Openrouter",
+        "Ollama cloud",
+        "Hugging Face Inference Providers",
+      ]),
+      observations: z.string().optional(),
+      usage: z
+        .object({
+          total_cost: z.number(),
+          total_output_tokens: z.number(),
+          request_count: z.number(),
+        })
+        .optional(),
+    })
+    .extend(basicResultSchema.shape),
+);
 
 const resultFiles = [
   "AtomicChat-Flint-GGUF-IQ2_XXS.json",
@@ -77,6 +97,11 @@ const fetchResults = async () => {
   return results.map((res) => resultSchema.parse(res));
 };
 
+const fetchCloudResults = async () => {
+  const results = await fetch(resultPath + "cloud.json").then((a) => a.json());
+  return cloudResultSchema.parse(results);
+};
+
 const fetcher = <T extends any>(fn: () => Promise<T>) => {
   let promise: Promise<T>;
   return () => {
@@ -91,5 +116,6 @@ export const getData = fetcher(() =>
       import.meta.url.split("/").slice(0, -1).join("/") + "/details.md",
     ).then((res) => res.text()),
     fetchResults(),
+    fetchCloudResults(),
   ]),
 );
