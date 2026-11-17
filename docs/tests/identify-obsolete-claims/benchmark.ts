@@ -7,7 +7,7 @@ const resultSchema = z.object({
   category: z.enum([
     "1B dense",
     "4B dense",
-    "10B dense",
+    "8B dense",
     "30B dense",
     "8B sparse",
     "30B sparse",

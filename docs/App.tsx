@@ -106,7 +106,7 @@ const Evaluation = () => {
 
   const dense4Bresults = parseResults(results, badges, "4B dense");
   const sparse30Besults = parseResults(results, badges, "30B sparse");
-  const dense10Besults = parseResults(results, badges, "10B dense");
+  const dense8Besults = parseResults(results, badges, "8B dense");
   const dense30Bresults = parseResults(results, badges, "30B dense");
   const sparse8Bresults = parseResults(results, badges, "8B sparse");
   const dense1Bresults = parseResults(results, badges, "1B dense");
@@ -124,7 +124,7 @@ const Evaluation = () => {
         summary,
         dense4Bresults,
         sparse30Besults,
-        dense10Besults,
+        dense8Besults,
         dense30Bresults,
         sparse8Bresults,
         dense1Bresults,
