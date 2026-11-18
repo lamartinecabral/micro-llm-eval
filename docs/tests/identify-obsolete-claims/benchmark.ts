@@ -112,6 +112,9 @@ export const getData = fetcher(() =>
       import.meta.url.split("/").slice(0, -1).join("/") + "/details.md",
     ).then((res) => res.text()),
     fetchResults(),
+    fetch(
+      import.meta.url.split("/").slice(0, -1).join("/") + "/cloud-details.md",
+    ).then((res) => res.text()),
     fetchCloudResults(),
   ]),
 );
