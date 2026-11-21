@@ -70,6 +70,7 @@ const resultFiles = [
   "bartowski-zai-org_GLM-4.7-Flash-GGUF-IQ3_M.json",
   "batiai-Qwen3.8-27B-GGUF-Q2_K_S.json",
   "bonsai-2-4b.json",
+  "ggml-org-Inkling-2-Mini-GGUF-IQ4_NL.json",
   "ggml-org-SmolLM3-3B-GGUF-Q8_0.json",
   "ggml-org-gemma-4-12B-it-GGUF-Q4_0.json",
   "ggml-org-gemma-4-E4B-it-GGUF-Q8_0.json",
