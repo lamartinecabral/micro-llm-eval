@@ -5,10 +5,14 @@ import { getData } from "./tests/identify-obsolete-claims/benchmark.ts";
 type Results = Awaited<ReturnType<typeof getData>>[1];
 type Cloud = Awaited<ReturnType<typeof getData>>[3];
 
-const Summary = (props: { results: Results; badges: string[] }) => {
+const Summary = (props: {
+  results: Results;
+  cloud: Cloud;
+  badges: string[];
+}) => {
   const verdictIndex = (ver: string) =>
     props.badges.findIndex((b) => b.includes(ver.toUpperCase()));
-  const results = props.results
+  const results = [...props.results, ...props.cloud]
     .slice()
     .sort(
       (a, b) =>
@@ -239,7 +243,7 @@ const Evaluation = () => {
     <>
       <Markdown>{details}</Markdown>
       <hr />
-      <Summary results={results} badges={badges} />
+      <Summary results={results} cloud={cloudResults} badges={badges} />
       <hr />
       <ClassResults results={results} badges={badges} category="4B dense" />
       <hr />
