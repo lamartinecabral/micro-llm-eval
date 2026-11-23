@@ -1,0 +1,10 @@
+{
+  "inference_engine": "llama.cpp",
+  "model_id": "ggml-org/GLM-4.6V-Flash-GGUF:Q4_K_M",
+  "name": "GLM 4.6V Flash 9B",
+  "category": "8B dense",
+  "verdict": "fail-crashed",
+  "reasoning": true,
+  "sampling_parameters": "top-p = 0.6, top-k = 2, temp = 0.8, repeat-penalty = 1.1",
+  "observations": "The agent couldn't even complete the first tool call."
+}
