@@ -63,6 +63,7 @@ const resultFiles = [
   "LiquidAI-LFM2.5-24B-A2B-GGUF-Q4_0.json",
   "LiquidAI-LFM3-1.7B-GGUF-Q8_0.json",
   "ServiceNow-AI-Apriel-1.6-15b-Thinker-Q4_K_M.json",
+  "bartowski-GrootTeam_Groot-19B-A3B-261023-GGUF-Q4_K_M.json",
   "bartowski-K2-Horizon-MoVA-36B-A4B-GGUF-IQ2_S.json",
   "bartowski-Laguna-XS-2.1-GGUF-IQ3_XXS.json",
   "bartowski-MiMo-V2.6-Distill-Qwen-9B-GGUF-Q4_K_M.json",
