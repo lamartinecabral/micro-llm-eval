@@ -87,7 +87,7 @@
     "model_id": "inclusionai/ling-3.1-flash",
     "name": "Ling 3.1 Flash",
     "verdict": "pass-correct",
-    "usage": { "total_cost": 0.00403, "total_output_tokens": 9300, "request_count": 11 }
+    "usage": { "total_cost": 0.01612, "total_output_tokens": 9300, "request_count": 11, "discount_multiplier": 0.25 }
   },
   {
     "provider": "Openrouter",
@@ -179,6 +179,13 @@
     "name": "Inkling 2 Mini 26.4B A3.4B",
     "verdict": "pass-correct",
     "usage": { "total_cost": 0.00853, "total_output_tokens": 5640, "request_count": 31 }
+  },
+  {
+    "provider": "Openrouter",
+    "model_id": "upstage/solar-mini-4-5",
+    "name": "Solar Mini 4.5",
+    "verdict": "pass-correct",
+    "usage": { "total_cost": 0.014, "total_output_tokens": 9940, "request_count": 22, "discount_multiplier": 0.1 }
   },
   {
     "provider": "Openrouter",
